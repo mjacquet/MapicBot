@@ -50,6 +50,7 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
     console.log('access token',data["access_token"]);
     resolve(data["access_token"]);
   });*/
+ console.log('vision service  image url ',imageURL);
 
   let token='b86ee158ef03eea5fce8e458a33be9b00bc4cde0';
   var options = {
@@ -59,7 +60,7 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
       'Cache-Control': 'no-cache',
       'Authorization': 'Bearer '+token,
     },
-    body:`samplelocation=${imageURL},modelId=GeneralImageClassifier`
+    body:`samplelocation=`+imageURL+`,modelId=GeneralImageClassifier`
   }
 
     console.log('vision service  request ',options);
