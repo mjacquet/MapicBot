@@ -19,7 +19,7 @@ exports.processUpload = (sender, attachments) => {
             console.log('image attachment');
 
             messenger.send({text: 'OK, laissez moi analyser cette photo ...'}, sender);
-            visionService.classify(attachment.url)
+            visionService.classify(attachment.payload.url)
                 .then(shipType => {
                     messenger.send({text: `Ce  vaisseau est un "${shipType}"`}, sender);
                 })
