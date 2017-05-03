@@ -29,6 +29,16 @@ app.post('/webhook', (req, res) => {
         if (process.env.MAINTENANCE_MODE && ((event.message && event.message.text) || event.postback)) {
             sendMessage({text: `Sorry I'm taking a break right now.`}, sender);
         } else if (event.message && event.message.text) {
+          if (event.message.quick_reply) {
+            let payload = event.message.quick_reply;
+            let postback = postbacks[payload];
+            if (postback && typeof postback === "function") {
+                postback(sender, payload);
+            } else {
+                console.log("Postback Quick Reply" + postback + " is not defined");
+            }
+          }
+          else
             let result = processor.match(event.message.text);
             if (result) {
                 let handler = handlers[result.handler];
