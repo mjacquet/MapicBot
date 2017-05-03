@@ -31,11 +31,12 @@ app.post('/webhook', (req, res) => {
         } else if (event.message && event.message.text) {
           if (event.message.quick_reply) {
             let payload = event.message.quick_reply;
+            console.log(event.message.quick_reply);
             let postback = postbacks[payload];
             if (postback && typeof postback === "function") {
                 postback(sender, payload);
             } else {
-                console.log("Postback Quick Reply" + postback + " is not defined");
+                console.log("Postback Quick Reply " + postback + " is not defined");
             }
           }
           else {
