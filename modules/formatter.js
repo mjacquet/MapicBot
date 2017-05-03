@@ -3,7 +3,7 @@
 let moment = require("moment"),
     numeral = require("numeral");
 
-exports.onBoard1 = response => {
+exports.bonjour = response => {
     return {
         "text":"Bonjour " + response.first_name + " et bienvenue à la XWING Factory. Que puis-je faire pour vous?",
         "quick_replies":[

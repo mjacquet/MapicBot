@@ -12,33 +12,17 @@ exports.test = (sender) => {
     });
 };
 */
-exports.sample = (sender) => {
-    messenger.getUserInfo(sender).then(response => {
-        messenger.send({text: `Please send location`}, sender);
-    });
-};
-exports.test = (sender) => {
-    messenger.getSuggestion('75001','2').then(response => {
-        messenger.send({text: `${response.service_plan}`}, sender);
-    });
-};
-exports.hi = (sender) => {
-    console.log('hi');
-    messenger.getUserInfo(sender).then(response => {
-        messenger.send({text: `Hello, ${response.first_name}!`}, sender);
-    });
-};
 
 exports.start = (sender) => {
     console.log('start');
     messenger.getUserInfo(sender).then(response => {
 
-            messenger.send(formatter.onBoard1(response), sender);
+            messenger.send(formatter.bonjour(response), sender);
     });
 };
 
 
-exports.infomration = (sender) => {
+exports.information = (sender) => {
     console.log('information ');
     //messenger.send({text: `Je vais me charger de trouver l'assurance parfaite pour vous. Cela prendra seulement quelques minutes.`}, sender);
     messenger.getUserInfo(sender).then(response => {
