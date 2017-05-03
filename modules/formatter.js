@@ -24,7 +24,8 @@ exports.bonjour = response => {
 exports.information = response => {
     console.log('onBoard2');
     return {
-        "text":"Envoyez moi une photo du vaisseau"        
+        "text":"Envoyez moi une photo du vaisseau"
+      }     
 };
 
 exports.onBoard3 = response => {
