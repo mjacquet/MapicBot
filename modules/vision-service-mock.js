@@ -41,6 +41,7 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
     body:`grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer&assertion=${encodeURIComponent(assertion)}`
   }
 
+  console.log('vision service oauth request options',options);
   // Make the OAuth call to generate a token
   request.post(options, function(error, response, body) {
     console.log('vision service token request',data);
