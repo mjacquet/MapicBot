@@ -60,7 +60,7 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
       'Cache-Control': 'no-cache',
       'Authorization': 'Bearer '+token,
     },
-    body:`samplelocation=`+imageURL+`,modelId=GeneralImageClassifier`
+    form:{'samplelocation':imageURL,'modelId':'GeneralImageClassifier'}
   }
 
     console.log('vision service  request ',options);
