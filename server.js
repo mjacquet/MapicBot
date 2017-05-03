@@ -30,8 +30,8 @@ app.post('/webhook', (req, res) => {
             sendMessage({text: `Sorry I'm taking a break right now.`}, sender);
         } else if (event.message && event.message.text) {
           if (event.message.quick_reply) {
-            let payload = event.message.quick_reply;
-            console.log(event.message.quick_reply);
+            let payload = event.message.quick_reply.payload;
+            console.log(event.message.quick_reply.payload);
             let postback = postbacks[payload];
             if (postback && typeof postback === "function") {
                 postback(sender, payload);
