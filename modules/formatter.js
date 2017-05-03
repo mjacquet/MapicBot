@@ -5,16 +5,16 @@ let moment = require("moment"),
 
 exports.onBoard1 = response => {
     return {
-        "text":"Bonjour " + response.first_name + " et bienvenue chez Cumulus Assurance. Que puis-je faire pour vous?",
+        "text":"Bonjour " + response.first_name + " et bienvenue à la XWING Factory. Que puis-je faire pour vous?",
         "quick_replies":[
           {
             "content_type":"text",
-            "title":"Decouvrir les offres",
+            "title":"Decouvrir le dernier XWING",
             "payload":"theStart"
           },
           {
             "content_type":"text",
-            "title":"Je suis client",
+            "title":"Plus d'information sur le dernier TIE FIGHTER",
             "payload":"theStartTwo"
           }
         ]
