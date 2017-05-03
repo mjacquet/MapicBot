@@ -18,10 +18,10 @@ exports.processUpload = (sender, attachments) => {
         if (attachment.type === "image") {
             console.log('image attachment');
 
-            messenger.send({text: 'OK, let me look at that picture...'}, sender);
+            messenger.send({text: 'OK, laissez moi analyser cette photo ...'}, sender);
             visionService.classify(attachment.url)
                 .then(shipType => {
-                    messenger.send({text: `This ship is a "${shipType}"`}, sender);
+                    messenger.send({text: `Ce  vaisseau est un "${shipType}"`}, sender);
                 })
 
 
