@@ -65,7 +65,7 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
     console.log('vision service  request ',options);
   request.post(options, function(error, response, body) {
     console.log('vision service response ',body);
-  }
+  });
   /*
   setTimeout(() => {
     resolve("X-WING");
