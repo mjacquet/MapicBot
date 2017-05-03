@@ -14,17 +14,17 @@ exports.onBoard1 = response => {
           },
           {
             "content_type":"text",
-            "title":"Plus d'information sur le dernier TIE FIGHTER",
-            "payload":"theStartTwo"
+            "title":"Plus d'information sur un vaisseau",
+            "payload":"information"
           }
         ]
     }
 };
 
-exports.onBoard2 = response => {
+exports.information = response => {
     console.log('onBoard2');
     return {
-        "text":"Etes vous locataire ou proprietaire?",
+        "text":"Scannez un vaisseau",
         "quick_replies":[
           {
             "content_type":"text",

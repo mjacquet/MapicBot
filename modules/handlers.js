@@ -38,11 +38,11 @@ exports.start = (sender) => {
 };
 
 
-exports.theStartTwo = (sender) => {
-    console.log('theStartTwo ');
+exports.infomration = (sender) => {
+    console.log('information ');
     //messenger.send({text: `Je vais me charger de trouver l'assurance parfaite pour vous. Cela prendra seulement quelques minutes.`}, sender);
     messenger.getUserInfo(sender).then(response => {
         console.log('Inside getUserInfo');
-        messenger.send(formatter.onBoard6(response), sender);
+        messenger.send(formatter.information(response), sender);
     });
 };
