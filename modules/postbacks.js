@@ -10,6 +10,13 @@ exports.schedule_visit = (sender) => {
     });
 };
 
+exports.information = (sender) => {
+	console.log('information');
+	messenger.getUserInfo(sender).then(response => {
+    	messenger.send(formatter.information(response), sender);
+    });
+};
+
 exports.confirm_visit = (sender, values) => {
 	console.log('values: ', values);
     messenger.send({text: `Votre rendez-vous est confirmé pour le ${values[1]}`}, sender);

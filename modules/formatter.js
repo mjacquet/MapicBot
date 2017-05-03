@@ -13,7 +13,7 @@ exports.bonjour = response => {
             "payload":"theStart"
           },
           {
-            "content_type":"text",
+            "content_type":"postback",
             "title":"Plus d'information sur un vaisseau",
             "payload":"information"
           }
