@@ -9,7 +9,7 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
   var private_key = process.env.EINSTEIN_VISION_PRIVATE_KEY
   var account_id = process.env.EINSTEIN_VISION_ACCOUNT_ID
 
-  var reqUrl = `${url}v1/oauth2/token`;
+  /*var reqUrl = `${url}v1/oauth2/token`;
 
   // JWT payload
   var rsa_payload = {
@@ -49,8 +49,23 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
     console.log('vision service token request',data);
     console.log('access token',data["access_token"]);
     resolve(data["access_token"]);
-  });
+  });*/
 
+  let token='b86ee158ef03eea5fce8e458a33be9b00bc4cde0';
+  var options = {
+    url: url+'v1/vision/predict',
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      'Cache-Control': 'no-cache',
+      'Authorization': 'Bearer '+token,
+    },
+    body:`samplelocation=${imageURL},modelId=GeneralImageClassifier`
+  }
+
+    console.log('vision service  request ',options);
+  request.post(options, function(error, response, body) {
+    console.log('vision service response ',body);
+  }
   /*
   setTimeout(() => {
     resolve("X-WING");
