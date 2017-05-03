@@ -38,7 +38,7 @@ app.post('/webhook', (req, res) => {
                 console.log("Postback Quick Reply" + postback + " is not defined");
             }
           }
-          else
+          else {
             let result = processor.match(event.message.text);
             if (result) {
                 let handler = handlers[result.handler];
@@ -48,6 +48,7 @@ app.post('/webhook', (req, res) => {
                     console.log("Handler " + result.handlerName + " is not defined");
                 }
             }
+          }
         } else if (event.postback) {
             let payload = event.postback.payload.split(",");
             let postback = postbacks[payload[0]];
