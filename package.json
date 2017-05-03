@@ -2,11 +2,11 @@
   "name": "messengerforce",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Christophe Coenraets <ccoenraets@gmail.com> (http://coenraets.org/)",
+  "author": "Salesforce Team",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.0",
