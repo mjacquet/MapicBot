@@ -17,15 +17,14 @@ exports.processUpload = (sender, attachments) => {
         console.log('attachment: ', attachment);
         if (attachment.type === "image") {
             console.log('image attachment');
-            /*
+
             messenger.send({text: 'OK, let me look at that picture...'}, sender);
             visionService.classify(attachment.url)
-                .then(houseType => {
-                    messenger.send({text: `Looking for houses matching "${houseType}"`}, sender);
-                    return salesforce.findPropertiesByCategory(houseType)
+                .then(shipType => {
+                    messenger.send({text: `This ship is a "${shipType}"`}, sender);
                 })
-                .then(properties => messenger.send(formatter.formatProperties(properties), sender))
-                */
+
+
         }else if (attachment.type === "location") {
 
             messenger.getUserInfo(sender).then(response => {

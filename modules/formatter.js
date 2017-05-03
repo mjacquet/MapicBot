@@ -24,25 +24,7 @@ exports.bonjour = response => {
 exports.information = response => {
     console.log('onBoard2');
     return {
-        "text":"Scannez un vaisseau",
-        "quick_replies":[
-          {
-            "content_type":"text",
-            "title":"Locataire",
-            "payload":"p1"
-          },
-          {
-            "content_type":"text",
-            "title":"Colocataire",
-            "payload":"p2"
-          },
-          {
-            "content_type":"text",
-            "title":"Propriétaire",
-            "payload":"p3"
-          }
-        ]
-    }
+        "text":"Envoyez moi une photo du vaisseau"        
 };
 
 exports.onBoard3 = response => {

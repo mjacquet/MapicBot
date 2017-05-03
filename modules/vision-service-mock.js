@@ -2,6 +2,6 @@
 
 exports.classify = imageURL => new Promise((resolve, reject) => {
     setTimeout(() => {
-        resolve("contemporary");
+        resolve("X-WING");
     }, 2000);
 });
