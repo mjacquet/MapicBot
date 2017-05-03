@@ -105,7 +105,7 @@ exports.onBoard4 = response => {
 exports.onBoard5 = response => {
 
     let elements = [];
-        elements.push(  
+        elements.push(
             {
                 title: 'Cumulus Confort',
                 subtitle: `17,99€ par mois`,
@@ -271,7 +271,7 @@ exports.onBoard9 = response => {
 
 exports.onBoard10 = response => {
     let elements = [];
-        elements.push(  
+        elements.push(
             {
                 title: 'Agent',
                 "image_url": 'http://www.marbellafamilyfun.com/images/wanted-customer-support-agent-21854988.jpg',
@@ -298,7 +298,7 @@ exports.onBoard10 = response => {
 
 exports.formatAppointment = response => {
     moment.lang('fr');
-    
+
     var options = [
         moment().add(1, 'days').format('ddd D MMM') + ' à 10am',
         moment().add(2, 'days').format('ddd D MMM') + ' à 9am',
@@ -338,7 +338,7 @@ exports.formatAppointment = response => {
 exports.imageShow = response => {
 
     let elements = [];
-        elements.push(  
+        elements.push(
             {
                 title: 'Image',
                 "image_url": 'https://www.dropbox.com/s/575mqq3jhzvxkxm/gfacebook.png?raw=1'
@@ -392,7 +392,7 @@ exports.renderRooms = response => {
 exports.formatRecommendation = rec => {
 
     let elements = [];
-        elements.push(  
+        elements.push(
             {
                 title: rec.get("Name"),
                 subtitle: `${rec.get("subtitle__c")}`,
@@ -482,4 +482,3 @@ exports.sendLocation = response => {
         ]
     }
 };
- 
