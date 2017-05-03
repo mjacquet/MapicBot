@@ -43,8 +43,9 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
 
   // Make the OAuth call to generate a token
   request.post(options, function(error, response, body) {
+    console.log('vision service token request',data);
     var data = JSON.parse(body);
-    console.log(data["access_token"]);
+    console.log('access token',data["access_token"]);
     resolve(data["access_token"]);
   });
 
