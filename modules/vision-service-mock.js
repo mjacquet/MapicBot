@@ -1,13 +1,36 @@
 "use strict";
 
 exports.classify = imageURL => new Promise((resolve, reject) => {
-
+/*
   var jwt = require('jsonwebtoken');
   var request = require('request');
 
   var url = process.env.EINSTEIN_VISION_URL
   var private_key = process.env.EINSTEIN_VISION_PRIVATE_KEY
-  var account_id = process.env.EINSTEIN_VISION_ACCOUNT_ID
+  var account_id = process.env.EINSTEIN_VISION_ACCOUNT_ID*/
+
+  const Episode7     = require('episode-7');
+  const oAuthToken   = require('./oauth-token');
+  const updateToken  = require('./update-token');
+  const queryVisionApi = require('./query-vision-api');
+
+  const pvsUrl = process.env.EINSTEIN_VISION_URL;
+  const accountId  = process.env.EINSTEIN_VISION_ACCOUNT_ID;
+  const privateKey = process.env.EINSTEIN_VISION_PRIVATE_KEY;
+
+  Episode7.run(updateToken, pvsUrl, accountId, privateKey)
+  .then(() => {
+    let visionApiResult = yield Episode7.call(
+      queryVisionApi,
+      pvsUrl,
+      imageURL,
+      'GeneralImageClassifier'
+    );
+    console.log('vison api result',visionApiReslt)
+  });
+
+
+
 
   /*var reqUrl = `${url}v1/oauth2/token`;
 
@@ -50,6 +73,7 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
     console.log('access token',data["access_token"]);
     resolve(data["access_token"]);
   });*/
+  /*
  console.log('vision service  image url ',imageURL);
 
   let token='b724fc3070ccf0403b54e3c4ba7d38ee226af91b';
@@ -86,12 +110,13 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
 
     });
 
+
     function requestCallback(err, res, body) {
       console.log('new request to vision service return',body);
     }
 
 
-
+*/
 
 
 
