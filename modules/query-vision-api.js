@@ -13,7 +13,7 @@ function* queryVisionApi(
                        privateKey,
                        jwtToken){
   var token = jwtToken || oAuthToken.get();
-
+  console.log('vision API token',token);
   var formData = {
     modelId: modelId,
     sampleLocation : resizedImgUrl
@@ -30,6 +30,7 @@ function* queryVisionApi(
       },
       formData:formData
   }
+  console.log('vision API request',options);
   let { body, isUnauthorized } = yield Episode7.call((options) => {
     return rp(options)
       .then( body => ({ body }) )
@@ -58,8 +59,10 @@ function* queryVisionApi(
       modelId
     );
     setTimeout(()=>{loopPreventor = false},1000);
+    console.log('vision API visionApiResult',visionApiResult);
     return visionApiResult;
   } else {
+    console.log('vision API body',body);
     return body;
   }
 }
