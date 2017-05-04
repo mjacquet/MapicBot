@@ -82,6 +82,7 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
       r.setHeader('content-length', length);
       r.setHeader('Cache-Control', 'no-cache');
       r.setHeader('Authorization', 'Bearer '+token);
+      r.setHeader('Content-Type', 'multipart/form-data');
 
     });
 
@@ -94,9 +95,9 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
 
 
 
-  request.post(options, function(error, response, body) {
+  /*request.post(options, function(error, response, body) {
     console.log('vision service response ',body);
-  });
+  });*/
   /*
   setTimeout(() => {
     resolve("X-WING");
