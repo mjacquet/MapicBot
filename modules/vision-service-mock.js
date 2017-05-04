@@ -21,7 +21,7 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
   Episode7.run(updateToken, pvsUrl, accountId, privateKey)
   .then(() => {
     console.log('token',oAuthToken.get())
-    Episode7.run(queryVisionApi,pvsUrl,imageURL,'GeneralImageClassifier',accountId,privateKey,oAuthToken.get()).then((visionApiResult)=>{
+    Episode7.run(queryVisionApi,pvsUrl,imageURL,'OYNZX5N6DD5SCENXRKAN6WUSJE',accountId,privateKey,oAuthToken.get()).then((visionApiResult)=>{
       let jsvar=JSON.parse(visionApiResult);
       console.log('vison api result ',jsvar.probabilities[0].label);
       resolve(jsvar.probabilities[0].label);
