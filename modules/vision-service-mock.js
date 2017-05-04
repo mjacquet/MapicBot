@@ -1,4 +1,4 @@
-
+"use strict";
 
 exports.classify = imageURL => new Promise((resolve, reject) => {
 /*
@@ -20,12 +20,7 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
 
   Episode7.run(updateToken, pvsUrl, accountId, privateKey)
   .then(() => {
-    let visionApiResult = yield Episode7.call(
-      queryVisionApi,
-      pvsUrl,
-      imageURL,
-      'GeneralImageClassifier'
-    );
+    let visionApiResult = queryVisionApi(pvsUrl,imageURL,'GeneralImageClassifier',accountId,privateKey,oAuthToken.get())
     console.log('vison api result',visionApiReslt)
   });
 
