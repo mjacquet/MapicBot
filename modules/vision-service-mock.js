@@ -52,7 +52,7 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
   });*/
  console.log('vision service  image url ',imageURL);
 
-  let token='b86ee158ef03eea5fce8e458a33be9b00bc4cde0';
+  let token='b724fc3070ccf0403b54e3c4ba7d38ee226af91b';
   var options = {
     url: url+'v1/vision/predict',
     headers: {
@@ -64,6 +64,36 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
   }
 
     console.log('vision service  request ',options);
+
+
+    var FormData = require('form-data');
+
+    var form = new FormData();
+    form.append("sampleLocation", imageURL);
+    form.append("modelId", "GeneralImageClassifier");
+
+    form.getLength(function(err, length){
+      if (err) {
+        return requestCallback(err);
+      }
+
+      var r = request.post(url+'v1/vision/predict', requestCallback);
+      r._form = form;
+      r.setHeader('content-length', length);
+      r.setHeader('Cache-Control', 'no-cache');
+      r.setHeader('Authorization', 'Bearer '+token);
+
+    });
+
+    function requestCallback(err, res, body) {
+      console.log('new request to vision service return',body);
+    }
+
+
+
+
+
+
   request.post(options, function(error, response, body) {
     console.log('vision service response ',body);
   });
