@@ -2,13 +2,13 @@ const hbid = process.env.HUE_BRIDGE_ID;
 const hbtoken = process.env.HUE_BRIDGE_TOKEN;
 const rp = require('request-promise');
 var Episode7 = require('episode-7');
-var lights=["xwing":null,"tiefighter":null];
+var lights=null;
 
 function* hueLights(
                        action,
                        light=null){
 
-  if(lights['xwing']==null){
+  if(lights==null){
     let hueinit = yield Episode7.call(
       hueLightsInit
     );
@@ -24,7 +24,7 @@ function* hueLights(
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      formData:{clipmessage:{bridgeid:hbid,clipcommand:{url:'/api/lights/1/state',method:'PUT',body:{"on":true}}}}
+      formData:{clipmessage:{bridgeid:hbid,clipcommand:{url:'/api/lights/1/state',method:'PUT',body:{on:true}}}}
 
   }//formData:formData
   console.log('hueAPI request',options);
