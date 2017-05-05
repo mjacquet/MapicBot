@@ -83,11 +83,11 @@ function* hueLights(
   let aLights=JSON.parse(body).lights;
 //  console.log('Hue api init return lights:',aLights["1"]);
 
-aLights.forEach(function(element,index) {
-  console.log('light name', element.name);
-  console.log('light id', index);
-  lights[element.name]=index;
-  });
+for (var l in aLights) {
+  console.log('light name', aLights[l].name);
+  console.log('light id', l);
+  lights[aLights[l].name]=l;
+  }
 
 
   console.log('init done: ',lights)
