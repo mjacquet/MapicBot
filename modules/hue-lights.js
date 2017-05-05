@@ -1,37 +1,32 @@
 const hbid = process.env.HUE_BRIDGE_ID;
 const hbtoken = process.env.HUE_BRIDGE_TOKEN;
-//const rp = require('request-promise');
+const rp = require('request-promise');
 let request = require('request');
-//var Episode7 = require('episode-7');
+var Episode7 = require('episode-7');
 var lights={xwing:'1',tiefighter:'2'};
 
 
 
-const turnOn = (light) => {
-    return new Promise((resolve, reject) => {
-
-        var options = {
-          uri: `https://client.meethue.com/api/0/lights/1/state`,
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-token': 'VXh1U0tvSnlMN1ZkS3hOaWdOSWJRRFp4UGo3V3IxSUNPb1pVYlpHZUZNND0='
-          },
-          body:'{"on": true}'
-        }
-        request(options, function (err, res, body) {
-          console.log("hue request direct",body);
-          resolve(body);
-        });
-
-    });
-};
-
-/*
-
 function* hueLights(
   light){
-*/
+
+
+            var options = {
+              uri: `https://client.meethue.com/api/0/lights/1/state`,
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json',
+                'x-token': 'VXh1U0tvSnlMN1ZkS3hOaWdOSWJRRFp4UGo3V3IxSUNPb1pVYlpHZUZNND0='
+              },
+              body:'{"on": true}'
+            }
+            request(options, function (err, res, body) {
+              console.log("hue request direct",body);
+              resolve(body);
+            });
+}
+
+
   /*  if(lights==null){
       let hueinit = yield Episode7.call(hueLightsInit);
         console.log('hue initialization done',lights);
@@ -146,6 +141,6 @@ for (var l in aLights) {
   return JSON.stringify(lights);
 }
 */
-exports.turnOn = turnOn;
-//module.exports = hueLights;
+//exports.turnOn = turnOn;
+module.exports = hueLights;
 //module.exports = hueLightsInit;

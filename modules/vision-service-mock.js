@@ -1,7 +1,6 @@
 "use strict";
 
-export async function classify(imageURL) {
-  return new Promise((resolve, reject) => {
+exports.classify = imageURL => new Promise((resolve, reject) => {
 /*
   var jwt = require('jsonwebtoken');
   var request = require('request');
@@ -26,10 +25,11 @@ export async function classify(imageURL) {
   //Episode7.run(updateToken, pvsUrl, accountId, privateKey)
   //.then(() => {
   console.log('hue+Einsteinvision');
-  let lig = await hueLights.turnOn('xwing');
-/*  Episode7.run(hueLights,'xwing').then((hueresult)=>{
+
+  Episode7.run(hueLights,'xwing').then((hueresult)=>{
     let jsvar=JSON.parse(hueresult);
-  });*/
+    console.log("hueret",jsvar);
+  });
 /*
   const hbid = process.env.HUE_BRIDGE_ID;
   const hbtoken = process.env.HUE_BRIDGE_TOKEN;
@@ -156,5 +156,3 @@ export async function classify(imageURL) {
     resolve("X-WING");
   }, 2000);*/
 });
-}
-exports.classify = classify;
