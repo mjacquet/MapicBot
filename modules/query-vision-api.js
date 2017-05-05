@@ -29,7 +29,7 @@ function* queryVisionApi(
       },
       formData:formData
   }
-  console.log('vision API request',options);
+//  console.log('vision API request',options);
   let { body, isUnauthorized } = yield Episode7.call((options) => {
     return rp(options)
       .then( body => ({ body }) )
