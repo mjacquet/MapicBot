@@ -8,9 +8,8 @@ function* hueLights(
   light){
 
     if(lights==null){
-      let hueinit = yield Episode7.run(hueLightsInit).then((lights) => {
+      let hueinit = yield Episode7.call(hueLightsInit);
         console.log('hue initialization done',lights);
-      });
 
     }
 
