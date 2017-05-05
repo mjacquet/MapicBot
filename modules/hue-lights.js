@@ -14,7 +14,7 @@ function* hueLights(
     }*/
 
     console.log('hue initialized',lights);
-
+/*
     var formData = {
       clipmessage:{
         bridgeid:hbid,
@@ -49,7 +49,7 @@ function* hueLights(
     },options);
 
   console.log('Hue api return1:',body);
-
+*/
     var formData = {
       clipmessage:{
         bridgeid:hbid,
