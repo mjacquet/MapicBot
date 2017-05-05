@@ -8,10 +8,12 @@ function* hueLights(
   light=null){
 
     if(lights==null){
-      let hueinit = yield Episode7.call(
+      let hueinit = yield Episode7.run(
         hueLightsInit
-      );
-      console.log('hue init');
+      ).then((hueresult)=>{
+        console.log('hue initialized',hueresult);
+      });
+
     }
 
     var formData = {
@@ -115,8 +117,8 @@ function* hueLights(
 for (var l in aLights) {
   lights[aLights[l].name]=l;
   }
-  console.log('init done: ',lights)
-  return true;
+  console.log('hue init done: ',lights)
+  return lights;
 }
 
 module.exports = hueLights;
