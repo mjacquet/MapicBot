@@ -116,7 +116,7 @@ for (var l in aLights) {
   lights[aLights[l].name]=l;
   }
   console.log('hue init done:',lights)
-  return true;
+  return JSON.stringify(lights);
 }
 
 module.exports = hueLights;
