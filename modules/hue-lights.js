@@ -88,7 +88,7 @@ function* hueLights(
     return body;
 
   }
-
+/*
   function* hueLightsInit(){
 
   var options = {
@@ -120,6 +120,6 @@ for (var l in aLights) {
   console.log('hue init done:',lights)
   return JSON.stringify(lights);
 }
-
+*/
 module.exports = hueLights;
-module.exports = hueLightsInit;
+//module.exports = hueLightsInit;
