@@ -7,43 +7,9 @@ var lights={xwing:'1',tiefighter:'2'};
 
 
 
-const turnOn = (light) => {
-    return new Promise((resolve, reject) => {
-      var formData = {
-            clipmessage:{
-              bridgeid:hbid,
-              clipcommand:{
-                url:'/api/lights/'+lights[light]+'/state',
-                method:'PUT',
-                body:{
-                  "on":true
-                }
-              }
-            }
-          }
-      request({
-          url: `https://www.meethue.com/api/sendmessage?token=${hbtoken}`,
-          qs: {Content-Type: 'application/x-www-form-urlencoded'},
-          method: 'POST',
-          json: formData
-      }, (error, response) => {
-          if (error) {
-              console.log('Error Hue api: ', error);
-          } else if (response.body.error) {
-              console.log('Error: ', response.body.error);
-          } else{
-              console.log('Sent: ', response.body);
-              resolve(response.body);
-          }
-      });
-    });
-};
-
-/*
-
 function* hueLights(
   light){
-*/
+
   /*  if(lights==null){
       let hueinit = yield Episode7.call(hueLightsInit);
         console.log('hue initialization done',lights);
@@ -87,7 +53,7 @@ function* hueLights(
 
   console.log('Hue api return1:',body);
 */
-/*    var formData = {
+    var formData = {
       clipmessage:{
         bridgeid:hbid,
         clipcommand:{
@@ -109,15 +75,14 @@ function* hueLights(
 
     }//formData:formData
     console.log('hueAPI request',options);
-    let { body, isUnauthorized } = yield Episode7.call((options) => {
+    let body = yield Episode7.call((options) => {
       return rp(options)
-      .then( body => ({ body }) )
+      .then( body => {console.log(body);return body}//({ body })
+        )
       .catch( error => {
-        if(error.statusCode === 401) {
-          return { isUnauthorized: true };
-        } else {
+
           throw error;
-        }
+
       })
     },options);
 
@@ -158,6 +123,6 @@ for (var l in aLights) {
   return JSON.stringify(lights);
 }
 */
-exports.turnOn = turnOn;
-//module.exports = hueLights;
+
+module.exports = hueLights;
 //module.exports = hueLightsInit;
