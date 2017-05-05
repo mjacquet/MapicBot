@@ -13,6 +13,7 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
   const oAuthToken   = require('./oauth-token');
   const updateToken  = require('./update-token');
   const queryVisionApi = require('./query-vision-api');
+  const hueLights = require('./hue-lights');
 
   const pvsUrl = process.env.EINSTEIN_VISION_URL;
   const accountId  = process.env.EINSTEIN_VISION_ACCOUNT_ID;
@@ -20,11 +21,16 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
 
   //Episode7.run(updateToken, pvsUrl, accountId, privateKey)
   //.then(() => {
+  Episode7.run(hueLights,'xwing').then((hueresult)=>{
+    let jsvar=JSON.parse(hueresult);
+    console.log('hue api result ',hueresult);
+  });
     Episode7.run(queryVisionApi,pvsUrl,imageURL,'OYNZX5N6DD5SCENXRKAN6WUSJE',accountId,privateKey,oAuthToken.get()).then((visionApiResult)=>{
       let jsvar=JSON.parse(visionApiResult);
       console.log('vison api result ',jsvar.probabilities[0].label);
       resolve(jsvar.probabilities[0].label);
     });
+
 
   //});
 
