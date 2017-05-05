@@ -11,7 +11,7 @@ function* hueLights(
   light){
 
 
-            var options = {
+      /*      var options = {
               uri: `https://client.meethue.com/api/0/lights/1/state`,
               method: 'PUT',
               headers: {
@@ -24,10 +24,35 @@ function* hueLights(
               console.log("hue request direct",body);
               return(body);
             });
-            return 'la';
+            return 'la';*/
+
+var options = {
+  url: `https://client.meethue.com/api/0/lights/1/state`,
+  method: 'PUT',
+  headers: {
+    'Content-Type': 'application/json',
+    'x-token': 'VXh1U0tvSnlMN1ZkS3hOaWdOSWJRRFp4UGo3V3IxSUNPb1pVYlpHZUZNND0='
+  },
+  body:'{"on": true}',
+  json:true
+
+}//formData:formData
+console.log('hueAPI request',options);
+let { body, isUnauthorized } = yield Episode7.call((options) => {
+  return rp(options)
+  .then( body => ({ body }) )
+  .catch( error => {
+    if(error.statusCode === 401) {
+      return { isUnauthorized: true };
+    } else {
+      throw error;
+    }
+  })
+},options);
+
+console.log('Hue api return:',body);
+return body;
 }
-
-
   /*  if(lights==null){
       let hueinit = yield Episode7.call(hueLightsInit);
         console.log('hue initialization done',lights);
