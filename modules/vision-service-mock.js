@@ -1,6 +1,7 @@
 "use strict";
 
-exports.classify = imageURL => new Promise((resolve, reject) => {
+export async function classify(imageURL) {
+  return new Promise((resolve, reject) => {
 /*
   var jwt = require('jsonwebtoken');
   var request = require('request');
@@ -155,3 +156,5 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
     resolve("X-WING");
   }, 2000);*/
 });
+}
+exports.classify = classify;
