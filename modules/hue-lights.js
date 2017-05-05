@@ -5,13 +5,11 @@ var Episode7 = require('episode-7');
 var lights=[];
 
 function* hueLights(
-  light=null){
+  light){
 
     if(lights==null){
-      let hueinit = yield Episode7.run(
-        hueLightsInit
-      ).then((hueresult)=>{
-        console.log('hue initialized',hueresult);
+      let hueinit = yield Episode7.run(hueLightsInit).then((lights) => {
+        console.log('hue initialized',lights);
       });
 
     }
@@ -117,7 +115,7 @@ function* hueLights(
 for (var l in aLights) {
   lights[aLights[l].name]=l;
   }
-  console.log('hue init done: ',lights)
+  console.log('hue init done:',lights)
   return lights;
 }
 
