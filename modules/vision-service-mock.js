@@ -19,12 +19,43 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
   const accountId  = process.env.EINSTEIN_VISION_ACCOUNT_ID;
   const privateKey = process.env.EINSTEIN_VISION_PRIVATE_KEY;
 
+  let request = require('request');
+  var querystring = require('querystring');
+
   //Episode7.run(updateToken, pvsUrl, accountId, privateKey)
   //.then(() => {
   console.log('hue+Einsteinvision');
-  Episode7.run(hueLights,'xwing').then((hueresult)=>{
+/*  Episode7.run(hueLights,'xwing').then((hueresult)=>{
     let jsvar=JSON.parse(hueresult);
+  });*/
+
+  var form = {
+    clipmessage:{
+      bridgeid:hbid,
+      clipcommand:{
+        url:'/api/lights/'+lights[light]+'/state',
+        method:'PUT',
+        body:{
+          "on":true
+        }
+      }
+    }
+  }
+  var formData = querystring.stringify(form);
+  var contentLength = formData.length;
+  var options = {
+    uri: `https://www.meethue.com/api/sendmessage?token=${hbtoken}`,
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Length': contentLength
+    },
+    body:formData
+  }
+  request(options, function (err, res, body) {
+    console.log("hue request direct",body);
   });
+
 
     Episode7.run(queryVisionApi,pvsUrl,imageURL,'OYNZX5N6DD5SCENXRKAN6WUSJE',accountId,privateKey,oAuthToken.get()).then((visionApiResult)=>{
       let jsvar=JSON.parse(visionApiResult);
