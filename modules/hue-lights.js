@@ -22,7 +22,7 @@ function* hueLights(
             }
             request(options, function (err, res, body) {
               console.log("hue request direct",body);
-              resolve(body);
+              return(body);
             });
 }
 
