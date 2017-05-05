@@ -33,8 +33,7 @@ var options = {
     'Content-Type': 'application/json',
     'x-token': 'VXh1U0tvSnlMN1ZkS3hOaWdOSWJRRFp4UGo3V3IxSUNPb1pVYlpHZUZNND0='
   },
-  body:'{"on": true}',
-  json:true
+  body:'{"on": true}'
 
 }//formData:formData
 console.log('hueAPI request',options);
