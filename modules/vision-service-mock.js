@@ -22,9 +22,13 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
   //Episode7.run(updateToken, pvsUrl, accountId, privateKey)
   //.then(() => {
   console.log('hue+Einsteinvision');
-  Episode7.run(hueLights,'xwing').then((hueresult)=>{
+/*  Episode7.run(hueLights,'xwing').then((hueresult)=>{
     let jsvar=JSON.parse(hueresult);
-  });
+  });*/
+
+    let res = await hueLigths.turnOn('xwing')
+    console.log('lighton',res)
+
     Episode7.run(queryVisionApi,pvsUrl,imageURL,'OYNZX5N6DD5SCENXRKAN6WUSJE',accountId,privateKey,oAuthToken.get()).then((visionApiResult)=>{
       let jsvar=JSON.parse(visionApiResult);
       console.log('vison api result ',jsvar.probabilities[0].label);
