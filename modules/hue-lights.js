@@ -2,31 +2,31 @@ const hbid = process.env.HUE_BRIDGE_ID;
 const hbtoken = process.env.HUE_BRIDGE_TOKEN;
 const rp = require('request-promise');
 var Episode7 = require('episode-7');
-var lights=null;
+var lights=[];
 
 function* hueLights(
-                       action,
-                       light=null){
+  action,
+  light=null){
 
-  if(lights==null){
-    let hueinit = yield Episode7.call(
-      hueLightsInit
-    );
-    console.log('hue init');
-  }
-  var formData = {
-    clipmessage:{
-      bridgeid:hbid,
-      clipcommand:{
-        url:'/api/lights/1/state',
-        method:'PUT',
-        body:{
-          "on":true
+    if(lights==null){
+      let hueinit = yield Episode7.call(
+        hueLightsInit
+      );
+      console.log('hue init');
+    }
+    var formData = {
+      clipmessage:{
+        bridgeid:hbid,
+        clipcommand:{
+          url:'/api/lights/1/state',
+          method:'PUT',
+          body:{
+            "on":true
+          }
         }
       }
     }
-  }
-  var options = {
+    var options = {
       url: `https://www.meethue.com/api/sendmessage?token=${hbtoken}`,
       method: 'POST',
       headers: {
@@ -34,10 +34,10 @@ function* hueLights(
       },
       formData:formData
 
-  }//formData:formData
-  console.log('hueAPI request',options);
-  let { body, isUnauthorized } = yield Episode7.call((options) => {
-    return rp(options)
+    }//formData:formData
+    console.log('hueAPI request',options);
+    let { body, isUnauthorized } = yield Episode7.call((options) => {
+      return rp(options)
       .then( body => ({ body }) )
       .catch( error => {
         if(error.statusCode === 401) {
@@ -46,44 +46,51 @@ function* hueLights(
           throw error;
         }
       })
-  },options);
+    },options);
 
     console.log('Hue api return:',body);
     return body;
 
-}
+  }
 
-function* hueLightsInit(){
+  function* hueLightsInit(){
 
-/*  var formData = {
+    /*  var formData = {
     modelId: modelId,
     sampleLocation : resizedImgUrl
   }*/
   var options = {
-      url: `https://www.meethue.com/api/getbridge?token=${hbtoken}&bridgeid=${hbid}`,
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      }
+    url: `https://www.meethue.com/api/getbridge?token=${hbtoken}&bridgeid=${hbid}`,
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    }
 
   }//formData:formData
   console.log('hueAPI init request',options);
   let { body, isUnauthorized } = yield Episode7.call((options) => {
     return rp(options)
-      .then( body => ({ body }) )
-      .catch( error => {
-        if(error.statusCode === 401) {
-          console.log("------- HUE API UNAUTHORIZED------------\n-----UPDATE TOKEN------")
-        } else {
-          throw error;
-        }
-      })
+    .then( body => ({ body }) )
+    .catch( error => {
+      if(error.statusCode === 401) {
+        console.log("------- HUE API UNAUTHORIZED------------\n-----UPDATE TOKEN------")
+      } else {
+        throw error;
+      }
+    })
   },options);
 
-    let aLights=JSON.parse(body).lights;
-    console.log('Hue api init return lights:',aLights["1"]);
+  let aLights=JSON.parse(body).lights;
+//  console.log('Hue api init return lights:',aLights["1"]);
+  res = aLights.every(function(element, index, array) {
+    console.log('light name', element.name);
+    console.log('light id', index);
+    lights[element.name]=index;
 
-    return aLights;
+    return true;
+  });
+  console.log('init done: ',lights)
+  return true;
 
 }
 
