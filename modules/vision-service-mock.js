@@ -26,10 +26,7 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
   //.then(() => {
   console.log('hue+Einsteinvision');
 
-  Episode7.run(hueLights,'xwing').then((hueresult)=>{
-    let jsvar=JSON.parse(hueresult);
-    console.log("hueret",jsvar);
-  });
+
 /*
   const hbid = process.env.HUE_BRIDGE_ID;
   const hbtoken = process.env.HUE_BRIDGE_TOKEN;
@@ -51,6 +48,10 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
     Episode7.run(queryVisionApi,pvsUrl,imageURL,'OYNZX5N6DD5SCENXRKAN6WUSJE',accountId,privateKey,oAuthToken.get()).then((visionApiResult)=>{
       let jsvar=JSON.parse(visionApiResult);
   //    console.log('vison api result ',jsvar.probabilities[0].label);
+      Episode7.run(hueLights,jsvar.probabilities[0].label).then((hueresult)=>{
+        let jsvar2=JSON.parse(hueresult);
+        console.log("hue result",jsvar2);
+      });
       resolve(jsvar.probabilities[0].label);
     });
 

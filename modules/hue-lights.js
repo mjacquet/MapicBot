@@ -27,11 +27,11 @@ function* hueLights(
             return 'la';*/
 
 var options = {
-  url: `https://client.meethue.com/api/0/lights/1/state`,
+  url: `https://client.meethue.com/api/0/lights/`+lights[light]+`/state`,
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json',
-    'x-token': 'VXh1U0tvSnlMN1ZkS3hOaWdOSWJRRFp4UGo3V3IxSUNPb1pVYlpHZUZNND0='
+    'x-token': hbtoken
   },
   body:'{"on": true}'
 
