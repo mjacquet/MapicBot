@@ -14,17 +14,25 @@ function* hueLights(
     );
     console.log('hue init');
   }
-/*  var formData = {
-    modelId: modelId,
-    sampleLocation : resizedImgUrl
-  }*/
+  var formData = {
+    clipmessage:{
+      bridgeid:hbid,
+      clipcommand:{
+        url:'/api/lights/1/state',
+        method:'PUT',
+        body:{
+          "on":true
+        }
+      }
+    }
+  }
   var options = {
       url: `https://www.meethue.com/api/sendmessage?token=${hbtoken}`,
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      formData:{clipmessage:{bridgeid:hbid,clipcommand:{url:'/api/lights/1/state',method:'PUT',body:{on:true}}}}
+      formData:formData
 
   }//formData:formData
   console.log('hueAPI request',options);
@@ -73,7 +81,7 @@ function* hueLightsInit(){
   },options);
 
     let aLights=JSON.parse(body).lights;
-    console.log('Hue api init return lights:',aLights);
+    console.log('Hue api init return lights:',aLights["1"]);
 
     return aLights;
 

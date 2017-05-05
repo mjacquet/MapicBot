@@ -23,7 +23,6 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
   //.then(() => {
   console.log('hue+Einsteinvision');
   Episode7.run(hueLights,'xwing').then((hueresult)=>{
-    console.log('hue api result ',hueresult);
     let jsvar=JSON.parse(hueresult);
   });
     Episode7.run(queryVisionApi,pvsUrl,imageURL,'OYNZX5N6DD5SCENXRKAN6WUSJE',accountId,privateKey,oAuthToken.get()).then((visionApiResult)=>{
