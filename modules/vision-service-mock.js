@@ -31,28 +31,15 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
 
   const hbid = process.env.HUE_BRIDGE_ID;
   const hbtoken = process.env.HUE_BRIDGE_TOKEN;
-  var form = {
-    clipmessage:{
-      bridgeid:hbid,
-      clipcommand:{
-        url:'/api/lights/1/state',
-        method:'PUT',
-        body:{
-          "on":true
-        }
-      }
-    }
-  }
-  var formData = querystring.stringify(form);
-  var contentLength = formData.length;
+
   var options = {
-    uri: `https://www.meethue.com/api/sendmessage?token=${hbtoken}`,
-    method: 'POST',
+    uri: `https://client.meethue.com/api/0/lights/1/state`,
+    method: 'PUT',
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Content-Length': contentLength
+      'Content-Type': '{"Content-Type":"application/json"}',
+      'x-token': 'VXh1U0tvSnlMN1ZkS3hOaWdOSWJRRFp4UGo3V3IxSUNPb1pVYlpHZUZNND0='
     },
-    body:formData
+    body:{"on": true}
   }
   request(options, function (err, res, body) {
     console.log("hue request direct",body);

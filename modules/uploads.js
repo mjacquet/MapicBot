@@ -14,9 +14,9 @@ var geocoder = nodeGeocoder(options);
 exports.processUpload = (sender, attachments) => {
     if (attachments.length > 0) {
         let attachment = attachments[0];
-        console.log('attachment: ', attachment);
+      //  console.log('attachment: ', attachment);
         if (attachment.type === "image") {
-            console.log('image attachment');
+      //      console.log('image attachment');
 
             messenger.send({text: 'OK, laissez moi analyser cette photo ...'}, sender);
             visionService.classify(attachment.payload.url)
