@@ -18,16 +18,15 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
   const accountId  = process.env.EINSTEIN_VISION_ACCOUNT_ID;
   const privateKey = process.env.EINSTEIN_VISION_PRIVATE_KEY;
 
-  Episode7.run(updateToken, pvsUrl, accountId, privateKey)
-  .then(() => {
-    console.log('token',oAuthToken.get())
+  //Episode7.run(updateToken, pvsUrl, accountId, privateKey)
+  //.then(() => {
     Episode7.run(queryVisionApi,pvsUrl,imageURL,'OYNZX5N6DD5SCENXRKAN6WUSJE',accountId,privateKey,oAuthToken.get()).then((visionApiResult)=>{
       let jsvar=JSON.parse(visionApiResult);
       console.log('vison api result ',jsvar.probabilities[0].label);
       resolve(jsvar.probabilities[0].label);
     });
 
-  });
+  //});
 
 
 

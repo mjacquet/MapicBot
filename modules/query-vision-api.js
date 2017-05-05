@@ -13,7 +13,6 @@ function* queryVisionApi(
                        privateKey,
                        jwtToken){
   var token = jwtToken || oAuthToken.get();
-  console.log('vision API token',token);
   var formData = {
     modelId: modelId,
     sampleLocation : resizedImgUrl
