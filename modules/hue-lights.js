@@ -6,10 +6,10 @@ var Episode7 = require('episode-7');
 function* hueLights(
                        light){
 
-  var formData = {
+/*  var formData = {
     modelId: modelId,
     sampleLocation : resizedImgUrl
-  }
+  }*/
   var options = {
       url: `https://www.meethue.com/api/getbridge?token=`+hbtoken,
       method: 'POST',
