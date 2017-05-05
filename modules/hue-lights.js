@@ -2,19 +2,19 @@ const hbid = process.env.HUE_BRIDGE_ID;
 const hbtoken = process.env.HUE_BRIDGE_TOKEN;
 const rp = require('request-promise');
 var Episode7 = require('episode-7');
-var lights=[];
+var lights={xwing:'1',tiefighter:'2'};
 
 function* hueLights(
   light){
 
-    if(lights==null){
+  /*  if(lights==null){
       let hueinit = yield Episode7.call(hueLightsInit);
         console.log('hue initialization done',lights);
 
-    }
+    }*/
 
     console.log('hue initialized',lights);
-/*
+
     var formData = {
       clipmessage:{
         bridgeid:hbid,
@@ -35,6 +35,7 @@ function* hueLights(
       },
       formData:formData
     }//formData:formData
+    console.log('hueAPI request1',options);
     let { body1, isUnauthorized1 } = yield Episode7.call((options) => {
       return rp(options)
       .then( body1 => ({ body }) )
@@ -47,7 +48,7 @@ function* hueLights(
       })
     },options);
 
-
+  console.log('Hue api return1:',body);
 
     var formData = {
       clipmessage:{
@@ -82,7 +83,7 @@ function* hueLights(
         }
       })
     },options);
-*/
+
     console.log('Hue api return:',body);
     return body;
 
