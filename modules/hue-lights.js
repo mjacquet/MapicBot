@@ -9,10 +9,12 @@ function* hueLights(
 
     if(lights==null){
       let hueinit = yield Episode7.run(hueLightsInit).then((lights) => {
-        console.log('hue initialized',lights);
+        console.log('hue initialization done',lights);
       });
 
     }
+
+    console.log('hue initialized',lights);
 /*
     var formData = {
       clipmessage:{
