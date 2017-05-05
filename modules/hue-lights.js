@@ -5,7 +5,6 @@ var Episode7 = require('episode-7');
 var lights=[];
 
 function* hueLights(
-  action,
   light=null){
 
     if(lights==null){
@@ -14,11 +13,46 @@ function* hueLights(
       );
       console.log('hue init');
     }
+
     var formData = {
       clipmessage:{
         bridgeid:hbid,
         clipcommand:{
-          url:'/api/lights/1/state',
+          url:'/api/groups/1/state',
+          method:'PUT',
+          body:{
+            "on":false
+          }
+        }
+      }
+    }
+    var options = {
+      url: `https://www.meethue.com/api/sendmessage?token=${hbtoken}`,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      formData:formData
+    }//formData:formData
+    let { body, isUnauthorized } = yield Episode7.call((options) => {
+      return rp(options)
+      .then( body => ({ body }) )
+      .catch( error => {
+        if(error.statusCode === 401) {
+          return { isUnauthorized: true };
+        } else {
+          throw error;
+        }
+      })
+    },options);
+
+
+
+    var formData = {
+      clipmessage:{
+        bridgeid:hbid,
+        clipcommand:{
+          url:'/api/lights/'+lights[light]+'/state',
           method:'PUT',
           body:{
             "on":true
@@ -55,10 +89,6 @@ function* hueLights(
 
   function* hueLightsInit(){
 
-    /*  var formData = {
-    modelId: modelId,
-    sampleLocation : resizedImgUrl
-  }*/
   var options = {
     url: `https://www.meethue.com/api/getbridge?token=${hbtoken}&bridgeid=${hbid}`,
     method: 'GET',
@@ -82,17 +112,11 @@ function* hueLights(
 
   let aLights=JSON.parse(body).lights;
 //  console.log('Hue api init return lights:',aLights["1"]);
-
 for (var l in aLights) {
-  console.log('light name', aLights[l].name);
-  console.log('light id', l);
   lights[aLights[l].name]=l;
   }
-
-
   console.log('init done: ',lights)
   return true;
-
 }
 
 module.exports = hueLights;
