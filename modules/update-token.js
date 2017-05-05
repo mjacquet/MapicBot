@@ -54,6 +54,7 @@ function* updateToken(pvsUrl,accountId,privateKey) {
   const granted = JSON.parse(response);
   const accessToken = granted.access_token;
   oAuthToken.set(accessToken);
+  console.log("vision service token updated:",accessToken);
   return accessToken
 }
 
