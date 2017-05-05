@@ -29,11 +29,13 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
     let jsvar=JSON.parse(hueresult);
   });*/
 
+  const hbid = process.env.HUE_BRIDGE_ID;
+  const hbtoken = process.env.HUE_BRIDGE_TOKEN;
   var form = {
     clipmessage:{
       bridgeid:hbid,
       clipcommand:{
-        url:'/api/lights/'+lights[light]+'/state',
+        url:'/api/lights/1/state',
         method:'PUT',
         body:{
           "on":true
