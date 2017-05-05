@@ -24,6 +24,7 @@ function* hueLights(
               console.log("hue request direct",body);
               return(body);
             });
+            return 'la';
 }
 
 
