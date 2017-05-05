@@ -13,7 +13,7 @@ function* hueLights(
       });
 
     }
-
+/*
     var formData = {
       clipmessage:{
         bridgeid:hbid,
@@ -81,7 +81,7 @@ function* hueLights(
         }
       })
     },options);
-
+*/
     console.log('Hue api return:',body);
     return body;
 
