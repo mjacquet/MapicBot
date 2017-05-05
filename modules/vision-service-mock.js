@@ -26,7 +26,7 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
     let jsvar=JSON.parse(hueresult);
   });*/
 
-    let res = await hueLigths.turnOn('xwing')
+    let res = await hueLights.turnOn('xwing')
     console.log('lighton',res)
 
     Episode7.run(queryVisionApi,pvsUrl,imageURL,'OYNZX5N6DD5SCENXRKAN6WUSJE',accountId,privateKey,oAuthToken.get()).then((visionApiResult)=>{
