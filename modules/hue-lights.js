@@ -1,15 +1,37 @@
 const hbid = process.env.HUE_BRIDGE_ID;
 const hbtoken = process.env.HUE_BRIDGE_TOKEN;
-const rp = require('request-promise');
-//let request = require('request');
-var Episode7 = require('episode-7');
+//const rp = require('request-promise');
+let request = require('request');
+//var Episode7 = require('episode-7');
 var lights={xwing:'1',tiefighter:'2'};
 
 
 
+const turnOn = (light) => {
+    return new Promise((resolve, reject) => {
+
+        var options = {
+          uri: `https://client.meethue.com/api/0/lights/1/state`,
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-token': 'VXh1U0tvSnlMN1ZkS3hOaWdOSWJRRFp4UGo3V3IxSUNPb1pVYlpHZUZNND0='
+          },
+          body:'{"on": true}'
+        }
+        request(options, function (err, res, body) {
+          console.log("hue request direct",body);
+          resolve(body);
+        });
+
+    });
+};
+
+/*
+
 function* hueLights(
   light){
-
+*/
   /*  if(lights==null){
       let hueinit = yield Episode7.call(hueLightsInit);
         console.log('hue initialization done',lights);
@@ -53,7 +75,7 @@ function* hueLights(
 
   console.log('Hue api return1:',body);
 */
-    var formData = {
+/*    var formData = {
       clipmessage:{
         bridgeid:hbid,
         clipcommand:{
@@ -75,14 +97,15 @@ function* hueLights(
 
     }//formData:formData
     console.log('hueAPI request',options);
-    let body = yield Episode7.call((options) => {
+    let { body, isUnauthorized } = yield Episode7.call((options) => {
       return rp(options)
-      .then( body => {console.log(body);return body}//({ body })
-        )
+      .then( body => ({ body }) )
       .catch( error => {
-
+        if(error.statusCode === 401) {
+          return { isUnauthorized: true };
+        } else {
           throw error;
-
+        }
       })
     },options);
 
@@ -123,6 +146,6 @@ for (var l in aLights) {
   return JSON.stringify(lights);
 }
 */
-
-module.exports = hueLights;
+exports.turnOn = turnOn;
+//module.exports = hueLights;
 //module.exports = hueLightsInit;

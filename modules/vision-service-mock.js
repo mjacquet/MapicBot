@@ -25,10 +25,11 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
   //Episode7.run(updateToken, pvsUrl, accountId, privateKey)
   //.then(() => {
   console.log('hue+Einsteinvision');
+  let lig = await hueLights.turnOn('xwing');
 /*  Episode7.run(hueLights,'xwing').then((hueresult)=>{
     let jsvar=JSON.parse(hueresult);
   });*/
-
+/*
   const hbid = process.env.HUE_BRIDGE_ID;
   const hbtoken = process.env.HUE_BRIDGE_TOKEN;
 
@@ -43,7 +44,7 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
   }
   request(options, function (err, res, body) {
     console.log("hue request direct",body);
-  });
+  });*/
 
 
     Episode7.run(queryVisionApi,pvsUrl,imageURL,'OYNZX5N6DD5SCENXRKAN6WUSJE',accountId,privateKey,oAuthToken.get()).then((visionApiResult)=>{
