@@ -1,8 +1,8 @@
 const hbid = process.env.HUE_BRIDGE_ID;
 const hbtoken = process.env.HUE_BRIDGE_TOKEN;
-//const rp = require('request-promise');
-let request = require('request');
-//var Episode7 = require('episode-7');
+const rp = require('request-promise');
+//let request = require('request');
+var Episode7 = require('episode-7');
 var lights={xwing:'1',tiefighter:'2'};
 
 
