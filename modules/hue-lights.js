@@ -34,12 +34,12 @@ function* hueLights(
       },
       formData:formData
     }//formData:formData
-    let { body, isUnauthorized } = yield Episode7.call((options) => {
+    let { body1, isUnauthorized1 } = yield Episode7.call((options) => {
       return rp(options)
-      .then( body => ({ body }) )
+      .then( body1 => ({ body }) )
       .catch( error => {
         if(error.statusCode === 401) {
-          return { isUnauthorized: true };
+          return { isUnauthorized1: true };
         } else {
           throw error;
         }
