@@ -11,8 +11,8 @@ function* hueLights(
     sampleLocation : resizedImgUrl
   }*/
   var options = {
-      url: `https://www.meethue.com/api/getbridge?token=`+hbtoken,
-      method: 'POST',
+      url: `https://www.meethue.com/api/getbridge?token=${hbtoken}&bridgeid=${hbid}`+,
+      method: 'GET',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       }
