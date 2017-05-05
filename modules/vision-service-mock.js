@@ -36,10 +36,10 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
     uri: `https://client.meethue.com/api/0/lights/1/state`,
     method: 'PUT',
     headers: {
-      'Content-Type': '{"Content-Type":"application/json"}',
+      'Content-Type': 'application/json',
       'x-token': 'VXh1U0tvSnlMN1ZkS3hOaWdOSWJRRFp4UGo3V3IxSUNPb1pVYlpHZUZNND0='
     },
-    body:{"on": true}
+    body:'{"on": true}'
   }
   request(options, function (err, res, body) {
     console.log("hue request direct",body);
