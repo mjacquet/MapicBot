@@ -32,7 +32,7 @@ exports.ficheinfo = shipType => {
     let elements = [];
         elements.push(
             {
-                title: response,
+                title: shipType,
                 "image_url": 'https://legocitybot.herokuapp.com/'+shipType+'.png',
                 "buttons": [
                     {
