@@ -25,9 +25,14 @@ exports.processUpload = (sender, attachments) => {
             visionService.classify(attachment.payload.url)
                 .then(shipType => {
                   console.log('classification defined:',shipType);
+                  if(shipType===null){
+                      messenger.send({text: `Je ne reconnais pas ce vaisseau. Merci de réessayer.`}, sender);
+                  }
+                  else{
                     messenger.send({text: `Le ${shipType}. Très bon choix. Voilà ses caractéristiques`}, sender);
                     messenger.send(formatter.ficheinfo(shipType), sender);
                     console.log(formatter.ficheinfo(shipType));
+                    }
                 })
 
 
