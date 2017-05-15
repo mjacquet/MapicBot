@@ -18,6 +18,7 @@ exports.start = (sender) => {
     messenger.getUserInfo(sender).then(response => {
 
             messenger.send(formatter.bonjour(response), sender);
+            messenger.send(formatter.information(response), sender);
     });
 };
 

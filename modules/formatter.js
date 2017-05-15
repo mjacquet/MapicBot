@@ -5,8 +5,8 @@ let moment = require("moment"),
 
 exports.bonjour = response => {
     return {
-        "text":"Bonjour " + response.first_name + " et bienvenue à la XWING Factory. Que puis-je faire pour vous?",
-        "quick_replies":[
+        "text":"Bonjour " + response.first_name + ", et bienvenue dans votre assistant Vaisseau'lib.",
+      /*  "quick_replies":[
           {
             "content_type":"text",
             "title":"Decouvrir le dernier XWING",
@@ -17,14 +17,14 @@ exports.bonjour = response => {
             "title":"Plus d'information sur un vaisseau",
             "payload":"information"
           }
-        ]
+        ]*/
     }
 };
 
 exports.information = response => {
-    console.log('onBoard2');
+  //  console.log('onBoard2');
     return {
-        "text":"Envoyez moi une photo du vaisseau"
+        "text":"Un vaisseau vous plaît ? Envoyez-moi sa photo et je vous donnerai toutes les informations"
       }
 };
 
