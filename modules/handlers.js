@@ -20,10 +20,10 @@ exports.start = (sender) => {
             messenger.send(formatter.bonjour(response), sender);
             setTimeout(function () {
               messenger.writingIcon(sender);
-            }, 100)
+            }, 500)
             setTimeout(function () {
               messenger.send(formatter.information(response), sender);
-            }, 1000)
+            }, 2000)
 
 
     });
