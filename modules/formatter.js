@@ -48,7 +48,7 @@ exports.ficheinfo = shipType => {
                 ]
             }
         );
-
+ console.log(elements);
     return {
         "attachment": {
             "type": "template",
