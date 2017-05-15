@@ -18,11 +18,12 @@ exports.processUpload = (sender, attachments) => {
         if (attachment.type === "image") {
       //      console.log('image attachment');
 
-            messenger.send({text: 'OK, laissez moi analyser cette photo ...'}, sender);
+            messenger.send({text: 'Laissez-moi analyser cette photo avec Salesforce Einstein Vision Service...'}, sender);
             visionService.classify(attachment.payload.url)
                 .then(shipType => {
                   console.log('classification defined:',shipType);
-                    messenger.send({text: `Ce  vaisseau est un "${shipType}"`}, sender);
+                    messenger.send({text: `Le ${shipType}. Très bon choix. Voilà ses caractéristiques`}, sender);
+                    messenger.send(formatter.ficheinfo(shipType), sender);
                 })
 
 

@@ -28,6 +28,38 @@ exports.information = response => {
       }
 };
 
+exports.ficheinfo = shipType => {
+    let elements = [];
+        elements.push(
+            {
+                title: response,
+                "image_url": 'https://legocitybot.herokuapp.com/'+shipType+'.png',
+                "buttons": [
+                    {
+                        "type": "postback",
+                        "title": "Fiche Technique",
+                        "payload": "{ship:'"+shipType+"',action:'fiche'}"
+                    },
+                    {
+                        "type": "postback",
+                        "title": "Avis Communauté",
+                        "payload": "{ship:'"+shipType+"',action:'avis'}"
+                    }
+                ]
+            }
+        );
+
+    return {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": elements
+            }
+        }
+    };
+};
+
 
 exports.onBoard5 = response => {
 
