@@ -5,6 +5,25 @@ let request = require('request'),
 let util = require('util')
 let theZip = '';
 
+
+exports.writingIcon = (recipient) => {
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: FB_PAGE_TOKEN},
+        method: 'POST',
+        json: {
+            recipient: {id: recipient},
+            "sender_action":"typing_on"
+        }
+    }, (error, response) => {
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
+    });
+};
+
 exports.send = (message, recipient) => {
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
@@ -75,7 +94,7 @@ exports.getSuggestion = (zip,rooms) => {
         request({
             url: `https://pio-octave-engine.herokuapp.com/queries.json`,
             method: 'POST',
-            json : { 
+            json : {
                 voice_usage: zip,
                 data_usage: rooms,
                 text_usage: 0

@@ -18,7 +18,14 @@ exports.start = (sender) => {
     messenger.getUserInfo(sender).then(response => {
 
             messenger.send(formatter.bonjour(response), sender);
-            messenger.send(formatter.information(response), sender);
+            setTimeout(function () {
+              messenger.writingIcon(sender);
+            }, 100)
+            setTimeout(function () {
+              messenger.send(formatter.information(response), sender);
+            }, 1000)
+
+
     });
 };
 
