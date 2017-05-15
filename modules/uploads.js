@@ -19,11 +19,15 @@ exports.processUpload = (sender, attachments) => {
       //      console.log('image attachment');
 
             messenger.send({text: 'Laissez-moi analyser cette photo avec Salesforce Einstein Vision Service...'}, sender);
+            setTimeout(function () {
+              messenger.writingIcon(sender);
+            }, 50)
             visionService.classify(attachment.payload.url)
                 .then(shipType => {
                   console.log('classification defined:',shipType);
                     messenger.send({text: `Le ${shipType}. Très bon choix. Voilà ses caractéristiques`}, sender);
                     messenger.send(formatter.ficheinfo(shipType), sender);
+                    console.log(formatter.ficheinfo(shipType));
                 })
 
 
