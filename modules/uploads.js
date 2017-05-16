@@ -33,7 +33,7 @@ exports.processUpload = (sender, attachments) => {
                     console.log('ficheinfo',formatter.ficheinfo(shipType));
                     messenger.send(formatter.ficheinfo(shipType), sender);
 
-                  //  }
+                    }
                 })
 
 

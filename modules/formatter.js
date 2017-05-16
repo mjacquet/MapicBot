@@ -38,12 +38,12 @@ exports.ficheinfo = shipType => {
                     {
                         "type": "postback",
                         "title": "Fiche Technique",
-                        "payload": "{ship:'"+shipType+"',action:'fiche'}"
+                        "payload": "fiche,"+shipType
                     },
                     {
                         "type": "postback",
                         "title": "Avis Communauté",
-                        "payload": "{ship:'"+shipType+"',action:'avis'}"
+                        "payload": "avis,"+shipType
                     }
                 ]
             }
