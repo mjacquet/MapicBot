@@ -2,6 +2,18 @@
 
 let moment = require("moment"),
     numeral = require("numeral");
+var connectSdk = require('connect-sdk-nodejs');
+
+connectSdk.init({
+    host: 'api-sandbox.globalcollect.com',
+    scheme: 'https',
+    port: 443,
+    enableLogging: true, // defaults to false
+    logger: undefined, // if undefined console.log will be used
+    apiKeyId: '4e1e4f14eb2e7ce0',
+    secretApiKey: 'ZcCt/sttr0qY8f51asdjw11DbP1ZTHy2DlCx0uoMa38=',
+    integrator: 'Starforce'
+    });
 
 exports.bonjour = response => {
     return {
@@ -39,17 +51,7 @@ var commlinks={xwing:process.env.COMMUNITY_XWING,tiefighter:process.env.COMMUNIT
 
 exports.ficheinfo = shipType => {
 
-  var connectSdk = require('connect-sdk-nodejs');
-  connectSdk.init({
-  host: 'api-sandbox.globalcollect.com',
-  scheme: 'https',
-  port: 443,
-  enableLogging: true, // defaults to false
-  logger: undefined, // if undefined console.log will be used
-  apiKeyId: '4e1e4f14eb2e7ce0',
-  secretApiKey: 'ZcCt/sttr0qY8f51asdjw11DbP1ZTHy2DlCx0uoMa38=',
-  integrator: 'Starforce'
-  });
+
   var body = {
   "hostedCheckoutSpecificInput": {
     "locale": "fr_FR"
