@@ -41,7 +41,7 @@ exports.ficheinfo = shipType => {
 
   var connectSdk = require('connect-sdk-nodejs');
   connectSdk.init({
-  host: 'api.globalcollect.com',
+  host: 'api-sandbox.globalcollect.com',
   scheme: 'https',
   port: 443,
   enableLogging: true, // defaults to false
