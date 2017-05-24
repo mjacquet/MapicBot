@@ -9,6 +9,20 @@ var options = {
       provider: 'google'
 };
 
+var connectSdk = require('connect-sdk-nodejs');
+
+connectSdk.init({
+    host: 'api-sandbox.globalcollect.com',
+    scheme: 'https',
+    port: 443,
+    enableLogging: false, // defaults to false
+    logger: undefined, // if undefined console.log will be used
+    apiKeyId: '4e1e4f14eb2e7ce0',
+    secretApiKey: 'ZcCt/sttr0qY8f51asdjw11DbP1ZTHy2DlCx0uoMa38=',
+    integrator: 'Starforce'
+    });
+
+
 var geocoder = nodeGeocoder(options);
 
 exports.processUpload = (sender, attachments) => {
@@ -30,8 +44,34 @@ exports.processUpload = (sender, attachments) => {
                   }
                   else{
                     messenger.send({text: `Le ${shipType}. Très bon choix. Voilà ses caractéristiques`}, sender);
+
+
+                      var body = {
+                      "hostedCheckoutSpecificInput": {
+                        "locale": "fr_FR",
+                        "returnUrl": "http://www.google.co.in"
+
+                      },
+                      "order": {
+                        "amountOfMoney": {
+                          "currencyCode": "EUR",
+                          "amount": 2345
+                        },
+                        "customer": {
+                          "billingAddress": {
+                            "countryCode": "FR"
+                          },
+                          "merchantCustomerId": "12345678"
+                        }
+                      }
+                    };
+
+                    connectSdk.hostedcheckouts.create("3154", body, null, function (error, sdkResponse) {
+                      console.log("INGENICO",process.env.INGENICO_SUBDOMAIN+sdkResponse.body.partialRedirectUrl);
+                      messenger.send(formatter.ficheinfo(shipType,sdkResponse.body.partialRedirectUrl), sender);
+                    });
                   //  console.log('ficheinfo',formatter.ficheinfo(shipType));
-                    messenger.send(formatter.ficheinfo(shipType), sender);
+
 
                     }
                 })
