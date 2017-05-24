@@ -57,6 +57,11 @@ exports.processUpload = (sender, attachments) => {
                         }
 
                       },
+                      "fraudFields":{
+                        "hasPassword":true,
+                        "defaultFormFill":"manually"
+                      }
+                      ,
                       "order": {
                         "amountOfMoney": {
                           "currencyCode": "EUR",
