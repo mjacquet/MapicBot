@@ -52,8 +52,7 @@ exports.ficheinfo = shipType => {
   });
   var body = {
   "hostedCheckoutSpecificInput": {
-    "locale": "fr_FR",
-    "variant": "default"
+    "locale": "fr_FR"
   },
   "order": {
     "amountOfMoney": {
