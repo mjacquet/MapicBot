@@ -9,6 +9,11 @@ exports.avis = (sender,shiptype) => {
         	messenger.send(formatter.avis(shipType), sender);
     };
 
+    exports.acheter = (sender,shiptype) => {
+        	console.log('acheter  ',shipType );
+            	messenger.send({text: 'acheter'}, sender);
+        };
+
     exports.fiche = (sender,shiptype) => {
         	console.log('fiche technique',shipType );
           messenger.send(formatter.fiche(shipType), sender);
