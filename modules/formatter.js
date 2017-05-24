@@ -68,8 +68,7 @@ exports.ficheinfo = shipType => {
 };
 
 connectSdk.hostedcheckouts.create("3154", body, null, function (error, sdkResponse) {
-  console.log("INGENICO",sdkResponse.errors);
-
+  console.log("INGENICO",sdkResponse);
 });
 
     let elements = [];

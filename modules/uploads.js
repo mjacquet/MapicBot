@@ -30,7 +30,7 @@ exports.processUpload = (sender, attachments) => {
                   }
                   else{
                     messenger.send({text: `Le ${shipType}. Très bon choix. Voilà ses caractéristiques`}, sender);
-                    console.log('ficheinfo',formatter.ficheinfo(shipType));
+                  //  console.log('ficheinfo',formatter.ficheinfo(shipType));
                     messenger.send(formatter.ficheinfo(shipType), sender);
 
                     }
