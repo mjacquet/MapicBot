@@ -35,7 +35,6 @@ exports.avis = vaisseau => {
       }
 };
 
-const COMMUNITY = ;
 var commlinks={xwing:COMMUNITY_XWING,tiefighter:COMMUNITY_TIE_FIGHTER,uwing:COMMUNITY_UWING};
 
 exports.ficheinfo = shipType => {
