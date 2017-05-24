@@ -26,7 +26,13 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
         console.log("probability too low",jsvar.probabilities[0].probability);
         resolve(null);
       }
-      else resolve(jsvar.probabilities[0].label);
+      else {
+        Episode7.run(hueLights,jsvar.probabilities[0].label).then((hueresult)=>{
+          let jsvar2=JSON.parse(hueresult);
+          console.log("hue result",jsvar2);
+        });
+        resolve(jsvar.probabilities[0].label);
+      }
     });
 
 /*

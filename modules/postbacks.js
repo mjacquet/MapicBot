@@ -3,6 +3,18 @@
 let messenger = require('./messenger'),
     formatter = require('./formatter');
 
+
+exports.avis = (sender,shiptype) => {
+    	console.log('Avis communauté ',shipType );
+        	messenger.send(formatter.avis(shipType), sender);
+    };
+
+    exports.fiche = (sender,shiptype) => {
+        	console.log('fiche technique',shipType );
+          messenger.send(formatter.fiche(shipType), sender);
+        };
+
+
 exports.schedule_visit = (sender) => {
 	console.log('schedule_visit');
 	messenger.getUserInfo(sender).then(response => {
