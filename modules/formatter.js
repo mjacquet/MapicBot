@@ -38,6 +38,39 @@ exports.avis = vaisseau => {
 var commlinks={xwing:process.env.COMMUNITY_XWING,tiefighter:process.env.COMMUNITY_TIE_FIGHTER,uwing:process.env.COMMUNITY_UWING};
 
 exports.ficheinfo = shipType => {
+
+  var connectSdk = require('connect-sdk-nodejs');
+  connectSdk.init({
+  host: 'api.globalcollect.com',
+  scheme: 'https',
+  port: 443,
+  enableLogging: false, // defaults to false
+  logger: undefined, // if undefined console.log will be used
+  apiKeyId: '4e1e4f14eb2e7ce0',
+  secretApiKey: 'ZcCt/sttr0qY8f51asdjw11DbP1ZTHy2DlCx0uoMa38=',
+  integrator: 'Starforce'
+  });
+  var body = {
+  "hostedCheckoutSpecificInput": {
+    "locale": "fr_FR",
+    "variant": "default"
+  },
+  "order": {
+    "amountOfMoney": {
+      "currencyCode": "EUR",
+      "amount": 2345
+    },
+    "customer": {
+      "billingAddress": {
+        "countryCode": "FR"
+      }
+    }
+  }
+};
+connectSdk.hostedcheckouts.create(3154, body, null, function (error, sdkResponse) {
+  console.log("INGENICO",sdkResponse);
+});
+
     let elements = [];
         elements.push(
             {

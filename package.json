@@ -22,6 +22,7 @@
     "request": "^2.78.0",
     "form-data": "^2.1.4",
     "request-promise": "^4.1.1",
-    "episode-7": "^1.1.0"
+    "episode-7": "^1.1.0",
+    "connect-sdk-nodejs": ">=2.2.0 <3.0.0"
   }
 }
