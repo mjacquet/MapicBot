@@ -10,7 +10,7 @@ var lights={xwing:HUE_XWING_ID,tiefighter:HUE_TIEFIGHTER_ID,uwing:HUE_UWING_ID};
 function* hueLights(light){
 
 var options = {
-  url: `https://client.meethue.com/api/0/lights/`+lights[light]+`/state`,
+  url: `https://client.meethue.com/api/0/lights/`+lights[light.replace('-','').replace(' ','').toLowerCase()]+`/state`,
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json',

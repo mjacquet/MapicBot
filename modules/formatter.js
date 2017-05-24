@@ -28,6 +28,16 @@ exports.information = response => {
       }
 };
 
+exports.avis = vaisseau => {
+  //  console.log('onBoard2');
+    return {
+        "text":"Un vaisseau vous plaît ? Envoyez-moi sa photo et je vous donnerai toutes les informations"
+      }
+};
+
+const COMMUNITY = ;
+var commlinks={xwing:COMMUNITY_XWING,tiefighter:COMMUNITY_TIE_FIGHTER,uwing:COMMUNITY_UWING};
+
 exports.ficheinfo = shipType => {
     let elements = [];
         elements.push(
@@ -41,9 +51,12 @@ exports.ficheinfo = shipType => {
                         "payload": "fiche,"+shipType
                     },
                     {
-                        "type": "postback",
-                        "title": "Avis Communauté",
-                        "payload": "avis,"+shipType
+                        "type":"web_url",
+                        "title":"Avis Commuanuté",
+                        "url": "https://sdodemo-main-141e22218e0-144-15950af6391.force.com/starforce/s/topic/"+commlinks[shipType.replace('-','').replace(' ','').toLowerCase()],
+                        "webview_height_ratio": "full",
+                        "messenger_extensions": false
+
                     },
                     {
                         "type": "postback",
