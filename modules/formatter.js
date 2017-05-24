@@ -44,7 +44,7 @@ exports.ficheinfo = shipType => {
   host: 'api.globalcollect.com',
   scheme: 'https',
   port: 443,
-  enableLogging: false, // defaults to false
+  enableLogging: true, // defaults to false
   logger: undefined, // if undefined console.log will be used
   apiKeyId: '4e1e4f14eb2e7ce0',
   secretApiKey: 'ZcCt/sttr0qY8f51asdjw11DbP1ZTHy2DlCx0uoMa38=',
@@ -67,8 +67,9 @@ exports.ficheinfo = shipType => {
     }
   }
 };
-connectSdk.hostedcheckouts.create(3154, body, null, function (error, sdkResponse) {
-  console.log("INGENICO",sdkResponse);
+connectSdk.hostedcheckouts.create("3154", body, null, function (error, sdkResponse) {
+  console.log("INGENICO",sdkResponse.errors);
+
 });
 
     let elements = [];
