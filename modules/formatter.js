@@ -51,7 +51,7 @@ exports.ficheinfo = shipType => {
                     },
                     {
                         "type":"web_url",
-                        "title":"Avis Commuanuté",
+                        "title":"Avis Communauté",
                         "url": "https://sdodemo-main-141e22218e0-144-15950af6391.force.com/starforce/s/topic/"+commlinks[shipType.replace('-','').replace(' ','').toLowerCase()],
                         "webview_height_ratio": "full",
                         "messenger_extensions": false
@@ -72,6 +72,17 @@ exports.ficheinfo = shipType => {
             "payload": {
                 "template_type": "generic",
                 "elements": elements
+            }
+        }
+    };
+};
+
+exports.fiche = shipType => {
+    return {
+        "attachment": {
+            "type": "image",
+            "payload": {
+                "url": 'https://legocitybot.herokuapp.com/'+shipType.replace('-','').replace(' ','').toLowerCase()+'.png'
             }
         }
     };

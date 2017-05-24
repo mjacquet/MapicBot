@@ -4,11 +4,6 @@ let messenger = require('./messenger'),
     formatter = require('./formatter');
 
 
-exports.avis = (sender,shiptype) => {
-    	console.log('Avis communauté ',shipType );
-        	messenger.send(formatter.avis(shipType), sender);
-    };
-
     exports.acheter = (sender,shiptype) => {
         	console.log('acheter  ',shipType );
             	messenger.send({text: 'acheter'}, sender);
