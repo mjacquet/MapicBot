@@ -68,7 +68,7 @@ exports.processUpload = (sender, attachments) => {
 
                     connectSdk.hostedcheckouts.create("3154", body, null, function (error, sdkResponse) {
                       console.log("INGENICO",process.env.INGENICO_SUBDOMAIN+sdkResponse.body.partialRedirectUrl);
-                      messenger.send(formatter.ficheinfo(shipType,sdkResponse.body.partialRedirectUrl), sender);
+                      messenger.send(formatter.ficheinfo(shipType,process.env.INGENICO_SUBDOMAIN+sdkResponse.body.partialRedirectUrl), sender);
                     });
                   //  console.log('ficheinfo',formatter.ficheinfo(shipType));
 
