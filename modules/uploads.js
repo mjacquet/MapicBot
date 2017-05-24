@@ -69,6 +69,7 @@ exports.processUpload = (sender, attachments) => {
                         },
                         "customer": {
                           "billingAddress": {
+                            "city":"Paris"
                             "countryCode": "FR"
                           },
                           "merchantCustomerId": "12345678"
