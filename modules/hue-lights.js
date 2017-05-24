@@ -3,7 +3,7 @@ const hbtoken = process.env.HUE_BRIDGE_TOKEN;
 const rp = require('request-promise');
 let request = require('request');
 var Episode7 = require('episode-7');
-var lights={xwing:HUE_XWING_ID,tiefighter:HUE_TIEFIGHTER_ID,uwing:HUE_UWING_ID};
+var lights={xwing:process.env.HUE_XWING_ID,tiefighter:process.env.HUE_TIEFIGHTER_ID,uwing:process.env.HUE_UWING_ID};
 
 
 

@@ -35,7 +35,7 @@ exports.avis = vaisseau => {
       }
 };
 
-var commlinks={xwing:COMMUNITY_XWING,tiefighter:COMMUNITY_TIE_FIGHTER,uwing:COMMUNITY_UWING};
+var commlinks={xwing:process.env.COMMUNITY_XWING,tiefighter:process.env.COMMUNITY_TIE_FIGHTER,uwing:process.env.COMMUNITY_UWING};
 
 exports.ficheinfo = shipType => {
     let elements = [];
