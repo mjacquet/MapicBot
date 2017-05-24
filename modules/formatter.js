@@ -64,7 +64,8 @@ exports.ficheinfo = shipType => {
     "customer": {
       "billingAddress": {
         "countryCode": "FR"
-      }
+      },
+      "merchantCustomerId": "12345678" 
     }
   }
 };
