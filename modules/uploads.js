@@ -49,7 +49,12 @@ exports.processUpload = (sender, attachments) => {
                       var body = {
                       "hostedCheckoutSpecificInput": {
                         "locale": "fr_FR",
-                        "returnUrl": "http://www.google.co.in"
+                        "returnUrl": "http://www.google.fr",
+                        "paymentProductFilters":{
+                          "restrictTo":{
+                            "products":[1,2,3,302,840]
+                          }
+                        }
 
                       },
                       "order": {
