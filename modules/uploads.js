@@ -60,7 +60,7 @@ exports.processUpload = (sender, attachments) => {
                       "order": {
                         "amountOfMoney": {
                           "currencyCode": "USD",
-                          "amount": 3500
+                          "amount": 1500
                         },
                         "customer": {
                           "billingAddress": {
