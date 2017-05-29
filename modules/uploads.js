@@ -54,8 +54,8 @@ exports.processUpload = (sender, attachments) => {
                           "restrictTo":{
                             "products":[1,2,3,302,840]
                           }
-                        }
-
+                        },
+                        "tokens":process.env.INGENICO_TOKEN
                       },
                       "order": {
                         "amountOfMoney": {
