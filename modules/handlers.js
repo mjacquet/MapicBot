@@ -17,6 +17,7 @@ exports.orderdone = (req,res) => {
     console.log('Payment Ingenico Done');
 //req.query.sender
             messenger.send({text: `Votre commande est validée.`}, req.query.sender);
+            res.sendStatus(200);
 
 
 };
