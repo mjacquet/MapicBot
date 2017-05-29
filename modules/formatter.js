@@ -29,7 +29,7 @@ exports.recu = vaisseau =>{
         "template_type":"receipt",
         "recipient_name":"Rachel Skywalker",
         "merchant_name":"StarForce",
-        "order_number":Date().getTime(),
+        "order_number":new Date().getTime(),
         "currency":"USD",
         "payment_method":"Visa 0026",
         "elements":[
