@@ -21,7 +21,7 @@ exports.bonjour = response => {
     }
 };
 
-exports.recu = vaisseau =>{
+exports.recu = shipType =>{
     return {
     "attachment":{
       "type":"template",
