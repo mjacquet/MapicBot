@@ -21,6 +21,47 @@ exports.bonjour = response => {
     }
 };
 
+exports.recu = vaisseau =>{
+    return {
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"receipt",
+        "recipient_name":"Rachel Skywalker",
+        "merchant_name":"StarForce",
+        "order_number":Date().getTime(),
+        "currency":"USD",
+        "payment_method":"Visa 0026",
+        "elements":[
+          {
+            "title":shipType,
+            "quantity":1,
+            "price":35,
+            "currency":"USD",
+            "image_url":'https://legocitybot.herokuapp.com/'+shipType.replace('-','').replace(' ','').toLowerCase()+'.png'
+          }
+        ],
+        "address":{
+          "street_1":"6 rue Daguerre",
+          "city":"Paris",
+          "postal_code":"75014",
+          "state":"Ile-De-France",
+          "country":"FR"
+        },
+        "summary":{
+          "total_cost":35
+        },
+        "adjustments":[
+          {
+            "name":"Points de fidélité",
+            "amount":100
+          }
+        ]
+      }
+    }
+  }
+};
+
 exports.information = response => {
   //  console.log('onBoard2');
     return {
