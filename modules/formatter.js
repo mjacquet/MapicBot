@@ -22,6 +22,7 @@ exports.bonjour = response => {
 };
 
 exports.recu = shipType =>{
+   let price={"tiefighter":1250.99,"xwing":1399.99,"uwing":1250.99};
     return {
     "attachment":{
       "type":"template",
@@ -36,7 +37,7 @@ exports.recu = shipType =>{
           {
             "title":shipType,
             "quantity":1,
-            "price":35,
+            "price":price[shipType.replace('-','').replace(' ','').toLowerCase()],
             "currency":"USD",
             "image_url":'https://legocitybot.herokuapp.com/'+shipType.replace('-','').replace(' ','').toLowerCase()+'.png'
           }
@@ -49,14 +50,8 @@ exports.recu = shipType =>{
           "country":"FR"
         },
         "summary":{
-          "total_cost":35
-        },
-        "adjustments":[
-          {
-            "name":"Points de fidélité",
-            "amount":100
-          }
-        ]
+          "total_cost":price[shipType.replace('-','').replace(' ','').toLowerCase()]
+        }
       }
     }
   }
