@@ -49,7 +49,7 @@ exports.processUpload = (sender, attachments) => {
                       var body = {
                       "hostedCheckoutSpecificInput": {
                         "locale": "fr_FR",
-                        "returnUrl": "https://sdodemo-main-141e22218e0-144-15950af6391.force.com/starforce/apex/ingenico_PostCheckout",
+                        "returnUrl": "https://sdodemo-main-141e22218e0-144-15950af6391.force.com/starforce/apex/ingenico_PostCheckout?senderid="+sender,
                         "paymentProductFilters":{
                           "restrictTo":{
                             "products":[1,2,3,302,840]
