@@ -49,7 +49,7 @@ exports.processUpload = (sender, attachments) => {
                       var body = {
                       "hostedCheckoutSpecificInput": {
                         "locale": "fr_FR",
-                        "returnUrl": "http://www.google.fr",
+                        "returnUrl": "https://sdodemo-main-141e22218e0-144-15950af6391.force.com/starforce/apex/ingenico_PostCheckout",
                         "paymentProductFilters":{
                           "restrictTo":{
                             "products":[1,2,3,302,840]
@@ -59,13 +59,13 @@ exports.processUpload = (sender, attachments) => {
                       },
                       "order": {
                         "amountOfMoney": {
-                          "currencyCode": "EUR",
-                          "amount": 2345
+                          "currencyCode": "USD",
+                          "amount": 3500
                         },
                         "customer": {
                           "billingAddress": {
                             "city":"Amsterdam",
-                            "countryCode": "NL"
+                            "countryCode": "US"
                           },
                           "merchantCustomerId": "12345678"
                         }

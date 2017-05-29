@@ -63,7 +63,7 @@ exports.ficheinfo = (shipType,checkouturl) => {
                       "title":"Acheter "+shipType,
                       "url": checkouturl,
                       "webview_height_ratio": "full",
-                      "messenger_extensions": false,
+                      "messenger_extensions": true,
                       "webview_share_button":"hide"
                     }
                 ]
