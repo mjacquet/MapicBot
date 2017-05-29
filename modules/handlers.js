@@ -13,7 +13,7 @@ exports.test = (sender) => {
 };
 */
 
-exports.orderdone = (sender) => {
+exports.orderdone = (sender,shipType) => {
     console.log('Payment Ingenico Done');
 
             messenger.send({text: `Votre commande est validée.`}, sender);

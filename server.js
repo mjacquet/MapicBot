@@ -21,7 +21,7 @@ app.get('/webhook', (req, res) => {
     }
 });
 
-app.get('/orderdone', orderdone);
+app.get('/orderdone', handlers['orderdone'](sender,shipType));
 
 app.post('/webhook', (req, res) => {
     let events = req.body.entry[0].messaging;
