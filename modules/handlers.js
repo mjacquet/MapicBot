@@ -16,11 +16,7 @@ exports.test = (sender) => {
 exports.orderdone = (req,res) => {
     console.log('Payment Ingenico Done');
 //req.query.sender
-            messenger.send(formatter.recu(req.query.shipType), req.query.sender);
-            Episode7.run(hueLights,req.query.shipType,"green").then((hueresult)=>{
-              let jsvar2=JSON.parse(hueresult);
-              console.log("hue result",jsvar2);
-            });
+            messenger.send(formatter.recu(req.query.shipType), req.query.sender);          
             res.sendStatus(200);
 };
 
