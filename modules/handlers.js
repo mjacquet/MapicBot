@@ -22,7 +22,7 @@ exports.orderdone = (req,res) => {
           Episode7.run(hueLights,{shipType:req.query.shipType,mode:"green"}).then((hueresult)=>{
               //let jsvar2=JSON.parse(hueresult);
               //console.log("hue result",jsvar2);
-              window.setTimeout(Episode7.run(hueLights,{shipType:req.query.shipType,mode:"off"}).then((hueresult)=>{})
+              setTimeout(Episode7.run(hueLights,{shipType:req.query.shipType,mode:"off"}).then((hueresult)=>{})
                 ,10000);
             });
             messenger.send(formatter.recu(req.query.shipType), req.query.sender);
