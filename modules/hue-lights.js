@@ -12,7 +12,7 @@ var modes={orange:'{"on": true,"bri": 254,"hue": 6751,"sat": 254,"effect": "none
 function* hueLights(light){
 
 var options = {
-  url: `https://client.meethue.com/api/0/lights/`+lights[light.shipType.replace('-','').replace(' ','').toLowerCase()]+`/state`,
+  url: `https://client.meethue.com/api/0/lights/`+lights[light.shipType]+`/state`,
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json',
