@@ -101,7 +101,7 @@ exports.ficheinfo = (shipType,checkouturl) => {
                       "type":"web_url",
                       "title":"Acheter - "+price[shipType.replace('-','').replace(' ','').toLowerCase()]+"€",
                       "url": checkouturl,
-                      "webview_height_ratio": "full",
+                      "webview_height_ratio": "tall",
                       "messenger_extensions": true,
                       "webview_share_button":"hide"
                     }
