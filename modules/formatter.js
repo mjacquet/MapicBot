@@ -98,14 +98,14 @@ exports.ficheinfo = (shipType,checkouturl) => {
                       "type":"web_url",
                       "title":"Acheter "+shipType,
                       "url": checkouturl,
-                      "webview_height_ratio": "tall",
+                      "webview_height_ratio": "full",
                       "messenger_extensions": true,
                       "webview_share_button":"hide"
                     }
                 ]
             }
         );
- console.log(elements);
+ console.log(elements.buttons[2]);
     return {
         "attachment": {
             "type": "template",
