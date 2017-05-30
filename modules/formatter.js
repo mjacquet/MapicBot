@@ -35,7 +35,7 @@ exports.recu = shipType =>{
         "recipient_name":"Rachel Skywalker",
         "merchant_name":"StarForce",
         "order_number":new Date().getTime(),
-        "currency":"USD",
+        "currency":"EUR",
         "payment_method":"Mastercard 1732",
         "elements":[
           {
