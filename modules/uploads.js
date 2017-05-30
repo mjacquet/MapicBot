@@ -44,12 +44,12 @@ exports.processUpload = (sender, attachments) => {
                   }
                   else{
                     messenger.send({text: `Le ${shipType}. Très bon choix. Voilà ses caractéristiques`}, sender);
-
+                    let returnUrl="https://sdo-demo-main-141e22218df-14-15950af6391.secure.force.com/Public/ingenico_PostCheckout?sender="+sender+"&shipType="+shipType.replace('-','').replace(' ','').toLowerCase();
 
                       var body = {
                       "hostedCheckoutSpecificInput": {
                         "locale": "fr_FR",
-                        "returnUrl": "https://sdo-demo-main-141e22218df-14-15950af6391.secure.force.com/Public/ingenico_PostCheckout?sender="+sender+"&shipType="+shipType.replace('-','').replace(' ','').toLowerCase(),
+                        "returnUrl": returnUrl,
                         "paymentProductFilters":{
                           "restrictTo":{
                             "products":[1,2,3,302,840]
@@ -73,6 +73,7 @@ exports.processUpload = (sender, attachments) => {
                     };
                     console.log(body);
                     connectSdk.hostedcheckouts.create("3154", body, null, function (error, sdkResponse) {
+                      console.log("INGENICO1",error);
                       console.log("INGENICO2",sdkResponse);
                       if(sdkResponse!==null)
                           messenger.send(formatter.ficheinfo(shipType,process.env.INGENICO_SUBDOMAIN+sdkResponse.body.partialRedirectUrl), sender);
