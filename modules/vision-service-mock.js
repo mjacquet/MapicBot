@@ -27,10 +27,10 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
         resolve(null);
       }
       else {
-        Episode7.run(hueLights,{shipType:"tiefighter",mode:"orange"}).then((hueresult)=>{
+        Episode7.run(hueLights,jsvar.probabilities[0].label).then((hueresult)=>{
           let jsvar2=JSON.parse(hueresult);
           console.log("hue result",jsvar2);
-          //jsvar.probabilities[0].label.replace('-','').replace(' ','').toLowerCase()
+          //{shipType:jsvar.probabilities[0].label.replace('-','').replace(' ','').toLowerCase(),mode:"orange"} 
         });
         resolve(jsvar.probabilities[0].label);
       }

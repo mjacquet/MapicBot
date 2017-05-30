@@ -48,9 +48,9 @@ var modes={orange:{
 
 //modes[data.mode]
 function* hueLights(data){
-
+//.shipType
 var options = {
-  url: `https://client.meethue.com/api/0/lights/`+lights[data.shipType]+`/state`,
+  url: `https://client.meethue.com/api/0/lights/`+lights[data]+`/state`,
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json',
