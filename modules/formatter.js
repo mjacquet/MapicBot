@@ -3,6 +3,10 @@
 let moment = require("moment"),
     numeral = require("numeral");
 
+ var price={"tiefighter":1250.99,"xwing":1399.99,"uwing":1250.99};
+ var commlinks={xwing:process.env.COMMUNITY_XWING,tiefighter:process.env.COMMUNITY_TIE_FIGHTER,uwing:process.env.COMMUNITY_UWING};
+
+
 exports.bonjour = response => {
     return {
         "text":"Bonjour " + response.first_name + ", et bienvenue dans votre assistant Vaisseau'lib.",
@@ -22,7 +26,7 @@ exports.bonjour = response => {
 };
 
 exports.recu = shipType =>{
-   let price={"tiefighter":1250.99,"xwing":1399.99,"uwing":1250.99};
+
     return {
     "attachment":{
       "type":"template",
@@ -38,7 +42,7 @@ exports.recu = shipType =>{
             "title":shipType,
             "quantity":1,
             "price":price[shipType],
-            "currency":"USD",
+            "currency":"EUR",
             "image_url":'https://legocitybot.herokuapp.com/'+shipType+'.png'
           }
         ],
@@ -71,7 +75,6 @@ exports.avis = vaisseau => {
       }
 };
 
-var commlinks={xwing:process.env.COMMUNITY_XWING,tiefighter:process.env.COMMUNITY_TIE_FIGHTER,uwing:process.env.COMMUNITY_UWING};
 
 exports.ficheinfo = (shipType,checkouturl) => {
 
@@ -96,7 +99,7 @@ exports.ficheinfo = (shipType,checkouturl) => {
                     },
                     {
                       "type":"web_url",
-                      "title":"Acheter "+shipType,
+                      "title":"Acheter - "+price[shipType.replace('-','').replace(' ','').toLowerCase()]+"€",
                       "url": checkouturl,
                       "webview_height_ratio": "full",
                       "messenger_extensions": true,
@@ -122,7 +125,7 @@ exports.fiche = shipType => {
         "attachment": {
             "type": "image",
             "payload": {
-                "url": 'https://legocitybot.herokuapp.com/'+shipType.replace('-','').replace(' ','').toLowerCase()+'.png'
+                "url": 'https://legocitybot.herokuapp.com/'+shipType.replace('-','').replace(' ','').toLowerCase()+'-specs.png'
             }
         }
     };
