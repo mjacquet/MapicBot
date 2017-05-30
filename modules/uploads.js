@@ -73,7 +73,7 @@ exports.processUpload = (sender, attachments) => {
                     };
                     console.log(body);
                     connectSdk.hostedcheckouts.create("3154", body, null, function (error, sdkResponse) {
-                      console.log("INGENICO",sdkResponse);
+                      console.log("INGENICO2",sdkResponse);
                       messenger.send(formatter.ficheinfo(shipType,process.env.INGENICO_SUBDOMAIN+sdkResponse.body.partialRedirectUrl), sender);
                     });
                   //  console.log('ficheinfo',formatter.ficheinfo(shipType));
