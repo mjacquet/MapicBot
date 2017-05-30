@@ -4,20 +4,20 @@ const rp = require('request-promise');
 let request = require('request');
 var Episode7 = require('episode-7');
 var lights={xwing:process.env.HUE_XWING_ID,tiefighter:process.env.HUE_TIEFIGHTER_ID,uwing:process.env.HUE_UWING_ID};
-var modes={orange:{
+var modes={orange:'{
         "on": true,
         "bri": 254,
-        "hue": 10573,
+        "hue": 6751,
         "sat": 254,
         "effect": "none",
         "xy": [
-          0.4761,
-          0.4701
+          0.554,
+          0.4116
         ],
-        "ct": 396,
+        "ct": 500,
         "alert": "select",
         "colormode": "xy"
-      },green:{
+      }',green:'{
         "on": true,
         "bri": 254,
         "hue": 10573,
@@ -30,7 +30,7 @@ var modes={orange:{
         "ct": 396,
         "alert": "select",
         "colormode": "xy"
-      },off:{
+      }',off:'{
         "on": false,
         "bri": 254,
         "hue": 10573,
@@ -43,7 +43,7 @@ var modes={orange:{
         "ct": 396,
         "alert": "select",
         "colormode": "xy"
-      }}
+      }'}
 
 
 function* hueLights(light){
