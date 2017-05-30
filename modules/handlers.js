@@ -2,6 +2,7 @@
 
 let messenger = require('./messenger'),
     formatter = require('./formatter');
+var Episode7 = require('episode-7');
 
 /*
 exports.test = (sender) => {
