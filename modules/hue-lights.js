@@ -47,18 +47,16 @@ var modes={orange:{
       }}
 
 
-function* hueLights(light,mode){
-
-
+function* hueLights(data){
 
 var options = {
-  url: `https://client.meethue.com/api/0/lights/`+lights[light]+`/state`,
+  url: `https://client.meethue.com/api/0/lights/`+lights[data.shipType]+`/state`,
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json',
     'x-token': hbtoken
   },
-  body:modes[mode]
+  body:modes[data.mode]
 
 }
 console.log('hueAPI request',options);
