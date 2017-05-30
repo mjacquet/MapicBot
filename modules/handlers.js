@@ -2,6 +2,7 @@
 
 let messenger = require('./messenger'),
     formatter = require('./formatter');
+    const hueLights = require('./hue-lights');
     var Episode7 = require('episode-7');
 
 
