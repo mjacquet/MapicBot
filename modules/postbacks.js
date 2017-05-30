@@ -4,12 +4,12 @@ let messenger = require('./messenger'),
     formatter = require('./formatter');
 
 
-    exports.acheter = (sender,shiptype) => {
+    exports.acheter = (sender,shipType) => {
         	console.log('acheter  ',shipType );
             	messenger.send({text: 'acheter'}, sender);
         };
 
-    exports.fiche = (sender,shiptype) => {
+    exports.fiche = (sender,shipType) => {
         	console.log('fiche technique',shipType );
           messenger.send(formatter.fiche(shipType), sender);
         };
