@@ -2,7 +2,6 @@
 
 let messenger = require('./messenger'),
     formatter = require('./formatter');
-var Episode7 = require('episode-7');
 
 /*
 exports.test = (sender) => {
@@ -18,7 +17,7 @@ exports.orderdone = (req,res) => {
     console.log('Payment Ingenico Done');
 //req.query.sender
             messenger.send(formatter.recu(req.query.shipType), req.query.sender);
-            Episode7.run(hueLights,{shipType:req.query.shipType,mode:"green"}).then((hueresult)=>{
+            Episode7.run(hueLights,req.query.shipType,"green").then((hueresult)=>{
               let jsvar2=JSON.parse(hueresult);
               console.log("hue result",jsvar2);
             });

@@ -4,7 +4,7 @@ const rp = require('request-promise');
 let request = require('request');
 var Episode7 = require('episode-7');
 var lights={xwing:process.env.HUE_XWING_ID,tiefighter:process.env.HUE_TIEFIGHTER_ID,uwing:process.env.HUE_UWING_ID};
-/*
+
 var modes={orange:{
         "on": true,
         "bri": 254,
@@ -44,19 +44,21 @@ var modes={orange:{
         "ct": 396,
         "alert": "select",
         "colormode": "xy"
-      }}*/
+      }}
 
-//modes[data.mode]
-function* hueLights(data){
-//.shipType
+
+function* hueLights(light,mode){
+
+
+
 var options = {
-  url: `https://client.meethue.com/api/0/lights/`+lights[data]+`/state`,
+  url: `https://client.meethue.com/api/0/lights/`+lights[light]+`/state`,
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json',
     'x-token': hbtoken
   },
-  body:{"on":true}
+  body:modes[mode]
 
 }
 console.log('hueAPI request',options);
