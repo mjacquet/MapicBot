@@ -51,6 +51,10 @@ app.post('/webhook', (req, res) => {
                     console.log("Handler " + result.handlerName + " is not defined");
                 }
             }
+            else {
+              sendMessage({text: `Désolé je n'ai pas compris.`}, sender);
+                sendMessage({text: `Envoyez-moi la photo d'un vaisseau et je vous donnerai toutes les informations.`}, sender);
+            }
           }
         } else if (event.postback) {
             let payload = event.postback.payload.split(",");
