@@ -43,7 +43,7 @@ exports.recu = shipType =>{
             "quantity":1,
             "price":price[shipType],
             "currency":"EUR",
-            "image_url":'https://legocitybot.herokuapp.com/'+shipType+'.png'
+            "image_url":'https://legocitybot.herokuapp.com/'+shipType+'.png?'+process.env.HEROKU_RELEASE_VERSION
           }
         ],
         "address":{
@@ -82,7 +82,7 @@ exports.ficheinfo = (shipType,checkouturl) => {
         elements.push(
             {
                 title: shipType,
-                "image_url": 'https://legocitybot.herokuapp.com/'+shipType.replace('-','').replace(' ','').toLowerCase()+'.png',
+                "image_url": 'https://legocitybot.herokuapp.com/'+shipType.replace('-','').replace(' ','').toLowerCase()+'.png?'+process.env.HEROKU_RELEASE_VERSION,
                 "buttons": [
                     {
                         "type": "postback",
@@ -92,7 +92,7 @@ exports.ficheinfo = (shipType,checkouturl) => {
                     {
                         "type":"web_url",
                         "title":"Avis Communauté",
-                        "url": "https://sdodemo-main-141e22218e0-144-15950af6391.force.com/starforce/s/topic/"+commlinks[shipType.replace('-','').replace(' ','').toLowerCase()],
+                        "url": "https://sdodemo-main-141e22218e0-144-15950af6391.force.com/starforce/s/topic/"+commlinks[shipType.replace('-','').replace(' ','').toLowerCase()]+"?"+process.env.HEROKU_RELEASE_VERSION,
                         "webview_height_ratio": "full",
                         "messenger_extensions": false
 
@@ -125,7 +125,7 @@ exports.fiche = shipType => {
         "attachment": {
             "type": "image",
             "payload": {
-                "url": 'https://legocitybot.herokuapp.com/'+shipType.replace('-','').replace(' ','').toLowerCase()+'-specs.png'
+                "url": 'https://legocitybot.herokuapp.com/'+shipType.replace('-','').replace(' ','').toLowerCase()+'-specs.png?'+process.env.HEROKU_RELEASE_VERSION
             }
         }
     };
