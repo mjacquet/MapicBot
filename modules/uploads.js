@@ -49,7 +49,7 @@ exports.processUpload = (sender, attachments) => {
                       var body = {
                       "hostedCheckoutSpecificInput": {
                         "locale": "fr_FR",
-                        "returnUrl": "https://sdo-demo-main-141e22218df-14-15950af6391.secure.force.com/Public/ingenico_PostCheckout?sender="+sender+"&shipType="+shipType,
+                        "returnUrl": "https://sdo-demo-main-141e22218df-14-15950af6391.secure.force.com/Public/ingenico_PostCheckout?sender="+sender+"&shipType="+shipType.replace('-','').replace(' ','').toLowerCase(),
                         "paymentProductFilters":{
                           "restrictTo":{
                             "products":[1,2,3,302,840]

@@ -37,9 +37,9 @@ exports.recu = shipType =>{
           {
             "title":shipType,
             "quantity":1,
-            "price":price[shipType.replace('-','').replace(' ','').toLowerCase()],
+            "price":price[shipType],
             "currency":"USD",
-            "image_url":'https://legocitybot.herokuapp.com/'+shipType.replace('-','').replace(' ','').toLowerCase()+'.png'
+            "image_url":'https://legocitybot.herokuapp.com/'+shipType+'.png'
           }
         ],
         "address":{
@@ -50,7 +50,7 @@ exports.recu = shipType =>{
           "country":"FR"
         },
         "summary":{
-          "total_cost":price[shipType.replace('-','').replace(' ','').toLowerCase()]
+          "total_cost":price[shipType]
         }
       }
     }
