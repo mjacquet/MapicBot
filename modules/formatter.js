@@ -105,7 +105,7 @@ exports.ficheinfo = (shipType,checkouturl) => {
                 ]
             }
         );
- console.log(elements.buttons[2]);
+ console.log("bouton",elements[0].buttons[2]);
     return {
         "attachment": {
             "type": "template",
