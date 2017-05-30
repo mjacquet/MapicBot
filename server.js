@@ -6,6 +6,7 @@ var express = require('express'),
     handlers = require('./modules/handlers'),
     postbacks = require('./modules/postbacks'),
     uploads = require('./modules/uploads'),
+    messenger = require('./messenger'),
     FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN,
     app = express();
 
@@ -29,7 +30,7 @@ app.post('/webhook', (req, res) => {
         let event = events[i];
         let sender = event.sender.id;
         if (process.env.MAINTENANCE_MODE && ((event.message && event.message.text) || event.postback)) {
-            sendMessage({text: `Sorry I'm taking a break right now.`}, sender);
+            messenger.send({text: `Sorry I'm taking a break right now.`}, sender);
         } else if (event.message && event.message.text) {
           if (event.message.quick_reply) {
             let payload = event.message.quick_reply.payload;
@@ -52,8 +53,8 @@ app.post('/webhook', (req, res) => {
                 }
             }
             else {
-              sendMessage({text: `Désolé je n'ai pas compris.`}, sender);
-                sendMessage({text: `Envoyez-moi la photo d'un vaisseau et je vous donnerai toutes les informations.`}, sender);
+              messenger.send({text: `Désolé je n'ai pas compris.`}, sender);
+              messenger.send({text: `Envoyez-moi la photo d'un vaisseau et je vous donnerai toutes les informations.`}, sender);
             }
           }
         } else if (event.postback) {
