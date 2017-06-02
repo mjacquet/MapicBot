@@ -9,7 +9,7 @@ let moment = require("moment"),
 
 exports.bonjour = response => {
     return {
-        "text":"Bonjour " + response.first_name + ", et bienvenue dans votre assistant Vaisseau'lib.",
+        "text":"Bonjour " + response.first_name + ", et bienvenue dans votre assistant StarForce.",
       /*  "quick_replies":[
           {
             "content_type":"text",
