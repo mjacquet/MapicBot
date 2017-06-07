@@ -32,6 +32,7 @@ exports.orderdone = (req,res) => {
 
 exports.start = (sender) => {
     console.log('start',sender);
+    if(sender!="822485231243369"){
     messenger.getUserInfo(sender).then(response => {
 
             messenger.send(formatter.bonjour(response), sender);
@@ -44,6 +45,7 @@ exports.start = (sender) => {
 
 
     });
+  }
 };
 
 

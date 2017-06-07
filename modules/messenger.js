@@ -61,7 +61,7 @@ exports.getZip = () =>{
 exports.getUserInfo = (userId) => {
 
     return new Promise((resolve, reject) => {
-
+       
         request({
             url: `https://graph.facebook.com/v2.6/${userId}`,
             qs: {fields:"first_name,last_name,profile_pic", access_token: FB_PAGE_TOKEN},
