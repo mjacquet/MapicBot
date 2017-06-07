@@ -32,7 +32,7 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
       else {
         Episode7.run(hueLights,{shipType:jsvar.probabilities[0].label.replace('-','').replace(' ','').toLowerCase(),mode:"orange"}).then((hueresult)=>{
           let jsvar2=JSON.parse(hueresult);
-          console.log("hue result",jsvar2);
+        //  console.log("hue result",jsvar2);
         });
         resolve(jsvar.probabilities[0].label);
       }

@@ -23,7 +23,7 @@ var options = {
 
 }
 //'{"on": true}'
-console.log('hueAPI request',options);
+//console.log('hueAPI request',options);
 let { body, isUnauthorized } = yield Episode7.call((options) => {
   return rp(options)
   .then( body => ({ body }) )
@@ -36,7 +36,7 @@ let { body, isUnauthorized } = yield Episode7.call((options) => {
   })
 },options);
 
-console.log('Hue api return:',body);
+//console.log('Hue api return:',body);
 return body;
 }
 

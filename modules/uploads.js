@@ -71,10 +71,10 @@ exports.processUpload = (sender, attachments) => {
                         }
                       }
                     };
-                    console.log(body);
+                  //  console.log(body);
                     connectSdk.hostedcheckouts.create("3154", body, null, function (error, sdkResponse) {
-                      console.log("INGENICO1",error);
-                      console.log("INGENICO2",sdkResponse);
+                    //  console.log("INGENICO1",error);
+                    //  console.log("INGENICO2",sdkResponse);
                       if(sdkResponse!==null)
                           messenger.send(formatter.ficheinfo(shipType,process.env.INGENICO_SUBDOMAIN+sdkResponse.body.partialRedirectUrl), sender);
                     });
