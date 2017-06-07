@@ -14,6 +14,7 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
   const model= process.env.EINSTEIN_VISION_MODEL;
 //model with all pictures of all time N2I3KTHJV2M5R5DDW3H63K3XEQ
 //model with picture porte de versaille only DAH3BPSYBJBOCPXWPRDKONO2O4
+//model with picture porte de versaille and good labels: 5YH2PZF43TNFZUD6HPL2RDAIRE
   let request = require('request');
   var querystring = require('querystring');
 
