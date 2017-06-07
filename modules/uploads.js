@@ -9,6 +9,8 @@ var options = {
       provider: 'google'
 };
 
+var price={"tiefighter":1250.99,"xwing":1399.99,"uwing":1250.99};
+
 var connectSdk = require('connect-sdk-nodejs');
 
 connectSdk.init({
@@ -59,8 +61,8 @@ exports.processUpload = (sender, attachments) => {
                       },
                       "order": {
                         "amountOfMoney": {
-                          "currencyCode": "USD",
-                          "amount": 1500
+                          "currencyCode": "EUR",
+                          "amount": price[shipType.replace('-','').replace(' ','').toLowerCase()]
                         },
                         "customer": {
                           "billingAddress": {
@@ -71,6 +73,8 @@ exports.processUpload = (sender, attachments) => {
                         }
                       }
                     };
+                    //token 1: 3b54ce56-9387-4418-bdad-1dd8c5bf446e
+                    //token 2: 68bdf6f8-a109-4882-9dea-9a49a99c6286
                   //  console.log(body);
                     connectSdk.hostedcheckouts.create("3154", body, null, function (error, sdkResponse) {
                     //  console.log("INGENICO1",error);
