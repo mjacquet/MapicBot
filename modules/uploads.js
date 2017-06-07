@@ -9,7 +9,7 @@ var options = {
       provider: 'google'
 };
 
-var price={"tiefighter":1250.99,"xwing":1399.99,"uwing":1250.99};
+var price={"tiefighter":"125099","xwing":"139999","uwing":"125099"};
 
 var connectSdk = require('connect-sdk-nodejs');
 
