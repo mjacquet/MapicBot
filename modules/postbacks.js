@@ -23,10 +23,10 @@ exports.schedule_visit = (sender) => {
 };
 
 exports.information = (sender) => {
-	console.log('information');
-	messenger.getUserInfo(sender).then(response => {
+	//console.log('information');
+	//messenger.getUserInfo(sender).then(response => {
     	messenger.send(formatter.information(response), sender);
-    });
+  //  });
 };
 
 exports.confirm_visit = (sender, values) => {

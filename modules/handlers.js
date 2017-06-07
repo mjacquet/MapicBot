@@ -31,7 +31,7 @@ exports.orderdone = (req,res) => {
 };
 
 exports.start = (sender) => {
-    console.log('start');
+    console.log('start',sender);
     messenger.getUserInfo(sender).then(response => {
 
             messenger.send(formatter.bonjour(response), sender);
