@@ -27,7 +27,7 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
     Episode7.run(queryVisionApi,pvsUrl,imageURL,model,accountId,privateKey,oAuthToken.get()).then((visionApiResult)=>{
       let jsvar=JSON.parse(visionApiResult);
   //    console.log('vison api result ',jsvar.probabilities[0].label);
-      if(jsvar.probabilities[0].probability<0.6){
+      if(jsvar.probabilities[0].probability<0.4){
         console.log("probability too low",jsvar.probabilities[0].probability);
         resolve(null);
       }
