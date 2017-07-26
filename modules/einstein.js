@@ -2,35 +2,49 @@
 const jwt   = require('jsonwebtoken');
 let request = require('request-promise');
 
+const pvsUrl = process.env.EINSTEIN_VISION_URL;
+const accountId  = process.env.EINSTEIN_VISION_ACCOUNT_ID;
+const privateKey = process.env.EINSTEIN_VISION_PRIVATE_KEY.replace(/\\n/g, '\n');
+const model= process.env.EINSTEIN_VISION_MODEL;
+const languagemodel= process.env.EINSTEIN_LANGUAGE_MODEL;
+
 process.on('unhandledRejection', r => console.log(r));
 
 exports.classify = imageURL => new Promise(async(resolve, reject) => {
-
-  const pvsUrl = process.env.EINSTEIN_VISION_URL;
-  const accountId  = process.env.EINSTEIN_VISION_ACCOUNT_ID;
-  const privateKey = process.env.EINSTEIN_VISION_PRIVATE_KEY.replace(/\\n/g, '\n');
-  const model= process.env.EINSTEIN_VISION_MODEL;
-
   var token = getToken();
   if(token===null){
-    token = await updateToken(pvsUrl,accountId,privateKey);
+    token = await updateToken();
   }
-  let visionresult = await doClassify(pvsUrl,imageURL,model,accountId,privateKey,token);
+  let formData = {
+    modelId: model,
+    sampleLocation : imageURL
+  }
+  let visionresult = await doCall('/vision/predict',formData,token);
   resolve(visionresult.probabilities[0]);
+});
+
+exports.getIntent = text => new Promise(async(resolve, reject) => {
+  var token = getToken();
+  if(token===null){
+    token = await updateToken();
+  }
+  let formData = {
+    modelId: languagemodel,
+    document : text
+  }
+  let intentresult = await doCall('/language/intent',formData,token);
+  resolve(intentresult.probabilities[0]);
 });
 
 
 
-var doClassify = async(pvsUrl,resizedImgUrl,modelId='GeneralImageClassifier',accountId,privateKey,jwtToken) => {
+var doCall = async(service,formData,jwtToken) => {
   var token = jwtToken || getToken();
-  var formData = {
-    modelId: modelId,
-    sampleLocation : resizedImgUrl
-  }
+
   var options = {
       simple:false,
       resolveWithFullResponse : true,
-      url: `${pvsUrl}v1/vision/predict`,
+      url: `${pvsUrl}v2`+service,
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -44,7 +58,7 @@ var doClassify = async(pvsUrl,resizedImgUrl,modelId='GeneralImageClassifier',acc
     var result= await request(options);
     if(result.statusCode=='401'){
       console.log('unauthorized');
-      token = await updateToken(pvsUrl,accountId,privateKey);
+      token = await updateToken();
       options.headers.Authorization=`Bearer ${token}`;
       result= await request(options);
     }
@@ -52,7 +66,7 @@ var doClassify = async(pvsUrl,resizedImgUrl,modelId='GeneralImageClassifier',acc
 };
 
 
-var updateToken = async(pvsUrl,accountId,privateKey) =>  {
+var updateToken = async() =>  {
     let argumentError;
     if (pvsUrl == null) {
       argumentError = new Error('updateToken requires EINSTEIN_VISION_URL, the base API URL (first arg)');
@@ -67,7 +81,7 @@ var updateToken = async(pvsUrl,accountId,privateKey) =>  {
       return Promise.reject(argumentError);
     }
 
-    var reqUrl = `${pvsUrl}v1/oauth2/token`;
+    var reqUrl = `${pvsUrl}v2/oauth2/token`;
 
     var rsa_payload = {
       "sub":accountId,

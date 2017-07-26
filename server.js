@@ -7,6 +7,7 @@ var express = require('express'),
     postbacks = require('./modules/postbacks'),
     uploads = require('./modules/uploads'),
     messenger = require('./modules/messenger'),
+    einstein = require('./modules/einstein'),
     FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN,
     app = express();
 
@@ -19,12 +20,32 @@ if(process.env.DEVENV) {
     console.log('Running in local dev env');
 
     app.get('/test', (req, res) => {
-        console.log('dev start ',process.env.DEV_FB_SENDERID);
-        res.sendStatus(200);
+      console.log('dev start ',process.env.DEV_FB_SENDERID);
+      res.sendStatus(200);
+      /* test file upload
+
         messenger.send({text: `test dev env`}, process.env.DEV_FB_SENDERID);
         uploads.processUpload(process.env.DEV_FB_SENDERID,
           [{"type":"image","payload":{"url":"https://images-na.ssl-images-amazon.com/images/I/916d9Ww1QwL._SL1500_.jpg"}}]
         );
+*/
+/*test intent text
+      //  let result = einstein.getIntent(req.query.text).then(result =>{  console.log('intent',result);});
+        let result = einstein.getIntent(req.query.text).then(result =>{
+          console.log("intent ", result);
+        if (result.probability>0.9) {
+            let handler = handlers[result.label];
+            if (handler && typeof handler === "function") {
+                handler(process.env.DEV_FB_SENDERID, req.query.text);
+            } else {
+                console.log("Handler " + result.label + " is not defined");
+            }
+        }
+        else {
+          messenger.send({text: `Désolé je n'ai pas compris.\nEnvoyez-moi la photo d'un vaisseau et je vous donnerai toutes les informations.`}, process.env.DEV_FB_SENDERID);
+        }
+      });*/
+
     });
 
 }
@@ -44,7 +65,7 @@ app.get('/webhook', (req, res) => {
 
 app.get('/orderdone', handlers['orderdone']);
 
-app.post('/webhook', (req, res) => {
+app.post('/webhook', async(req, res) => {
     let events = req.body.entry[0].messaging;
     for (let i = 0; i < events.length; i++) {
         let event = events[i];
@@ -63,13 +84,15 @@ app.post('/webhook', (req, res) => {
             }
           }
           else {
-            let result = processor.match(event.message.text);
-            if (result) {
-                let handler = handlers[result.handler];
+            //let result = processor.match(event.message.text);
+            let result = einstein.getIntent(req.query.text);
+
+            if (result.probability>0.9) {
+                let handler = handlers[result.label];
                 if (handler && typeof handler === "function") {
-                    handler(sender, result.match);
+                    handler(sender, event.message.text);
                 } else {
-                    console.log("Handler " + result.handlerName + " is not defined");
+                    console.log("Handler " + result.label + " is not defined");
                 }
             }
             else {

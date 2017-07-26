@@ -10,20 +10,30 @@ let moment = require("moment"),
 exports.bonjour = response => {
     return {
         "text":"Bonjour " + response.first_name + ", et bienvenue dans votre assistant StarForce.",
-      /*  "quick_replies":[
-          {
-            "content_type":"text",
-            "title":"Decouvrir le dernier XWING",
-            "payload":"theStart"
-          },
-          {
-            "content_type":"text",
-            "title":"Plus d'information sur un vaisseau",
-            "payload":"information"
-          }
-        ]*/
     }
 };
+exports.shipChoice = () =>{
+  return {
+      "text":"Quel vaisseau vous intéresse en particulier? ",
+      "quick_replies":[
+        {
+          "content_type":"text",
+          "title":"X-WING",
+          "payload":"xwing"
+        },
+        {
+          "content_type":"text",
+          "title":"U-WING",
+          "payload":"uwing"
+        },
+        {
+          "content_type":"text",
+          "title":"Tie Fighter",
+          "payload":"tiefighter"
+        }
+      ]
+  }
+}
 
 exports.recu = shipType =>{
 

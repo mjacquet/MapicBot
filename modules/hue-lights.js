@@ -7,9 +7,9 @@ let request = require('request');
 var Episode7 = require('episode-7');
 var lights={xwing:process.env.HUE_XWING_ID,tiefighter:process.env.HUE_TIEFIGHTER_ID,uwing:process.env.HUE_UWING_ID};
 var modes={orange:'{"on": true,"bri": 254,"hue": 6751,"sat": 254,"effect": "none","xy":[0.554,0.4116],"ct": 500,"alert": "lselect","colormode": "xy"}',
-            green:'{"on": true,"bri": 254,"hue": 22463,"sat": 254,"effect": "none","xy": [0.2339,0.652],"ct": 153,"alert": "select","colormode": "xy"}',
-            off:'{"on": false}'
-          }
+green:'{"on": true,"bri": 254,"hue": 22463,"sat": 254,"effect": "none","xy": [0.2339,0.652],"ct": 153,"alert": "select","colormode": "xy"}',
+off:'{"on": false}'
+}
 
 exports.reset = resp => {
   doLight("tiefighter","off");
@@ -38,11 +38,13 @@ var doLight = async(shipType,mode) =>{
     body:modes[mode]
   }
 
-  var result= await rp(options);
-  if(result.statusCode=='401'){
-    console.log('unauthorized hue api return');
-  }
-  else{
-    console.log("hue result",result.body);
+  if(!process.env.DEVENV) {
+    var result= await rp(options);
+    if(result.statusCode=='401'){
+      console.log('unauthorized hue api return');
+    }
+    else{
+      console.log("hue result",result.body);
+    }
   }
 }
