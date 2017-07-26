@@ -12,6 +12,18 @@ var options = {
 };
 
 //var geocoder = nodeGeocoder(options);
+exports.doAct = async(sender, shipType) => {
+  hueLights.light(shipType);
+  messenger.send({text: `Le ${shipType}. Très bon choix. Voilà ses caractéristiques`}, sender);
+  let returnUrl="https://sdo-demo-main-141e22218df-14-15950af6391.secure.force.com/Public/ingenico_PostCheckout?sender="+sender+"&shipType="+shipType.replace('-','').replace(' ','').toLowerCase();
+
+  let redirecturl = await ingenico.createCheckout(returnUrl,shipType);
+//  console.log('ingenico',redirecturl);
+  if(redirecturl!==null)
+      messenger.send(formatter.ficheinfo(shipType,redirecturl), sender);
+
+};
+
 
 exports.processUpload = async(sender, attachments) => {
   if (attachments.length > 0) {
@@ -27,15 +39,7 @@ exports.processUpload = async(sender, attachments) => {
         messenger.send({text: `Je ne reconnais pas ce vaisseau. Merci de réessayer.`}, sender);
       }
       else{
-        shipType=shipType.label;
-        hueLights.light(shipType);
-        messenger.send({text: `Le ${shipType}. Très bon choix. Voilà ses caractéristiques`}, sender);
-        let returnUrl="https://sdo-demo-main-141e22218df-14-15950af6391.secure.force.com/Public/ingenico_PostCheckout?sender="+sender+"&shipType="+shipType.replace('-','').replace(' ','').toLowerCase();
-
-        let redirecturl = await ingenico.createCheckout(returnUrl,shipType);
-        console.log('ingenico',redirecturl);
-        if(redirecturl!==null)
-            messenger.send(formatter.ficheinfo(shipType,redirecturl), sender);
+            this.doAct(sender,shipType.label);
           }
 
     }else if (attachment.type === "location") {
