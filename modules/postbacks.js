@@ -15,12 +15,6 @@ let messenger = require('./messenger'),
         };
 
 
-exports.schedule_visit = (sender) => {
-	console.log('schedule_visit');
-	messenger.getUserInfo(sender).then(response => {
-    	messenger.send(formatter.formatAppointment(response), sender);
-    });
-};
 
 exports.information = (sender) => {
 	//console.log('information');
@@ -29,10 +23,6 @@ exports.information = (sender) => {
   //  });
 };
 
-exports.confirm_visit = (sender, values) => {
-	console.log('values: ', values);
-    messenger.send({text: `Votre rendez-vous est confirmé pour le ${values[1]}`}, sender);
-};
 /*
 exports.link_postback = (sender, values) => {
 	console.log('link_postback');

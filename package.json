@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
-    "node": "7.10.1"
+    "node": "8.x"
   },
   "author": "Salesforce Team",
   "license": "ISC",
@@ -16,13 +16,11 @@
     "express": "^4.13.4",
     "moment": "^2.13.0",
     "numeral": "^1.5.3",
-    "request": "^2.71.0",
+    "request": "^2.78.0",
     "node-geocoder": "^3.16.0",
     "jsonwebtoken": "^7.1.9",
-    "request": "^2.78.0",
     "form-data": "^2.1.4",
     "request-promise": "^4.1.1",
-    "episode-7": "^1.1.0",
     "connect-sdk-nodejs": ">=2.2.0 <3.0.0"
   }
 }

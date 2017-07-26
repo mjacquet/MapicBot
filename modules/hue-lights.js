@@ -1,3 +1,5 @@
+"use strict";
+
 const hbid = process.env.HUE_BRIDGE_ID;
 const hbtoken = process.env.HUE_BRIDGE_TOKEN;
 const rp = require('request-promise');
@@ -9,35 +11,38 @@ var modes={orange:'{"on": true,"bri": 254,"hue": 6751,"sat": 254,"effect": "none
             off:'{"on": false}'
           }
 
+exports.reset = resp => {
+  doLight("tiefighter","off");
+  doLight("xwing","off");
+  doLight("uwing","off");
+};
 
-function* hueLights(light){
+exports.light = async(shipType) => {
+  doLight(shipType,"orange");
+};
+exports.blink = async(shipType) => {
+  doLight(shipType,"green");
+};
+exports.off= async(shipType) => {
+  doLight(shipType,"off");
+};
 
-var options = {
-  url: `https://client.meethue.com/api/0/lights/`+lights[light.shipType]+`/state`,
-  method: 'PUT',
-  headers: {
-    'Content-Type': 'application/json',
-    'x-token': hbtoken
-  },
-  body:modes[light.mode]
+var doLight = async(shipType,mode) =>{
+  var options = {
+    url: `https://client.meethue.com/api/0/lights/`+lights[shipType.replace('-','').replace(' ','').toLowerCase()]+`/state`,
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-token': hbtoken
+    },
+    body:modes[mode]
+  }
 
+  var result= await rp(options);
+  if(result.statusCode=='401'){
+    console.log('unauthorized hue api return');
+  }
+  else{
+    console.log("hue result",result.body);
+  }
 }
-//'{"on": true}'
-//console.log('hueAPI request',options);
-let { body, isUnauthorized } = yield Episode7.call((options) => {
-  return rp(options)
-  .then( body => ({ body }) )
-  .catch( error => {
-    if(error.statusCode === 401) {
-      return { isUnauthorized: true };
-    } else {
-      throw error;
-    }
-  })
-},options);
-
-//console.log('Hue api return:',body);
-return body;
-}
-
-module.exports = hueLights;
