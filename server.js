@@ -85,8 +85,8 @@ app.post('/webhook', async(req, res) => {
           }
           else {
             //let result = processor.match(event.message.text);
-            console.log('text',req.query.text);
-            let result = await einstein.getIntent(req.query.text);
+            console.log('text',event.message.text);
+            let result = await einstein.getIntent(event.message.text);
             console.log('intent',result);
             if (result.probability>0.9) {
                 let handler = handlers[result.label];
