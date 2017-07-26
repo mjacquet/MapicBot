@@ -44,24 +44,11 @@ exports.send = (message, recipient) => {
     });
 };
 
-exports.setZip = (zip) =>{
-    console.log('inside setZip');
-    theZip = zip;
-    return;
-};
-
-exports.getZip = () =>{
-    console.log('inside getZip');
-    return new Promise((resolve, reject) => {
-        //theZip = zip;
-        resolve(theZip);
-    });
-};
 
 exports.getUserInfo = (userId) => {
 
     return new Promise((resolve, reject) => {
-       
+
         request({
             url: `https://graph.facebook.com/v2.6/${userId}`,
             qs: {fields:"first_name,last_name,profile_pic", access_token: FB_PAGE_TOKEN},

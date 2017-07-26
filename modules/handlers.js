@@ -1,33 +1,16 @@
 "use strict";
 
 let messenger = require('./messenger'),
-    formatter = require('./formatter');
-    const hueLights = require('./hue-lights');
-    var Episode7 = require('episode-7');
+    formatter = require('./formatter'),
+    hueLights = require('./hue-lights');
 
-
-/*
-exports.test = (sender) => {
-    messenger.getUserInfo(sender).then(response => {
-        salesforce.createCase(response.first_name, response.last_name, sender).then(() => {
-            messenger.send(formatter.onBoard1(response), sender);
-        });
-    });
-};
-*/
 
 exports.orderdone = (req,res) => {
+    res.sendStatus(200);
     console.log('Payment Ingenico Done');
-//req.query.sender
-          Episode7.run(hueLights,{shipType:req.query.shipType,mode:"green"}).then((hueresult)=>{
-              //let jsvar2=JSON.parse(hueresult);
-              //console.log("hue result",jsvar2);
-              setTimeout(function(){Episode7.run(hueLights,{shipType:req.query.shipType,mode:"off"}).then((hueresult)=>{})}
-                ,10000);
-            });
-            messenger.send(formatter.recu(req.query.shipType), req.query.sender);
-
-            res.sendStatus(200);
+    hueLights.blink(req.query.shipType);
+    setTimeout(function(){hueLights.off(req.query.shipType);},10000);
+    messenger.send(formatter.recu(req.query.shipType), req.query.sender);
 };
 
 exports.start = (sender) => {

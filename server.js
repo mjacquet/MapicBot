@@ -13,7 +13,27 @@ var express = require('express'),
 app.set('port', process.env.PORT || 5000);
 
 app.use(bodyParser.json());
+
+/*local dev section*/
+if(process.env.DEVENV) {
+    console.log('Running in local dev env');
+
+    app.get('/test', (req, res) => {
+        console.log('dev start ',process.env.DEV_FB_SENDERID);
+        res.sendStatus(200);
+        messenger.send({text: `test dev env`}, process.env.DEV_FB_SENDERID);
+        uploads.processUpload(process.env.DEV_FB_SENDERID,
+          [{"type":"image","payload":{"url":"https://images-na.ssl-images-amazon.com/images/I/916d9Ww1QwL._SL1500_.jpg"}}]
+        );
+    });
+
+}
+
+/*end local dev section*/
+
+
 app.use(express.static('public'));
+
 app.get('/webhook', (req, res) => {
     if (req.query['hub.verify_token'] === FB_VERIFY_TOKEN) {
         res.send(req.query['hub.challenge']);
