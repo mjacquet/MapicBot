@@ -10,7 +10,7 @@ exports.classify = imageURL => new Promise((resolve, reject) => {
 
   const pvsUrl = process.env.EINSTEIN_VISION_URL;
   const accountId  = process.env.EINSTEIN_VISION_ACCOUNT_ID;
-  const privateKey = process.env.EINSTEIN_VISION_PRIVATE_KEY;
+  const privateKey = process.env.EINSTEIN_VISION_PRIVATE_KEY.replace(/\\n/g, '\n');
   const model= process.env.EINSTEIN_VISION_MODEL;
 //model with all pictures of all time N2I3KTHJV2M5R5DDW3H63K3XEQ
 //model with picture porte de versaille only DAH3BPSYBJBOCPXWPRDKONO2O4
