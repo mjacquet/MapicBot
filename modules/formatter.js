@@ -112,7 +112,7 @@ exports.ficheinfo = (shipType,checkouturl) => {
                       "title":"Acheter - "+price[shipType.replace('-','').replace(' ','').toLowerCase()]+"€",
                       "url": checkouturl,
                       "webview_height_ratio": "tall",
-                      "messenger_extensions": true,
+                      "messenger_extensions": false,
                       "webview_share_button":"hide"
                     }
                 ]
