@@ -34,7 +34,7 @@ var strings={
     },
     "infos":{
         "fr": "Un vaisseau vous plaît ? Envoyez-moi sa photo et je vous donnerai toutes les informations.",
-        "en": "You like ne of our spaceship? Send a picture and I'll give you all the details."
+        "en": "You like one of our spaceship? Send a picture and I'll give you all the details."
     },
     "locale":{
         "fr": "fr_FR",
