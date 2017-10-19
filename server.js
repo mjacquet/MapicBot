@@ -1,4 +1,5 @@
 "use strict";
+require('dotenv').load();
 
 var express = require('express'),
 bodyParser = require('body-parser'),
@@ -20,8 +21,11 @@ if(process.env.DEVENV) {
   console.log('Running in local dev env');
 
   app.get('/test', (req, res) => {
+    var formatter = require('./modules/formatter');
     console.log('dev start ',process.env.DEV_FB_SENDERID);
+    res.send(formatter.bonjour({"first_name":"max"}));
     res.sendStatus(200);
+
     /* test file upload
 
     messenger.send({text: `test dev env`}, process.env.DEV_FB_SENDERID);

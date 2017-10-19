@@ -1,6 +1,7 @@
 "use strict";
 
 let moment = require("moment"),
+    ml = require("./multilingual"),
     numeral = require("numeral");
 
  var price={"tiefighter":1250.99,"xwing":1399.99,"uwing":1250.99};
@@ -9,12 +10,12 @@ let moment = require("moment"),
 
 exports.bonjour = response => {
     return {
-        "text":"Bonjour " + response.first_name + ", et bienvenue dans votre assistant StarForce.",
+        "text":ml.get("hello",response.first_name),
     }
 };
 exports.shipChoice = () =>{
   return {
-      "text":"Quel vaisseau vous intéresse en particulier? ",
+      "text":ml.get("which"),
       "quick_replies":[
         {
           "content_type":"text",
@@ -96,12 +97,12 @@ exports.ficheinfo = (shipType,checkouturl) => {
                 "buttons": [
                     {
                         "type": "postback",
-                        "title": "Fiche Technique",
+                        "title": ml.get("specs"),
                         "payload": "fiche,"+shipType
                     },
                     {
                         "type":"web_url",
-                        "title":"Avis Communauté",
+                        "title":ml.get("avis"),
                         "url": "https://sdodemo-main-141e22218e0-144-15950af6391.force.com/starforce/s/topic/"+commlinks[shipType.replace('-','').replace(' ','').toLowerCase()]+"?"+process.env.HEROKU_RELEASE_VERSION,
                         "webview_height_ratio": "full",
                         "messenger_extensions": false
@@ -109,7 +110,7 @@ exports.ficheinfo = (shipType,checkouturl) => {
                     },
                     {
                       "type":"web_url",
-                      "title":"Acheter - "+price[shipType.replace('-','').replace(' ','').toLowerCase()]+"€",
+                      "title":ml.get("buy",price[shipType.replace('-','').replace(' ','').toLowerCase()]),
                       "url": checkouturl,
                       "webview_height_ratio": "tall",
                       "messenger_extensions": false,
