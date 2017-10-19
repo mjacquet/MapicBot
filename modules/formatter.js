@@ -75,14 +75,14 @@ exports.recu = shipType =>{
 exports.information = response => {
   //  console.log('onBoard2');
     return {
-        "text":"Un vaisseau vous plaît ? Envoyez-moi sa photo et je vous donnerai toutes les informations."
+        "text":ml.get("infos")
       }
 };
 
 exports.avis = vaisseau => {
   //  console.log('onBoard2');
     return {
-        "text":"Un vaisseau vous plaît ? Envoyez-moi sa photo et je vous donnerai toutes les informations."
+        "text":ml.get("infos")
       }
 };
 

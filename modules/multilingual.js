@@ -31,8 +31,11 @@ var strings={
     "norec":{
         "fr": "Je ne reconnais pas ce vaisseau. Merci de réessayer.",
         "en": "I do not recognize this spaceship. Please try again."
+    },
+    "infos":{
+        "fr": "Un vaisseau vous plaît ? Envoyez-moi sa photo et je vous donnerai toutes les informations.",
+        "en": "You like ne of our spaceship? Send a picture and I'll give you all the details."
     }
-    
 };
 
 
