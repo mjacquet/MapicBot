@@ -16,7 +16,7 @@ var options = {
 exports.doAct = async(sender, shipType) => {
   hueLights.light(shipType);
   messenger.send({text: ml.get("shipchoice",shipType)}, sender);
-  let returnUrl="https://sdo-demo-main-141e22218df-14-15950af6391.secure.force.com/Public/ingenico_PostCheckout?lang="+process.env.LANGUAGE+"sender="+sender+"&shipType="+shipType.replace('-','').replace(' ','').toLowerCase();
+  let returnUrl="https://sdo-demo-main-141e22218df-14-15950af6391.secure.force.com/Public/ingenico_PostCheckout?lang="+process.env.LANGUAGE+"&sender="+sender+"&shipType="+shipType.replace('-','').replace(' ','').toLowerCase();
 
   let redirecturl = await ingenico.createCheckout(returnUrl,shipType);
 //  console.log('ingenico',redirecturl);
