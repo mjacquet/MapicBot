@@ -136,7 +136,7 @@ exports.fiche = shipType => {
         "attachment": {
             "type": "image",
             "payload": {
-                "url": 'https://legocitybot.herokuapp.com/'+shipType.replace('-','').replace(' ','').toLowerCase()+'-specs.png?'+process.env.HEROKU_RELEASE_VERSION
+                "url": 'https://legocitybot.herokuapp.com/'+shipType.replace('-','').replace(' ','').toLowerCase()+'-specs-'+process.env.LANGUAGE+'.png?'+process.env.HEROKU_RELEASE_VERSION
             }
         }
     };

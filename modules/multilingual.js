@@ -19,7 +19,20 @@ var strings={
     "buy":{
         "fr": "Acheter - PLACEHOLDER€",
         "en": "Buy online - $PLACEHOLDER"
+    },
+    "shipchoice":{
+        "fr": "Le PLACEHOLDER. Très bon choix. Voilà ses caractéristiques:",
+        "en": "The PLACEHOLDER. Very good choice. Here are its detailed specs:"
+    },
+    "einstein":{
+        "fr": "Laissez-moi analyser cette photo avec Salesforce Einstein Vision Service...",
+        "en": "Let me analyse this picture with Einstein Vision..."
+    },
+    "norec":{
+        "fr": "Je ne reconnais pas ce vaisseau. Merci de réessayer.",
+        "en": "I do not recognize this spaceship. Please try again."
     }
+    
 };
 
 
