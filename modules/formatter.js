@@ -53,17 +53,11 @@ exports.recu = shipType =>{
             "title":shipType,
             "quantity":1,
             "price":price[shipType],
-            "currency":"EUR",
+            "currency":ml.get("currency"),
             "image_url":'https://legocitybot.herokuapp.com/'+shipType+'.png?'+process.env.HEROKU_RELEASE_VERSION
           }
         ],
-        "address":{
-          "street_1":"6 rue Daguerre",
-          "city":"Paris",
-          "postal_code":"75014",
-          "state":"Ile-De-France",
-          "country":"FR"
-        },
+        "address":ml.get("shipto"),
         "summary":{
           "total_cost":price[shipType]
         }
@@ -140,15 +134,4 @@ exports.fiche = shipType => {
             }
         }
     };
-};
-
-exports.sendLocation = response => {
-    return {
-        "text":"Où est situé votre logement?",
-        "quick_replies":[
-          {
-            "content_type":"location"
-          }
-        ]
-    }
 };

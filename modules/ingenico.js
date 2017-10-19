@@ -1,6 +1,7 @@
 "use strict";
 
 var connectSdk = require('connect-sdk-nodejs');
+let ml = require("./multilingual");
 var price={"tiefighter":125099,"xwing":139999,"uwing":125099};
 
 connectSdk.init({
@@ -17,7 +18,7 @@ connectSdk.init({
 exports.createCheckout = (returnUrl,shipType) => new Promise(async(resolve, reject) => {
   var body = {
     "hostedCheckoutSpecificInput": {
-      "locale": "fr_FR",
+      "locale": ml.get("locale"),
       "returnUrl": returnUrl,
       "paymentProductFilters":{
         "restrictTo":{
@@ -28,7 +29,7 @@ exports.createCheckout = (returnUrl,shipType) => new Promise(async(resolve, reje
     },
     "order": {
       "amountOfMoney": {
-        "currencyCode": "EUR",
+        "currencyCode": ml.get("currency"),
         "amount": price[shipType.replace('-','').replace(' ','').toLowerCase()]
       },
       "customer": {

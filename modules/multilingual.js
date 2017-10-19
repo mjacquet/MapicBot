@@ -35,7 +35,33 @@ var strings={
     "infos":{
         "fr": "Un vaisseau vous plaît ? Envoyez-moi sa photo et je vous donnerai toutes les informations.",
         "en": "You like ne of our spaceship? Send a picture and I'll give you all the details."
+    },
+    "locale":{
+        "fr": "fr_FR",
+        "en": "en_US"
+    },
+    "currency":{
+        "fr": "EUR",
+        "en": "USD"
+    },
+    "shipto":{
+        "fr": {
+            "street_1":"6 rue Daguerre",
+            "city":"Paris",
+            "postal_code":"75014",
+            "state":"Ile-De-France",
+            "country":"FR"
+          },
+        "en": {
+            "street_1":"747 Howard St",
+            "city":"San Francisco",
+            "postal_code":"94103",
+            "state":"California",
+            "country":"US"
+          }
     }
+
+    
 };
 
 
