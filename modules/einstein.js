@@ -93,8 +93,11 @@ var download = async(url) => {
     }
       var result= await request(options);
       var fs = require('fs');
-      fs.writeFileSync('/tmp/'+url, result.body);
-      return '@/tmp/'+url;
+      var uurl = require("url");
+      var filename=uurl.parse(url).pathname.split('/').slice(-1).pop();
+      console.log(filename);
+      fs.writeFileSync('/tmp/'+filename, result.body);
+      return '@/tmp/'+filename;
   };
 
 
