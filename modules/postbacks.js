@@ -2,6 +2,7 @@
 
 let messenger = require('./messenger'),
 formatter = require('./formatter'),
+einstein = require('./einstein')
 uploads = require('./uploads');
 
 
@@ -33,4 +34,7 @@ exports.information = (sender) => {
 
 exports.feedback = (sender,feedb) => {
   console.log('feedback',feedb);
+  var f=feedb.split(";");
+  var result=await einstein.feedback(sender,f[0],f[1]);
+  console.log(result);
 };

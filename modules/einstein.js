@@ -23,6 +23,20 @@ exports.classify = imageURL => new Promise(async(resolve, reject) => {
   resolve(visionresult.probabilities[0]);
 });
 
+exports.feedback = (token,url,label) => new Promise(async(resolve, reject) => {
+  var token = getToken();
+  if(token===null){
+    token = await updateToken();
+  }
+  let formData = {
+    modelId: model,
+    expectedLabel: label,
+    data: url
+  }
+  let visionresult = await doCall('/vision/feedback',formData,token);
+  resolve(visionresult);
+});
+
 exports.getIntent = text => new Promise(async(resolve, reject) => {
   var token = getToken();
   if(token===null){

@@ -147,17 +147,17 @@ exports.feedback = pUrl => {
                         {
                             "type": "postback",
                             "title": "X-wing",
-                            "payload": "feedback,{'type':'xwing','url'='"+pUrl+"'}"
+                            "payload": "feedback,xwing;"+pUrl
                         },
                         {
                             "type": "postback",
                             "title": "U-wing",
-                            "payload": "feedback,{'type':'uwing','url'='"+pUrl+"'}"
+                            "payload": "feedback,uwing;"+pUrl
                         },
                         {
                             "type": "postback",
                             "title": "Tie Fighter",
-                            "payload": "feedback,{'type':'tiefighter','url'='"+pUrl+"'}"
+                            "payload": "feedback,tiefighter;"+pUrl
                         }
                     ]
                 }
