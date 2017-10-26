@@ -41,7 +41,7 @@ exports.feedback = (token,label,url) => new Promise(async(resolve, reject) => {
     formData = {
       modelId: model
     }
-    let visionresult = await doCall('/vision/retrain',formData,token);
+    visionresult = await doCall('/vision/retrain',formData,token);
     
     resolve(visionresult);
   });
