@@ -25,13 +25,15 @@ exports.classify = imageURL => new Promise(async(resolve, reject) => {
 
 exports.feedback = (token,label,url) => new Promise(async(resolve, reject) => {
   var token = getToken();
+  var file = await download(url);
+  console.log(file);
   if(token===null){
     token = await updateToken();
   }
   let formData = {
     modelId: model,
     expectedLabel: label,
-    data: url
+    data: file
   }
   let visionresult = await doCall('/vision/feedback',formData,token);
   resolve(visionresult);
@@ -78,6 +80,20 @@ var doCall = async(service,formData,jwtToken) => {
     }
   return JSON.parse(result.body);
 };
+
+var download = async(url) => {  
+    var options = {
+        simple:true,
+        resolveWithFullResponse : true,
+        url: url,
+        method: 'GET',
+        headers: {
+          'Cache-Control': 'no-cache'
+        }
+    }
+      var result= await request(options);
+      return result.body;
+  };
 
 
 var updateToken = async() =>  {

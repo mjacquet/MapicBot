@@ -4,6 +4,8 @@ let messenger = require('./messenger'),
 formatter = require('./formatter'),
 einstein = require('./einstein'),
 uploads = require('./uploads');
+var http = require('http');
+var fs = require('fs');
 
 
 exports.acheter = (sender,shipType) => {
@@ -36,5 +38,4 @@ exports.feedback = (sender,feedb) => {
   console.log('feedback',feedb);
   var f=feedb.split(";");
   einstein.feedback(sender,f[0],f[1]).then(function(result){console.log(result);});
-  
 };
