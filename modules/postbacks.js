@@ -30,3 +30,7 @@ exports.tiefighter = (sender) => {
 exports.information = (sender) => {
   messenger.send(formatter.information(response), sender);
 };
+
+exports.feedback = (sender,feedb) => {
+  console.log('feedback',feedb);
+};
