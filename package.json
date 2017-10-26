@@ -23,6 +23,6 @@
     "numeral": "^1.5.3",
     "request": "^2.78.0",
     "request-promise": "^4.1.1",
-    "dotenv": "^4.0.0"
+    "ioredis": "^3.2.1"
   }
 }

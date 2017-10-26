@@ -6,7 +6,10 @@ einstein = require('./einstein'),
 nodeGeocoder = require('node-geocoder'),
 ingenico = require('./ingenico'),
 hueLights = require('./hue-lights'),
-ml = require("./multilingual");
+ml = require("./multilingual"),
+Redis = require('ioredis');
+var redis = new Redis(process.env.REDIS_URL);
+
 //require('./vision-service-mock')
 var options = {
   provider: 'google'
@@ -33,6 +36,7 @@ exports.processUpload = async(sender, attachments) => {
       hueLights.reset();
       messenger.send({text: ml.get("einstein")}, sender);
       setTimeout(function () {messenger.writingIcon(sender);}, 50)
+      redis.set(sender, attachment.payload.url);
       let shipType = await einstein.classify(attachment.payload.url);
       console.log('classification defined:',shipType);
       if(shipType.probability<0.4){

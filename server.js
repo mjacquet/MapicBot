@@ -8,9 +8,13 @@ handlers = require('./modules/handlers'),
 postbacks = require('./modules/postbacks'),
 uploads = require('./modules/uploads'),
 messenger = require('./modules/messenger'),
+messenger = require('./modules/formatter'),
 einstein = require('./modules/einstein'),
 FB_VERIFY_TOKEN = process.env.FB_VERIFY_TOKEN,
 app = express();
+
+var Redis = require('ioredis');
+var redis = new Redis(process.env.REDIS_URL);
 
 app.set('port', process.env.PORT || 5000);
 
@@ -19,11 +23,19 @@ app.use(bodyParser.json());
 /*local dev section*/
 if(process.env.DEVENV) {
   console.log('Running in local dev env');
+  
 
   app.get('/test', (req, res) => {
+
+    //redis.set('foo', 'bar');
+    redis.get('foo').then(function (result) {
+      console.log(result);
+    });
+    //redis.set('foo2', 'bar');
+
     var formatter = require('./modules/formatter');
     console.log('dev start ',process.env.DEV_FB_SENDERID);
-    res.send(formatter.bonjour({"first_name":"max"}));
+    //res.send(red);
     res.sendStatus(200);
 
     /* test file upload
@@ -90,18 +102,25 @@ app.post('/webhook', async(req, res) => {
       else {
         //let result = processor.match(event.message.text);
         console.log('text',event.message.text);
-        let result = await einstein.getIntent(event.message.text);
-        console.log('intent',result);
-        if (result.probability>0.9) {
-          let handler = handlers[result.label];
-          if (handler && typeof handler === "function") {
-            handler(sender, event.message.text);
-          } else {
-            console.log("Handler " + result.label + " is not defined");
-          }
+        if(event.message.text=='feedback' || event.message.text=='Feedback'){
+          redis.get(sender).then(function (result) {
+            messenger.send(formatter.feedback(result),sender);
+          });
         }
-        else {
+        else{
+          let result = await einstein.getIntent(event.message.text);
+          console.log('intent',result);
+          if (result.probability>0.9) {
+            let handler = handlers[result.label];
+            if (handler && typeof handler === "function") {
+              handler(sender, event.message.text);
+            } else {
+              console.log("Handler " + result.label + " is not defined");
+            }
+          }
+          else {
           messenger.send({text: `Désolé je n'ai pas compris.\nEnvoyez-moi la photo d'un vaisseau et je vous donnerai toutes les informations.`}, sender);
+          }
         }
       }
     } else if (event.postback) {

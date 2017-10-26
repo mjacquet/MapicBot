@@ -135,3 +135,41 @@ exports.fiche = shipType => {
         }
     };
 };
+
+exports.feedback = pUrl => {
+    
+        let elements = [];
+            elements.push(
+                {
+                    title: 'Quel est le bon vaisseau?',
+                    "image_url": pUrl,
+                    "buttons": [
+                        {
+                            "type": "postback",
+                            "title": "X-wing",
+                            "payload": "feedback,{'type':'xwing','url'='"+pUrl+"'}"
+                        },
+                        {
+                            "type": "postback",
+                            "title": "U-wing",
+                            "payload": "feedback,{'type':'uwing','url'='"+pUrl+"'}"
+                        },
+                        {
+                            "type": "postback",
+                            "title": "Tie Fighter",
+                            "payload": "feedback,{'type':'tiefighter','url'='"+pUrl+"'}"
+                        }
+                    ]
+                }
+            );
+    // console.log("bouton",elements[0].buttons[2]);
+        return {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": elements
+                }
+            }
+        };
+    };
