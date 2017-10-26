@@ -37,6 +37,12 @@ exports.feedback = (token,label,url) => new Promise(async(resolve, reject) => {
       data: fs.createReadStream(filename)
     }
     let visionresult = await doCall('/vision/feedback',formData,token);
+    console.log("feedback result",visionresult);
+    let formData = {
+      modelId: model
+    }
+    let visionresult = await doCall('/vision/retrain',formData,token);
+    
     resolve(visionresult);
   });
  

@@ -42,7 +42,7 @@ var doLight = async(shipType,mode) =>{
       console.log('unauthorized hue api return');
     }
     else{
-      console.log("hue result",result.body);
+     // console.log("hue result",result.body);
     }
   }
 }
