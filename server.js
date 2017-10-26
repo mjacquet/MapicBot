@@ -26,15 +26,11 @@ if(process.env.DEVENV) {
   
 
   app.get('/test', (req, res) => {
-
-    //redis.set('foo', 'bar');
-    redis.get('foo').then(function (result) {
-      console.log(result);
-    });
-    //redis.set('foo2', 'bar');
-
-    var formatter = require('./modules/formatter');
     console.log('dev start ',process.env.DEV_FB_SENDERID);
+   postbacks.feedback(process.env.DEV_FB_SENDERID,'U-Wing;https://scontent.xx.fbcdn.net/v/t35.0-12/22879383_1749631485338982_570357329_o.jpg?_nc_ad=z-m&_nc_cid=0&oh=2a00a9de4d7643468ce6c27ef9c11829&oe=59F3E06D');
+    
+    
+   
     //res.send(red);
     res.sendStatus(200);
 

@@ -1,6 +1,7 @@
 "use strict";
 const jwt   = require('jsonwebtoken');
 let request = require('request-promise');
+var fs = require('fs');
 
 const pvsUrl = process.env.EINSTEIN_VISION_URL;
 const accountId  = process.env.EINSTEIN_VISION_ACCOUNT_ID;
@@ -25,18 +26,20 @@ exports.classify = imageURL => new Promise(async(resolve, reject) => {
 
 exports.feedback = (token,label,url) => new Promise(async(resolve, reject) => {
   var token = getToken();
-  var file = await download(url);
-  console.log(file);
-  if(token===null){
-    token = await updateToken();
-  }
-  let formData = {
-    modelId: model,
-    expectedLabel: label,
-    data: file
-  }
-  let visionresult = await doCall('/vision/feedback',formData,token);
-  resolve(visionresult);
+  download(url,async function (filename){
+    console.log(filename);
+    if(token===null){
+      token = await updateToken();
+    }
+    let formData = {
+      modelId: model,
+      expectedLabel: label,
+      data: fs.createReadStream(filename)
+    }
+    let visionresult = await doCall('/vision/feedback',formData,token);
+    resolve(visionresult);
+  });
+ 
 });
 
 exports.getIntent = text => new Promise(async(resolve, reject) => {
@@ -81,8 +84,8 @@ var doCall = async(service,formData,jwtToken) => {
   return JSON.parse(result.body);
 };
 
-var download = async(url) => {  
-    var options = {
+var download = async(uri,dlcallback) => {  
+  /*  var options = {
         simple:true,
         resolveWithFullResponse : true,
         url: url,
@@ -92,12 +95,23 @@ var download = async(url) => {
         }
     }
       var result= await request(options);
-      var fs = require('fs');
+      
       var uurl = require("url");
       var filename=uurl.parse(url).pathname.split('/').slice(-1).pop();
-      console.log(filename);
-      fs.writeFileSync('/tmp/'+filename, result.body);
-      return '@/tmp/'+filename;
+      
+      fs.writeFileSync('/tmp/'+filename, result.body,"binary");
+      return '/tmp/'+filename;
+
+  
+    var download = function(uri, filename, callback){*/
+
+      var uurl = require("url");
+      var filename=uurl.parse(uri).pathname.split('/').slice(-1).pop();
+    request.head(uri,async  function(err, res, body){
+      var t= await request(uri).pipe(fs.createWriteStream('/tmp/'+filename));
+      dlcallback('/tmp/'+filename);
+    });
+  //};
   };
 
 
