@@ -23,7 +23,7 @@ exports.classify = imageURL => new Promise(async(resolve, reject) => {
   resolve(visionresult.probabilities[0]);
 });
 
-exports.feedback = (token,url,label) => new Promise(async(resolve, reject) => {
+exports.feedback = (token,label,url) => new Promise(async(resolve, reject) => {
   var token = getToken();
   if(token===null){
     token = await updateToken();
