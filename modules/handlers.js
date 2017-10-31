@@ -4,6 +4,8 @@ let messenger = require('./messenger'),
 formatter = require('./formatter'),
 hueLights = require('./hue-lights'),
 uploads = require('./uploads');
+var Redis = require('ioredis');
+var redis = new Redis(process.env.REDIS_URL);
 
 
 exports.orderdone = (req,res) => {

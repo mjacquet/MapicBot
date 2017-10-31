@@ -58,6 +58,7 @@ exports.getIntent = text => new Promise(async(resolve, reject) => {
     document : text
   }
   let intentresult = await doCall('/language/intent',formData,token);
+  console.log('einstein intent:',intentresult);
   resolve(intentresult.probabilities[0]);
 });
 
