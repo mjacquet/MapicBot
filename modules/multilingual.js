@@ -1,28 +1,28 @@
 var lang = process.env.LANGUAGE;
 var strings={
     "hello":{
-        "fr":"Bonjour, PLACEHOLDER et bienvenue dans votre assistant StarForce.",
-        "en":"Hello PLACEHOLDER, and welcome to your StarForce assistant."
+        "fr":"Bonjour PLACEHOLDER, comment puis-je vous aider?",
+        "en":"Hello PLACEHOLDER, how may I help you?"
     },
-    "which":{
-        "fr":"Quel vaisseau vous intéresse en particulier? ",
-        "en":"Which spaceship do you prefer? "
+    "lookingforrestaurants":{
+        "fr":"Je cherche le restaurant parfait pour vous! ",
+        "en":"I am looking for the perfect pace for you!"
     },
-    "specs":{
-        "fr": "Fiche Technique",
-        "en": "Technical Specs"
+    "menu":{
+        "fr": "Menu du jour",
+        "en": "Menu"
     },
-    "avis":{
-        "fr": "Avis Communauté",
-        "en": "Community Reviews"
+    "book":{
+        "fr": "Réserver",
+        "en": "Book"
     },
-    "buy":{
-        "fr": "Acheter - PLACEHOLDER€",
-        "en": "Buy online - $PLACEHOLDER"
+    "map":{
+        "fr": "S'y rendre",
+        "en": "Directions"
     },
-    "shipchoice":{
-        "fr": "Le PLACEHOLDER. Très bon choix. Voilà ses caractéristiques:",
-        "en": "The PLACEHOLDER. Very good choice. Here are its detailed specs:"
+    "nbpax":{
+        "fr": "Combien de convives?",
+        "en": "How many people?"
     },
     "einstein":{
         "fr": "Laissez-moi analyser cette photo avec Salesforce Einstein Vision Service...",

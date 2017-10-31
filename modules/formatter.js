@@ -13,28 +13,77 @@ exports.bonjour = response => {
         "text":ml.get("hello",response.first_name),
     }
 };
-exports.shipChoice = () =>{
+exports.looking = () =>{
   return {
-      "text":ml.get("which"),
-      "quick_replies":[
-        {
-          "content_type":"text",
-          "title":"X-WING",
-          "payload":"xwing"
-        },
-        {
-          "content_type":"text",
-          "title":"U-WING",
-          "payload":"uwing"
-        },
-        {
-          "content_type":"text",
-          "title":"Tie Fighter",
-          "payload":"tiefighter"
-        }
-      ]
+      "text":ml.get("lookingforrestaurants"),
   }
 }
+
+
+  exports.information = () => {
+    
+        let elements = [];
+            elements.push(
+                {
+                    title: "Mapic Sushi",
+                    "image_url": 'https://legocitybot.herokuapp.com/sushi.png?'+process.env.HEROKU_RELEASE_VERSION,
+                    "buttons": [
+                        {
+                            "type": "postback",
+                            "title": ml.get("menu"),
+                            "payload": "menu,sushi"
+                        },
+                        {
+                            "type":"postback",
+                            "title":ml.get("book"),
+                            "payload": "book,sushi"
+    
+                        },
+                        {
+                            "type":"postback",
+                            "title":ml.get("map"),
+                            "payload": "map,sushi"
+    
+                        }
+                    ]
+                }
+            );
+            elements.push(
+                {
+                    title: "Burgers at Mapix",
+                    "image_url": 'https://legocitybot.herokuapp.com/burger.png?'+process.env.HEROKU_RELEASE_VERSION,
+                    "buttons": [
+                        {
+                            "type": "postback",
+                            "title": ml.get("menu"),
+                            "payload": "menu,burger"
+                        },
+                        {
+                            "type":"postback",
+                            "title":ml.get("book"),
+                            "payload": "book,burger"
+    
+                        },
+                        {
+                            "type":"postback",
+                            "title":ml.get("map"),
+                            "payload": "map,burger"
+    
+                        }
+                    ]
+                }
+            );
+    // console.log("bouton",elements[0].buttons[2]);
+        return {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": elements
+                }
+            }
+        };
+    };
 
 exports.recu = shipType =>{
 
@@ -66,12 +115,6 @@ exports.recu = shipType =>{
   }
 };
 
-exports.information = response => {
-  //  console.log('onBoard2');
-    return {
-        "text":ml.get("infos")
-      }
-};
 
 exports.avis = vaisseau => {
   //  console.log('onBoard2');

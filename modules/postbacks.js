@@ -6,7 +6,12 @@ einstein = require('./einstein'),
 uploads = require('./uploads');
 var http = require('http');
 var fs = require('fs');
+var ml = require("./multilingual");
 
+exports.book = (sender,restaurant) => {
+  console.log('book  ',restaurant );
+  messenger.send({text: ml.get("nbpax")}, sender);
+};
 
 exports.acheter = (sender,shipType) => {
   console.log('acheter  ',shipType );

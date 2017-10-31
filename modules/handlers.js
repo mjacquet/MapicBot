@@ -16,24 +16,26 @@ exports.orderdone = (req,res) => {
 
 exports.Greetings = async(sender) => {
   console.log('start',sender);
-  if(sender!="822485231243369"){
+ // if(sender!="822485231243369"){
     let response=await messenger.getUserInfo(sender);
     messenger.send(formatter.bonjour(response), sender);
-    setTimeout(function () {
+   /* setTimeout(function () {
       messenger.writingIcon(sender);
     }, 500)
     setTimeout(function () {
       messenger.send(formatter.information(response), sender);
-    }, 2000)
-  }
+    }, 2000)*/
+  //}
 };
 
-exports.InfoShip = (sender,text) => {
-  let str=text.replace('-','').replace(' ','').toLowerCase();
-  if(str.includes("xwing")){uploads.doAct(sender,"X-Wing");}
-  else if (str.includes("tiefighter")){uploads.doAct(sender,"Tie Fighter");}
-  else if (str.includes("uwing")){uploads.doAct(sender,"U-Wing");}
-  else {messenger.send(formatter.shipChoice(), sender);}
+exports.repas = (sender,text) => {
+  messenger.send(formatter.looking(), sender);
+  setTimeout(function () {
+    messenger.writingIcon(sender);
+  }, 500)
+  setTimeout(function () {
+    messenger.send(formatter.information(response), sender);
+  }, 1500)
 };
 
 
