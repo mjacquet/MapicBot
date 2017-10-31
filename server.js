@@ -115,7 +115,7 @@ app.post('/webhook', async(req, res) => {
             }
           }
           else {
-          messenger.send({text: `Désolé je n'ai pas compris.\nEnvoyez-moi la photo d'un vaisseau et je vous donnerai toutes les informations.`}, sender);
+          messenger.send({text: `Sorry, I didn't understand. Let me know if you ar ehingry and I'd be glad to help you find a place to eat!`}, sender);
           }
         }
       }

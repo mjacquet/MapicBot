@@ -34,11 +34,11 @@ exports.repas = (sender,text) => {
     messenger.writingIcon(sender);
   }, 500)
   setTimeout(function () {
-    messenger.send(formatter.information(response), sender);
+    messenger.send(formatter.information(), sender);
   }, 1500)
 };
 
 
 exports.information = (sender) => {
-  messenger.send(formatter.information(response), sender);
+  messenger.send(formatter.information(), sender);
 };
