@@ -10,6 +10,26 @@
     "FB_VERIFY_TOKEN": {
       "description": "Facebook Verify Token",
       "value":""
-    }
+    },
+    "EINSTEIN_VISION_ACCOUNT_ID": {
+      "description": "Einstein.ai username",
+      "value":""
+    },
+    "EINSTEIN_LANGUAGE_MODEL": {
+      "description": "Einstein.ai language model",
+      "value":""
+    },
+    "EINSTEIN_VISION_URL": {
+      "description": "Einstein.ai url",
+      "value":"https://api.einstein.ai/"
+    },
+    "EINSTEIN_VISION_PRIVATE_KEY": {
+      "description": "Einstein.ai private key",
+      "value":""
+    },
+    "LANGUAGE": {
+      "description": "Langue du bot",
+      "value":"fr"
+    }    
   }
 }
