@@ -12,7 +12,7 @@ var redis = new Redis(process.env.REDIS_URL);
 
 exports.book = (sender,restaurant) => {
   console.log('book  ',restaurant );
-  redis.set(sender,{"action":"book","data":{"place":"MAPIC Sushi"}});
+  redis.set(sender,'{"action":"book","data":{"place":"MAPIC Sushi"}}');
   messenger.send({text: ml.get("nbpax")}, sender);
 };
 
@@ -25,9 +25,10 @@ exports.booktime = (sender,when) => {
   console.log('booktime  ',when );
   redis.get(sender).then(function (result) {
     // messenger.send(formatter.feedback(result),sender);
+    result=JSON.parse(result);
     result.data.time=when;
     result.action='settime';
-    redis.set(sender,result);
+    redis.set(sender,JSON.stringify(result));
     console.log('redis get',JSON.stringify(result));
     messenger.send(formatter.confirm(result), sender);
   });

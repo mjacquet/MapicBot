@@ -39,7 +39,7 @@ exports.booknbr = (sender,memory,nbpax) => {
   //should check the input of nbpax
   memory.data.nbpax=nbpax;
   memory.action="booknbr";
-  redis.set(sender,memory);
+  redis.set(sender,JSON.stringify(memory));
   messenger.send(formatter.time(), sender);
 };
 

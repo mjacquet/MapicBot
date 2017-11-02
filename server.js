@@ -98,7 +98,7 @@ app.post('/webhook', async(req, res) => {
         console.log('text',event.message.text);
         if(event.message.text=='feedback' || event.message.text=='Feedback'){
           redis.get(sender).then(function (result) {
-            messenger.send(formatter.feedback(result),sender);
+            messenger.send(formatter.feedback(JSON.parse(result),sender));
           });
         }
         else{
@@ -109,7 +109,7 @@ app.post('/webhook', async(req, res) => {
             let result={"label":event.message.text};
             let handler = handlers[result.label];
             if (handler && typeof handler === "function") {
-              redis.set(sender,{"action":result.label,"data":{}});
+              redis.set(sender,'{"action":'+result.label+',"data":{}}');
               handler(sender, event.message.text);
             } else {
               console.log("Handler " + result.label + " is not defined");
@@ -119,7 +119,8 @@ app.post('/webhook', async(req, res) => {
             //conversationnal state based on ready
             redis.get(sender).then(function (result) {
              // messenger.send(formatter.feedback(result),sender);
-              console.log('redis get',JSON.stringify(result));
+              console.log('redis get',result);
+              result=JSON.parse(result);
               if(result.action=="book")handlers.booknbr(sender,result,event.message.text);
               //si pas de conversation en cours
               else
