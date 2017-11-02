@@ -60,12 +60,6 @@ exports.confirm = (details) =>{
     }
   };
 
-exports.time = () =>{
-    return {
-        "text":ml.get("timing"),
-    }
-  };
-
   exports.information = () => {
     
         let elements = [];
