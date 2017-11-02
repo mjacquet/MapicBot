@@ -13,6 +13,13 @@ exports.bonjour = response => {
         "text":ml.get("hello",response.first_name),
     }
 };
+
+exports.looking = () =>{
+    return {
+        "text":ml.get("lookingforrestaurants")
+    }
+  };
+
 exports.time = () =>{
   return {
       "text":ml.get("lookingforrestaurants"),
