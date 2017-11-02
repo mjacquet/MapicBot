@@ -84,11 +84,11 @@ app.post('/webhook', async(req, res) => {
       messenger.send({text: `Sorry I'm taking a break right now.`}, sender);
     } else if (event.message && event.message.text) {
       if (event.message.quick_reply) {
-        let payload = event.message.quick_reply.payload;
+        let payload = event.postback.payload.split(",");
         console.log(event.message.quick_reply.payload);
-        let postback = postbacks[payload];
+        let postback = postbacks[payload[0]];
         if (postback && typeof postback === "function") {
-          postback(sender, payload);
+          postback(sender, payload[1]);
         } else {
           console.log("Postback Quick Reply " + postback + " is not defined");
         }
