@@ -21,6 +21,18 @@ exports.map = (sender,restaurant) => {
   messenger.send(formatter.map(restaurant), sender);
 };
 
+exports.booktime = (sender,when) => {
+  console.log('booktime  ',when );
+  redis.get(sender).then(function (result) {
+    // messenger.send(formatter.feedback(result),sender);
+    result.data.time=when;
+    result.action='settime';
+    redis.set(sender,result);
+    console.log('redis get',JSON.parse(result);
+    messenger.send(formatter.confirm(result), sender);
+  }
+};
+
 exports.acheter = (sender,shipType) => {
   console.log('acheter  ',shipType );
   messenger.send({text: 'acheter'}, sender);
@@ -31,7 +43,6 @@ exports.fiche = (sender,shipType) => {
   messenger.send(formatter.fiche(shipType), sender);
 };
 
-};
 
 exports.information = (sender) => {
   messenger.send(formatter.information(response), sender);
