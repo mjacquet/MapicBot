@@ -120,7 +120,7 @@ app.post('/webhook', async(req, res) => {
             //conversationnal state based on ready
             redis.get(sender).then(function (result) {
              // messenger.send(formatter.feedback(result),sender);
-
+              console.log('redis get',result);
               //si pas de conversation en cours
               messenger.send({text: `Sorry, I didn't understand. Let me know if you are hungry and I'd be glad to help you find a place to eat!`}, sender);
             });

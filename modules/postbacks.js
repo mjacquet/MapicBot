@@ -7,9 +7,12 @@ uploads = require('./uploads');
 var http = require('http');
 var fs = require('fs');
 var ml = require("./multilingual");
+var Redis = require('ioredis');
+var redis = new Redis(process.env.REDIS_URL);
 
 exports.book = (sender,restaurant) => {
   console.log('book  ',restaurant );
+  redis.set(sender,{"action":"book","data":{}});
   messenger.send({text: ml.get("nbpax")}, sender);
 };
 
