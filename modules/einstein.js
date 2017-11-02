@@ -3,6 +3,9 @@ const jwt   = require('jsonwebtoken');
 let request = require('request-promise');
 var fs = require('fs');
 //XBEAK4INYSWRUHZHZRO7DHYEYQ
+
+
+//latest:7ZN3D54SIJP5EX4KPPCZ3YUJVM
 const pvsUrl = process.env.EINSTEIN_VISION_URL;
 const accountId  = process.env.EINSTEIN_VISION_ACCOUNT_ID;
 const privateKey = process.env.EINSTEIN_VISION_PRIVATE_KEY.replace(/\\n/g, '\n');

@@ -104,9 +104,11 @@ app.post('/webhook', async(req, res) => {
           });
         }
         else{
-          let result = await einstein.getIntent(event.message.text);
+        //  let result = await einstein.getIntent(event.message.text);
           console.log('intent',result);
-          if (result.probability>0.6) {
+         // if (result.probability>0.6 ) {
+            if(event.message.text=='Greetings' || event.message.text=='repas'){
+            let result={"label":event.message.text};
             let handler = handlers[result.label];
             if (handler && typeof handler === "function") {
               handler(sender, event.message.text);
