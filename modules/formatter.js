@@ -22,7 +22,7 @@ exports.looking = () =>{
 
 exports.time = () =>{
   return {
-      "text":ml.get("lookingforrestaurants"),
+      "text":ml.get("timing"),
       "quick_replies":[
         {
           "content_type":"text",
