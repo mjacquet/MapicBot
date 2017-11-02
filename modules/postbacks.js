@@ -13,6 +13,11 @@ exports.book = (sender,restaurant) => {
   messenger.send({text: ml.get("nbpax")}, sender);
 };
 
+exports.map = (sender,restaurant) => {
+  console.log('map  ',restaurant );
+  messenger.send(formatter.map(restaurant), sender);
+};
+
 exports.acheter = (sender,shipType) => {
   console.log('acheter  ',shipType );
   messenger.send({text: 'acheter'}, sender);

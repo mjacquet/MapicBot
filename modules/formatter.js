@@ -85,6 +85,17 @@ exports.looking = () =>{
         };
     };
 
+    exports.map = restaurant => {
+        return {
+            "attachment": {
+                "type": "image",
+                "payload": {
+                    "url": 'https://mapicbot.herokuapp.com/map.gif?'+process.env.HEROKU_RELEASE_VERSION
+                }
+            }
+        };
+    };
+
 exports.recu = shipType =>{
 
     return {

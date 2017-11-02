@@ -105,7 +105,7 @@ app.post('/webhook', async(req, res) => {
         }
         else{
         //  let result = await einstein.getIntent(event.message.text);
-          console.log('intent',result);
+          //console.log('intent',result);
          // if (result.probability>0.6 ) {
             if(event.message.text=='Greetings' || event.message.text=='repas'){
             let result={"label":event.message.text};
