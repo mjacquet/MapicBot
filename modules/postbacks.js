@@ -12,7 +12,7 @@ var redis = new Redis(process.env.REDIS_URL);
 
 exports.book = (sender,restaurant) => {
   console.log('book  ',restaurant );
-  redis.set(sender,{"action":"book","data":{}});
+  redis.set(sender,{"action":"book","data":{"place":"MAPIC Sushi"}});
   messenger.send({text: ml.get("nbpax")}, sender);
 };
 
@@ -31,16 +31,6 @@ exports.fiche = (sender,shipType) => {
   messenger.send(formatter.fiche(shipType), sender);
 };
 
-exports.xwing = (sender) => {
-  uploads.doAct(sender,"X-Wing");
-};
-
-exports.uwing = (sender) => {
-  uploads.doAct(sender,"U-Wing");
-};
-
-exports.tiefighter = (sender) => {
-  uploads.doAct(sender,"Tie Fighter");
 };
 
 exports.information = (sender) => {

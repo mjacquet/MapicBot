@@ -24,9 +24,9 @@ var strings={
         "fr": "Combien de convives?",
         "en": "How many people?"
     },
-    "einstein":{
-        "fr": "Laissez-moi analyser cette photo avec Salesforce Einstein Vision Service...",
-        "en": "Let me analyse this picture with Einstein Vision..."
+    "timing":{
+        "fr": "Pour quand souhaitez-vous réserver?",
+        "en": "When would like a table?"
     },
     "norec":{
         "fr": "Je ne reconnais pas ce vaisseau. Merci de réessayer.",

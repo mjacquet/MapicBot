@@ -2,19 +2,9 @@
 
 let messenger = require('./messenger'),
 formatter = require('./formatter'),
-hueLights = require('./hue-lights'),
 uploads = require('./uploads');
 var Redis = require('ioredis');
 var redis = new Redis(process.env.REDIS_URL);
-
-
-exports.orderdone = (req,res) => {
-  res.sendStatus(200);
-  console.log('Payment Ingenico Done');
-  hueLights.blink(req.query.shipType);
-  setTimeout(function(){hueLights.off(req.query.shipType);},10000);
-  messenger.send(formatter.recu(req.query.shipType), req.query.sender);
-};
 
 exports.Greetings = async(sender) => {
   console.log('start',sender);
@@ -44,3 +34,11 @@ exports.repas = (sender,text) => {
 exports.information = (sender) => {
   messenger.send(formatter.information(), sender);
 };
+
+exports.booknbr = (sender,memory,nbpax) => {
+  //should check the input of nbpax
+  memory.data.nbpax=nbpax;
+  redis.set(sender,memory);
+  messenger.send(formatter.time(), sender);
+};
+

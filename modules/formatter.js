@@ -16,9 +16,31 @@ exports.bonjour = response => {
 exports.looking = () =>{
   return {
       "text":ml.get("lookingforrestaurants"),
+      "quick_replies":[
+        {
+          "content_type":"text",
+          "title":"Now",
+          "payload":"booktime,now"
+        },
+        {
+            "content_type":"text",
+            "title":"In 15 minutes",
+            "payload":"booktime,in 15 minutes"
+        },
+        {
+          "content_type":"text",
+          "title":"In 30 minutes",
+          "payload":"booktime,in 30 minutes"
+        }
+      ]
   }
 }
 
+exports.time = () =>{
+    return {
+        "text":ml.get("timing"),
+    }
+  }
 
   exports.information = () => {
     
@@ -50,7 +72,7 @@ exports.looking = () =>{
             );
             elements.push(
                 {
-                    title: "Burgers at Mapix",
+                    title: "Burgers at Mapic",
                     "image_url": 'https://mapicbot.herokuapp.com/burger.png?'+process.env.HEROKU_RELEASE_VERSION,
                     "buttons": [
                         {
