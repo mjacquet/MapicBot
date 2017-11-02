@@ -125,7 +125,7 @@ exports.confirm = (details) =>{
         };
     };
 
-    exports.map = restaurant => {
+    exports.map = (restaurant) => {
         return {
             "attachment": {
                 "type": "image",
