@@ -130,7 +130,7 @@ exports.confirm = (details) =>{
             "attachment": {
                 "type": "image",
                 "payload": {
-                    "url": 'https://mapicbot.herokuapp.com/map.gif?'+process.env.HEROKU_RELEASE_VERSION
+                    "url": "https://mapicbot.herokuapp.com/map.gif?"+process.env.HEROKU_RELEASE_VERSION
                 }
             }
         };
