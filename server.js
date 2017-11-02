@@ -84,7 +84,7 @@ app.post('/webhook', async(req, res) => {
       messenger.send({text: `Sorry I'm taking a break right now.`}, sender);
     } else if (event.message && event.message.text) {
       if (event.message.quick_reply) {
-        let payload = event.postback.payload.split(",");
+        let payload = event.message.quick_reply.payload.split(",");
         console.log(event.message.quick_reply.payload);
         let postback = postbacks[payload[0]];
         if (postback && typeof postback === "function") {
