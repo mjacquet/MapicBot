@@ -44,7 +44,7 @@ exports.time = () =>{
 };
 exports.confirm = (details) =>{
     return {
-        "text":"Would you like to confirm a table for "+details.data.nbpax+" pax at "+details.data.place+" "+details.data.time,
+        "text":"Would you like to confirm a table for "+details.data.nbpax+" pax at "+details.data.place+" "+details.data.time+"?",
         "quick_replies":[
           {
             "content_type":"text",
