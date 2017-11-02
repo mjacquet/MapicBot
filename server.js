@@ -123,8 +123,8 @@ app.post('/webhook', async(req, res) => {
              // messenger.send(formatter.feedback(result),sender);
               console.log('redis get',JSON.parse(result));
               if(result.action=="book")handlers.booknbr(sender,result,event.message.text);
-              
               //si pas de conversation en cours
+              else
               messenger.send({text: `Sorry, I didn't understand. Let me know if you are hungry and I'd be glad to help you find a place to eat!`}, sender);
             });
 
