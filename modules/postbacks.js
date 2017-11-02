@@ -37,7 +37,6 @@ exports.booktime = (sender,when) => {
 exports.confirm = (sender,payload) => {
   console.log('confirm  ',payload);
   if(payload=='yes'){
-    messenger.send(formatter.map(payload), sender);
     messenger.send({text: ml.get('confirm')}, sender);
     setTimeout(function () {
       messenger.writingIcon(sender);
