@@ -34,7 +34,7 @@ exports.time = () =>{
         }
       ]
   }
-}
+};
 exports.confirm = (details) =>{
     return {
         "text":"Would you like to confirm a table for "+details.data.nbpax+" pax at "+details.data.place+" "+details.data.time,
@@ -51,13 +51,13 @@ exports.confirm = (details) =>{
           }
         ]
     }
-  }
+  };
 
 exports.time = () =>{
     return {
         "text":ml.get("timing"),
     }
-  }
+  };
 
   exports.information = () => {
     
