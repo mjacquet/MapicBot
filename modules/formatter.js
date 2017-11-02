@@ -13,7 +13,7 @@ exports.bonjour = response => {
         "text":ml.get("hello",response.first_name),
     }
 };
-exports.looking = () =>{
+exports.time = () =>{
   return {
       "text":ml.get("lookingforrestaurants"),
       "quick_replies":[
@@ -35,6 +35,23 @@ exports.looking = () =>{
       ]
   }
 }
+exports.confirm = (details) =>{
+    return {
+        "text":"Would you like to confirm a table for "+details.data.nbpax+" pax at "+details.data.place+" "+details.data.time,
+        "quick_replies":[
+          {
+            "content_type":"text",
+            "title":"Book",
+            "payload":"confirm,yes"
+          },
+          {
+              "content_type":"text",
+              "title":"Cancel",
+              "payload":"confirm,no"
+          }
+        ]
+    }
+  }
 
 exports.time = () =>{
     return {
