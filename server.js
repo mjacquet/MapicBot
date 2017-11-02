@@ -111,6 +111,7 @@ app.post('/webhook', async(req, res) => {
             let result={"label":event.message.text};
             let handler = handlers[result.label];
             if (handler && typeof handler === "function") {
+              redis.set(sender,{"action":result.label,"data":{}});
               handler(sender, event.message.text);
             } else {
               console.log("Handler " + result.label + " is not defined");
