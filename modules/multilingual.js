@@ -28,9 +28,9 @@ var strings={
         "fr": "Pour quand souhaitez-vous réserver?",
         "en": "When would like a table?"
     },
-    "norec":{
-        "fr": "Je ne reconnais pas ce vaisseau. Merci de réessayer.",
-        "en": "I do not recognize this spaceship. Please try again."
+    "confirm":{
+        "fr": "Merci! Nous vous attendons avec impatience. Voici le chemin pour venir à nous.",
+        "en": "Thanks, we are eager to see you there! Here is a map to come to us."
     },
     "infos":{
         "fr": "Un vaisseau vous plaît ? Envoyez-moi sa photo et je vous donnerai toutes les informations.",

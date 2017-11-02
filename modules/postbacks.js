@@ -37,17 +37,15 @@ exports.booktime = (sender,when) => {
 exports.confirm = (sender,payload) => {
   console.log('confirm  ',payload);
   if(payload=='yes'){
-    messenger.send(formatter.map(restaurant), sender);
+    messenger.send({text: ml.get('confirm')}, sender);
     setTimeout(function () {
       messenger.writingIcon(sender);
     }, 500)
     setTimeout(function () {
-      messenger.send(formatter.information(), sender);
+      messenger.send(formatter.map(payload, sender);
     }, 1500)
 
-
-    messenger.send(formatter.map(restaurant), sender);
-  }
+  }else  messenger.send({text: 'Canceled'}, sender);
   
 };
 
