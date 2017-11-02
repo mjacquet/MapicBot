@@ -28,7 +28,7 @@ exports.booktime = (sender,when) => {
     result.data.time=when;
     result.action='settime';
     redis.set(sender,result);
-    console.log('redis get',JSON.parse(result));
+    console.log('redis get',JSON.stringify(result));
     messenger.send(formatter.confirm(result), sender);
   });
 };

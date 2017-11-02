@@ -119,7 +119,7 @@ app.post('/webhook', async(req, res) => {
             //conversationnal state based on ready
             redis.get(sender).then(function (result) {
              // messenger.send(formatter.feedback(result),sender);
-              console.log('redis get',JSON.parse(result));
+              console.log('redis get',JSON.stringify(result);
               if(result.action=="book")handlers.booknbr(sender,result,event.message.text);
               //si pas de conversation en cours
               else
