@@ -26,7 +26,7 @@ exports.looking = () =>{
             elements.push(
                 {
                     title: "Mapic Sushi",
-                    "image_url": 'https://legocitybot.herokuapp.com/sushi.png?'+process.env.HEROKU_RELEASE_VERSION,
+                    "image_url": 'https://mapicbot.herokuapp.com/sushi.png?'+process.env.HEROKU_RELEASE_VERSION,
                     "buttons": [
                         {
                             "type": "postback",
@@ -51,7 +51,7 @@ exports.looking = () =>{
             elements.push(
                 {
                     title: "Burgers at Mapix",
-                    "image_url": 'https://legocitybot.herokuapp.com/burger.png?'+process.env.HEROKU_RELEASE_VERSION,
+                    "image_url": 'https://mapicbot.herokuapp.com/burger.png?'+process.env.HEROKU_RELEASE_VERSION,
                     "buttons": [
                         {
                             "type": "postback",

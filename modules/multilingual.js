@@ -6,7 +6,7 @@ var strings={
     },
     "lookingforrestaurants":{
         "fr":"Je cherche le restaurant parfait pour vous! ",
-        "en":"I am looking for the perfect pace for you!"
+        "en":"I am looking for the perfect place for you!"
     },
     "menu":{
         "fr": "Menu du jour",
