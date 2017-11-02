@@ -42,7 +42,7 @@ exports.confirm = (sender,payload) => {
       messenger.writingIcon(sender);
     }, 500)
     setTimeout(function () {
-      messenger.send(formatter.map(payload, sender);
+      messenger.send(formatter.map(payload, sender));
     }, 1500)
 
   }else  messenger.send({text: 'Canceled'}, sender);
