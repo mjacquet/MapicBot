@@ -12,7 +12,7 @@ var redis = new Redis(process.env.REDIS_URL);
 
 exports.book = (sender,restaurant) => {
   console.log('book  ',restaurant );
-  redis.set(sender,'{"action":"book","data":{"place":"MAPIC Sushi"}}');
+  redis.set(sender,'{"action":"book","data":{"place":"'+restaurant+'"}}');
   messenger.send({text: ml.get("nbpax")}, sender);
 };
 

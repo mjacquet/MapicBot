@@ -71,18 +71,69 @@ exports.confirm = (details) =>{
                         {
                             "type": "postback",
                             "title": ml.get("menu"),
-                            "payload": "menu,sushi"
+                            "payload": "menu,SushiStar"
                         },
                         {
                             "type":"postback",
                             "title":ml.get("book"),
-                            "payload": "book,sushi"
+                            "payload": "book,SushiStar"
     
                         },
                         {
                             "type":"postback",
                             "title":ml.get("map"),
-                            "payload": "map,sushi"
+                            "payload": "map,SushiStar"
+    
+                        }
+                    ]
+                }
+            );
+            
+            elements.push(
+                {
+                    title: "SushiGo",
+                    "image_url": 'https://mapicbot.herokuapp.com/sushi2.jpeg?'+process.env.HEROKU_RELEASE_VERSION,
+                    "buttons": [
+                        {
+                            "type": "postback",
+                            "title": ml.get("menu"),
+                            "payload": "menu,SushiGo"
+                        },
+                        {
+                            "type":"postback",
+                            "title":ml.get("book"),
+                            "payload": "book,SushiGo"
+    
+                        },
+                        {
+                            "type":"postback",
+                            "title":ml.get("map"),
+                            "payload": "map,SushiGo"
+    
+                        }
+                    ]
+                }
+            );
+            elements.push(
+                {
+                    title: "EatBurger",
+                    "image_url": 'https://mapicbot.herokuapp.com/burger2.jpeg?'+process.env.HEROKU_RELEASE_VERSION,
+                    "buttons": [
+                        {
+                            "type": "postback",
+                            "title": ml.get("menu"),
+                            "payload": "menu,EatBurger"
+                        },
+                        {
+                            "type":"postback",
+                            "title":ml.get("book"),
+                            "payload": "book,EatBurger"
+    
+                        },
+                        {
+                            "type":"postback",
+                            "title":ml.get("map"),
+                            "payload": "map,EatBurger"
     
                         }
                     ]
@@ -96,18 +147,18 @@ exports.confirm = (details) =>{
                         {
                             "type": "postback",
                             "title": ml.get("menu"),
-                            "payload": "menu,burger"
+                            "payload": "menu,Burgers at Mapic"
                         },
                         {
                             "type":"postback",
                             "title":ml.get("book"),
-                            "payload": "book,burger"
+                            "payload": "book,Burgers at Mapic"
     
                         },
                         {
                             "type":"postback",
                             "title":ml.get("map"),
-                            "payload": "map,burger"
+                            "payload": "map,Burgers at Mapic"
     
                         }
                     ]
