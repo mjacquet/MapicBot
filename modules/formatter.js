@@ -65,7 +65,7 @@ exports.confirm = (details) =>{
         let elements = [];
             elements.push(
                 {
-                    title: "Mapic Sushi",
+                    title: "SushiStar",
                     "image_url": 'https://mapicbot.herokuapp.com/sushi.png?'+process.env.HEROKU_RELEASE_VERSION,
                     "buttons": [
                         {
