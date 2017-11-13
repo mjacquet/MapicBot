@@ -189,11 +189,13 @@ exports.confirm = (details) =>{
 
 
     exports.menu = (restaurant) => {
+        let restau="sushi";
+        if (restaurant.includes('Burger'))restau="burger";
         return {
             "attachment": {
                 "type": "image",
                 "payload": {
-                    "url": "https://mapicbot.herokuapp.com/"+restaurant.includes('Sushi')?"suhsi":"burger"+"menu.png?"+process.env.HEROKU_RELEASE_VERSION
+                    "url": "https://mapicbot.herokuapp.com/"+restau+"menu.png?"+process.env.HEROKU_RELEASE_VERSION
                 }
             }
         };
