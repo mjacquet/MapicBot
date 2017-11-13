@@ -106,30 +106,29 @@ app.post('/webhook', async(req, res) => {
           //console.log('intent',result);
          // if (result.probability>0.6 ) {
             let results = processor.match(event.message.text);
+            console.log('results of match:',results);
             if(results=='Greetings' || results=='repas'){
             let result={"label":results};
             let handler = handlers[result.label];
             if (handler && typeof handler === "function") {
               redis.set(sender,'{"action":'+result.label+',"data":{}}');
               handler(sender, event.message.text);
-            } else {
-              console.log("Handler " + result.label + " is not defined");
+              } else {
+                console.log("Handler " + result.label + " is not defined");
+              }
             }
-          }
-          else {
-            //conversationnal state based on ready
-            redis.get(sender).then(function (result) {
-             // messenger.send(formatter.feedback(result),sender);
-              console.log('redis get',result);
-              result=JSON.parse(result);
-              if(result.action=="book")handlers.booknbr(sender,result,event.message.text);
-              //si pas de conversation en cours
-              else
-              messenger.send({text: `Sorry, I didn't understand. Let me know if you are hungry and I'd be glad to help you find a place to eat!`}, sender);
-            });
-
-          
-          }
+            else {
+              //conversationnal state based on ready
+              redis.get(sender).then(function (result) {
+              // messenger.send(formatter.feedback(result),sender);
+                console.log('redis get',result);
+                result=JSON.parse(result);
+                if(result.action=="book")handlers.booknbr(sender,result,event.message.text);
+                //si pas de conversation en cours
+                else
+                messenger.send({text: `Sorry, I didn't understand. Let me know if you are hungry and I'd be glad to help you find a place to eat!`}, sender);
+              });
+            }
         }
       }
     } else if (event.postback) {
