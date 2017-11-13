@@ -187,6 +187,17 @@ exports.confirm = (details) =>{
         };
     };
 
+
+    exports.menu = (restaurant) => {
+        return {
+            "attachment": {
+                "type": "image",
+                "payload": {
+                    "url": "https://mapicbot.herokuapp.com/"+restaurant.includes('Sushi')?"suhsi":"burger"+"menu.png?"+process.env.HEROKU_RELEASE_VERSION
+                }
+            }
+        };
+    };
 exports.recu = shipType =>{
 
     return {

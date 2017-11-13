@@ -21,6 +21,11 @@ exports.map = (sender,restaurant) => {
   messenger.send(formatter.map(restaurant), sender);
 };
 
+exports.menu = (sender,restaurant) => {
+  console.log('menu  ',restaurant );
+  messenger.send(formatter.menu(restaurant), sender);
+};
+
 exports.booktime = (sender,when) => {
   console.log('booktime  ',when );
   redis.get(sender).then(function (result) {
