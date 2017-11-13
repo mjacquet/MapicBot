@@ -107,7 +107,7 @@ app.post('/webhook', async(req, res) => {
          // if (result.probability>0.6 ) {
             let results = processor.match(event.message.text);
             console.log('results of match:',results);
-            if(typeof results != 'undefined' && (results.handler=='Greetings' || results.handler=='repas'){
+            if(typeof results != 'undefined' && (results.handler=='Greetings' || results.handler=='repas')){
             let result={"label":results.handler};
             let handler = handlers[result.label];
             if (handler && typeof handler === "function") {
