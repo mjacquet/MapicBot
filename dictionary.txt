@@ -1,1 +1,8 @@
-start Bonjour
+Greetings Bonjour
+Greetings Hello
+Greetings Hi
+Greetings Greetings
+repas repas
+repas eat
+repas hungry
+repas food

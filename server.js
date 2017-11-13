@@ -94,7 +94,7 @@ app.post('/webhook', async(req, res) => {
         }
       }
       else {
-        //let result = processor.match(event.message.text);
+       
         console.log('text',event.message.text);
         if(event.message.text=='feedback' || event.message.text=='Feedback'){
           redis.get(sender).then(function (result) {
@@ -105,8 +105,9 @@ app.post('/webhook', async(req, res) => {
         //  let result = await einstein.getIntent(event.message.text);
           //console.log('intent',result);
          // if (result.probability>0.6 ) {
-            if(event.message.text=='Greetings' || event.message.text=='repas'){
-            let result={"label":event.message.text};
+            let results = processor.match(event.message.text);
+            if(results=='Greetings' || result=='repas'){
+            let result={"label":results};
             let handler = handlers[result.label];
             if (handler && typeof handler === "function") {
               redis.set(sender,'{"action":'+result.label+',"data":{}}');
