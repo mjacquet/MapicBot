@@ -32,9 +32,9 @@ var strings={
         "fr": "Merci! Nous vous attendons avec impatience. Voici le chemin pour venir à nous.",
         "en": "Thanks, we are eager to see you there! Here is a map to come to us."
     },
-    "infos":{
-        "fr": "Un vaisseau vous plaît ? Envoyez-moi sa photo et je vous donnerai toutes les informations.",
-        "en": "You like one of our spaceship? Send a picture and I'll give you all the details."
+    "community":{
+        "fr": "Avis utilisateurs",
+        "en": "Reviews"
     },
     "locale":{
         "fr": "fr_FR",

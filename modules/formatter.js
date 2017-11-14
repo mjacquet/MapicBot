@@ -84,7 +84,16 @@ exports.confirm = (details) =>{
                             "title":ml.get("map"),
                             "payload": "map,SushiStar"
     
+                        },
+                        {
+                            "type":"web_url",
+                            "title":ml.get("community"),
+                            "url": "https://sdodemo-main-14588a27f9b-15038e73acc.force.com/sushiforce/s/",
+                            "webview_height_ratio": "full",
+                            "messenger_extensions": false
                         }
+
+                        
                     ]
                 }
             );
