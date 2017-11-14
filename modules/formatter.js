@@ -74,30 +74,22 @@ exports.confirm = (details) =>{
                             "payload": "menu,SushiStar"
                         },
                         {
-                            "type":"postback",
-                            "title":ml.get("book"),
-                            "payload": "book,SushiStar"
-    
-                        },
-                        {
-                            "type":"postback",
-                            "title":ml.get("map"),
-                            "payload": "map,SushiStar"
-    
-                        }
-
-                        
-                    ]
-                }
-            );
-            /*,
-                        {
                             "type":"web_url",
                             "title":ml.get("community"),
                             "url": "https://sdodemo-main-14588a27f9b-15038e73acc.force.com/sushiforce/s/",
                             "webview_height_ratio": "full",
                             "messenger_extensions": false
-                        }*/
+                        },
+                        {
+                            "type":"postback",
+                            "title":ml.get("book"),
+                            "payload": "book,SushiStar"
+    
+                        }
+                    ]
+                }
+            );
+            
             elements.push(
                 {
                     title: "SushiGo",
@@ -109,15 +101,16 @@ exports.confirm = (details) =>{
                             "payload": "menu,SushiGo"
                         },
                         {
-                            "type":"postback",
-                            "title":ml.get("book"),
-                            "payload": "book,SushiGo"
-    
+                            "type":"web_url",
+                            "title":ml.get("community"),
+                            "url": "https://sdodemo-main-14588a27f9b-15038e73acc.force.com/sushiforce/s/",
+                            "webview_height_ratio": "full",
+                            "messenger_extensions": false
                         },
                         {
                             "type":"postback",
-                            "title":ml.get("map"),
-                            "payload": "map,SushiGo"
+                            "title":ml.get("book"),
+                            "payload": "book,SushiGo"
     
                         }
                     ]
@@ -134,15 +127,16 @@ exports.confirm = (details) =>{
                             "payload": "menu,EatBurger"
                         },
                         {
-                            "type":"postback",
-                            "title":ml.get("book"),
-                            "payload": "book,EatBurger"
-    
+                            "type":"web_url",
+                            "title":ml.get("community"),
+                            "url": "https://sdodemo-main-14588a27f9b-15038e73acc.force.com/sushiforce/s/",
+                            "webview_height_ratio": "full",
+                            "messenger_extensions": false
                         },
                         {
                             "type":"postback",
-                            "title":ml.get("map"),
-                            "payload": "map,EatBurger"
+                            "title":ml.get("book"),
+                            "payload": "book,EatBurger"
     
                         }
                     ]
@@ -159,15 +153,16 @@ exports.confirm = (details) =>{
                             "payload": "menu,Burgers at Mapic"
                         },
                         {
-                            "type":"postback",
-                            "title":ml.get("book"),
-                            "payload": "book,Burgers at Mapic"
-    
+                            "type":"web_url",
+                            "title":ml.get("community"),
+                            "url": "https://sdodemo-main-14588a27f9b-15038e73acc.force.com/sushiforce/s/",
+                            "webview_height_ratio": "full",
+                            "messenger_extensions": false
                         },
                         {
                             "type":"postback",
-                            "title":ml.get("map"),
-                            "payload": "map,Burgers at Mapic"
+                            "title":ml.get("book"),
+                            "payload": "book,Burgers at Mapic"
     
                         }
                     ]
