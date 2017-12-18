@@ -23,7 +23,7 @@ exports.custo = (sender,restaurant) => {
 
 exports.order = (sender,restaurant) => {
   console.log('order  ',restaurant );
-  messenger.send(formatter.ordered(), sender);
+  messenger.send(formatter.ordered("ho"), sender);
 };
 
 exports.color = (sender,restaurant) => {

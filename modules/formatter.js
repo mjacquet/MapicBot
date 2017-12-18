@@ -66,12 +66,12 @@ exports.shoes = () => {
                         {
                             "type": "postback",
                             "title": "Order",
-                            "payload": "order"
+                            "payload": "order,shoes"
                         },
                         {
                             "type":"postback",
                             "title":"Cancel",
-                            "payload": "cancel"
+                            "payload": "cancel,shoes"
     
                         }
                     ]
