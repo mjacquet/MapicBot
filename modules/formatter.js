@@ -20,12 +20,42 @@ exports.lookedat = response => {
     }
 };
 
+exports.ordered = shipType =>{
+    
+        return {
+        "attachment":{
+          "type":"template",
+          "payload":{
+            "template_type":"receipt",
+            "recipient_name":"Rachel",
+            "merchant_name":"Adidas",
+            "order_number":new Date().getTime(),
+            "currency":"USD",
+            "payment_method":"Visa 7977",
+            "elements":[
+              {
+                "title":"PUREBOOST X ATR SHOES",
+                "quantity":1,
+                "price":150,
+                "currency":"USD",
+                "image_url":'https://decathlonbot.herokuapp.com/shoe2.png'
+              }
+            ],
+            "address":"Decathlon Rue du Commerce",
+            "summary":{
+              "total_cost":150
+            }
+          }
+        }
+      }
+    };
+
 exports.shoes = () => {
     
         let elements = [];
             elements.push(
                 {
-                    title: "PUREBOOST X ATR SHOES",
+                    "title": "PUREBOOST X ATR SHOES",
                     "image_url": 'https://decathlonbot.herokuapp.com/shoe.png',
                     "buttons": [
                         {
