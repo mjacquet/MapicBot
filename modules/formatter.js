@@ -66,7 +66,7 @@ exports.shoes = () => {
                         {
                             "type": "postback",
                             "title": "Order",
-                            "payload": "order,shoes"
+                            "payload": "ordering,shoes"
                         },
                         {
                             "type":"postback",
@@ -99,7 +99,7 @@ exports.shoes = () => {
                                 {
                                     "type": "postback",
                                     "title": "Order Now",
-                                    "payload": "order,shoes"
+                                    "payload": "ordering,shoes"
                                 },
                                 {
                                     "type": "postback",
