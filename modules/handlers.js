@@ -11,12 +11,15 @@ exports.Greetings = async(sender) => {
  // if(sender!="822485231243369"){
     let response=await messenger.getUserInfo(sender);
     messenger.send(formatter.bonjour(response), sender);
-   /* setTimeout(function () {
+    setTimeout(function () {
       messenger.writingIcon(sender);
     }, 500)
     setTimeout(function () {
-      messenger.send(formatter.information(response), sender);
-    }, 2000)*/
+      messenger.send(formatter.lokkedat(response), sender);
+    }, 1500)
+    setTimeout(function () {
+      messenger.send(formatter.shoes(response), sender);
+    }, 2000)
   //}
 };
 

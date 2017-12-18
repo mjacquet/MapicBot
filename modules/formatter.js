@@ -14,6 +14,53 @@ exports.bonjour = response => {
     }
 };
 
+exports.lookedat = response => {
+    return {
+        "text":"Are you still interested in this product?",
+    }
+};
+
+exports.shoes = () => {
+    
+        let elements = [];
+            elements.push(
+                {
+                    title: "PUREBOOST X ATR SHOES",
+                    "image_url": 'https://decathlonbot.herokuapp.com/product.png?'+process.env.HEROKU_RELEASE_VERSION,
+                    "buttons": [
+                        {
+                            "type": "postback",
+                            "title": "Customize",
+                            "payload": "custo"
+                        },
+                        {
+                            "type": "postback",
+                            "title": "Order",
+                            "payload": "order"
+                        },
+                        {
+                            "type":"postback",
+                            "title":"Cancel",
+                            "payload": "cancel"
+    
+                        }
+                    ]
+                }
+            );
+            return {
+                "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements": elements
+                    }
+                }
+            };
+        };
+    
+
+
+
 exports.looking = () =>{
     return {
         "text":ml.get("lookingforrestaurants")
