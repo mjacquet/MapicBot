@@ -26,7 +26,7 @@ exports.shoes = () => {
             elements.push(
                 {
                     title: "PUREBOOST X ATR SHOES",
-                    "image_url": 'https://decathlonbot.herokuapp.com/product.png',
+                    "image_url": 'https://decathlonbot.herokuapp.com/shoe.png',
                     "buttons": [
                         {
                             "type": "postback",
@@ -63,7 +63,7 @@ exports.shoes = () => {
                 let elements = [];
                     elements.push(
                         {
-                            title: "Like them like that?",
+                            title: "Do you like them like that?",
                             "image_url": 'https://decathlonbot.herokuapp.com/product2.png',
                             "buttons": [
                                 {
@@ -99,7 +99,7 @@ exports.shoes = () => {
 
         exports.custo = () =>{
             return {
-                "text":ml.get("timing"),
+                "text":"Which colour would you want?",
                 "quick_replies":[
                   {
                     "content_type":"text",
