@@ -38,10 +38,16 @@ exports.ordered = shipType =>{
                 "quantity":1,
                 "price":150,
                 "currency":"USD",
-                "image_url":'https://decathlonbot.herokuapp.com/shoe2.png'
+                "image_url":"https://decathlonbot.herokuapp.com/shoe2.png"
               }
             ],
-            "address":"Decathlon Rue du Commerce",
+            "address":{
+                "street_1":"Decathlon, rue du commerce",
+                "city":"PARIS",
+                "postal_code":"75015",
+                "state":"idf",
+                "country":"FR"
+              },
             "summary":{
               "total_cost":150
             }
