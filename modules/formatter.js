@@ -64,7 +64,7 @@ exports.shoes = () => {
                     elements.push(
                         {
                             title: "Do you like them like that?",
-                            "image_url": 'https://decathlonbot.herokuapp.com/product2.png',
+                            "image_url": 'https://decathlonbot.herokuapp.com/shoe2.png',
                             "buttons": [
                                 {
                                     "type": "postback",

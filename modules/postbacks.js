@@ -21,6 +21,11 @@ exports.custo = (sender,restaurant) => {
   messenger.send(formatter.custo(), sender);
 };
 
+exports.order = (sender,restaurant) => {
+  console.log('order  ',restaurant );
+  messenger.send(formatter.custo(), sender);
+};
+
 exports.color = (sender,restaurant) => {
   console.log('color  ',restaurant );
   messenger.send(formatter.likeit(), sender);
