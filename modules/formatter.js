@@ -26,7 +26,7 @@ exports.shoes = () => {
             elements.push(
                 {
                     title: "PUREBOOST X ATR SHOES",
-                    "image_url": 'https://decathlonbot.herokuapp.com/product.png?'+process.env.HEROKU_RELEASE_VERSION,
+                    "image_url": 'https://decathlonbot.herokuapp.com/product.png',
                     "buttons": [
                         {
                             "type": "postback",
@@ -57,6 +57,44 @@ exports.shoes = () => {
                 }
             };
         };
+
+        exports.likeit = () => {
+            
+                let elements = [];
+                    elements.push(
+                        {
+                            title: "Like them like that?",
+                            "image_url": 'https://decathlonbot.herokuapp.com/product2.png',
+                            "buttons": [
+                                {
+                                    "type": "postback",
+                                    "title": "Order Now",
+                                    "payload": "order,shoes"
+                                },
+                                {
+                                    "type": "postback",
+                                    "title": "Change",
+                                    "payload": "custo,shoes"
+                                },
+                                {
+                                    "type":"postback",
+                                    "title":"Cancel",
+                                    "payload": "cancel"
+            
+                                }
+                            ]
+                        }
+                    );
+                    return {
+                        "attachment": {
+                            "type": "template",
+                            "payload": {
+                                "template_type": "generic",
+                                "elements": elements
+                            }
+                        }
+                    };
+                };
     
 
         exports.custo = () =>{
