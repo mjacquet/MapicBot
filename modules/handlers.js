@@ -15,13 +15,15 @@ exports.Greetings = async(sender) => {
       messenger.writingIcon(sender);
     }, 500)
     setTimeout(function () {
-      messenger.send(formatter.lokkedat(response), sender);
+      messenger.send(formatter.lookedat(response), sender);
     }, 1500)
     setTimeout(function () {
       messenger.send(formatter.shoes(response), sender);
     }, 2000)
   //}
 };
+
+
 
 exports.repas = (sender,text) => {
   messenger.send(formatter.looking(), sender);
