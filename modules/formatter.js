@@ -31,7 +31,7 @@ exports.shoes = () => {
                         {
                             "type": "postback",
                             "title": "Customize",
-                            "payload": "custo"
+                            "payload": "custo,shoes"
                         },
                         {
                             "type": "postback",
@@ -59,7 +59,38 @@ exports.shoes = () => {
         };
     
 
-
+        exports.custo = () =>{
+            return {
+                "text":ml.get("timing"),
+                "quick_replies":[
+                  {
+                    "content_type":"text",
+                    "title":"Red",
+                    "payload":"color,red"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Blue",
+                    "payload":"color,red"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Green",
+                    "payload":"color,red"
+                  },
+                  {
+                      "content_type":"text",
+                    "title":"Orange",
+                    "payload":"color,red"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Grey",
+                    "payload":"color,red"
+                  }
+                ]
+            }
+          };
 
 exports.looking = () =>{
     return {
